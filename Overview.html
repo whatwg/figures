@@ -11,10 +11,10 @@ span.minor { letter-spacing: 0; color: black; font-size: 0.8em; font-weight: nor
 <body class="draft">
 
 <div class="head">
-  <p><a href="http://www.whatwg.org/" class="logo"><img width="100" src="http://resources.whatwg.org/logo-encoding.svg" alt="WHATWG" height="100"></a></p>
+  <p><a href="http://www.whatwg.org/" class="logo"><img width="100" src="http://resources.whatwg.org/logo.svg" alt="WHATWG" height="100"></a></p>
 	<h1>CSS Figures</h1>
 	
-	<h2 class="no-num no-toc" id="soon-to-become-a-living-standard-last-updated-12-october-2013"><span class="minor">[soon to become a]</span> Living Standard — Last Updated 12 October 2013</h2>
+	<h2 class="no-num no-toc" id="soon-to-become-a-living-standard-last-updated-13-october-2013"><span class="minor">[soon to become a]</span> Living Standard — Last Updated 13 October 2013</h2>
 	
 	<dl>
 		<dt>This version:
@@ -35,7 +35,7 @@ span.minor { letter-spacing: 0; color: black; font-size: 0.8em; font-weight: nor
 
 	</dl>
 	
-<p class="copyright"><a rel="license" href="http://creativecommons.org/publicdomain/zero/1.0/"><img src="http://i.creativecommons.org/p/zero/1.0/80x15.png" alt="CC0"></a>To the extent possible under law, the editor has waived all copyright and related or neighboring rights to this work. In addition, as of 12 October 2013, the editor has made this specification available under the
+<p class="copyright"><a rel="license" href="http://creativecommons.org/publicdomain/zero/1.0/"><img src="http://i.creativecommons.org/p/zero/1.0/80x15.png" alt="CC0"></a>To the extent possible under law, the editor has waived all copyright and related or neighboring rights to this work. In addition, as of 13 October 2013, the editor has made this specification available under the
 <a rel="license" href="http://www.openwebfoundation.org/legal/the-owf-1-0-agreements/owfa-1-0">Open Web Foundation Agreement Version 1.0</a>, which is available at <!--begin-link--><a href="http://www.openwebfoundation.org/legal/the-owf-1-0-agreements/owfa-1-0">http://www.openwebfoundation.org/legal/the-owf-1-0-agreements/owfa-1-0</a><!--end-link-->.
 
 </div>
@@ -109,7 +109,8 @@ out of memory, or to work around platform-specific limitations.
 
 <p>In page-based layouts, images and figures are often displayed at
 the top or bottom of pages. This specificaton adds new keywords on the
-'float' property to create <em>page floats</em>. A page float can
+<a href="http://www.w3.org/TR/CSS2/visuren.html#propdef-float">'float'</a> <a href="#refsCSS">[CSS]</a>
+property to create <em>page floats</em>. A page float can
 float inside its natural column/page, or its placement can be deferred
 to a following column/page with the <em>float-defer</em> properties.
 Page floats can be set to span several columns, thereby supporting
@@ -1053,7 +1054,6 @@ content. Values have the following meaning:
 
 
 <h3 id="wrapping-around-images"><span class="secno">3.3 </span>Wrapping around images</h3>
-
 <p>Exclusions are often based on shapes found in images. In this specification, background image can carry the shape, around which text is wrapped. The new property 'background-exclude-level' indicates a level in the alpha channel of the background image(s) that defines the shape.
 
 
@@ -1328,7 +1328,10 @@ acticle::region(2) {
 
 <h2 class="no-num" id="references">References</h2>
 
-<div id="anolis-references"><dl><dt id="refsRFC2119">[RFC2119]
+<div id="anolis-references"><dl><dt id="refsCSS">[CSS]
+<dd><cite><a href="http://www.w3.org/TR/CSS2/">CSS</a></cite>, Bert Bos, Tantek Çelik, Ian Hickson et al.. W3C.
+
+<dt id="refsRFC2119">[RFC2119]
 <dd><cite><a href="http://tools.ietf.org/html/rfc2119">Key words for use in RFCs to Indicate Requirement Levels</a></cite>, Scott Bradner. IETF.
 
 </dl></div>
