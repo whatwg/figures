@@ -15,7 +15,7 @@ span.minor { letter-spacing: 0; color: black; font-size: 0.8em; font-weight: nor
 <body class="draft">
 
 <div class="head">
-  <p><a class="logo" href="http://www.whatwg.org/"><img alt="WHATWG" height="100" src="http://resources.whatwg.org/logo-encoding.svg" width="100"></a></p>
+  <p><a class="logo" href="http://www.whatwg.org/"><img alt="WHATWG" height="100" src="http://resources.whatwg.org/logo.svg" width="100"></a></p>
 	<h1>[TITLE]</h1>
 	
 	<h2 class="no-num no-toc"><span class=minor>[soon to become a]</span> Living Standard — Last Updated [DATE]</h2>
@@ -50,7 +50,7 @@ span.minor { letter-spacing: 0; color: black; font-size: 0.8em; font-weight: nor
 
 <h2 class="no-num no-toc">Status</h2>
 
-<p>This specification is in the process of establishing itself in WHATWG. As such, the term "Living Standard" indicates a goal, rather than reality. There may be issues with the markup or the styling.
+<p>This specification is in the process of establishing itself in WHATWG. As such, the term "Living Standard" indicates a goal, rather than reality. However, many features described in this specification have already been implemented, as documented <a href="http://people.opera.com/howcome/2013/tests/figures/coverage.html">here</a>
 
 <h2 class="no-num no-toc">Table of Contents</h2>
 
@@ -88,7 +88,8 @@ out of memory, or to work around platform-specific limitations.
 
 <p>In page-based layouts, images and figures are often displayed at
 the top or bottom of pages. This specificaton adds new keywords on the
-'float' property to create <em>page floats</em>. A page float can
+<a href="http://www.w3.org/TR/CSS2/visuren.html#propdef-float">'float'</a> <span data-anolis-ref>CSS</span>
+property to create <em>page floats</em>. A page float can
 float inside its natural column/page, or its placement can be deferred
 to a following column/page with the <em>float-defer</em> properties.
 Page floats can be set to span several columns, thereby supporting
@@ -147,14 +148,14 @@ floats should appear in their natural column on the natural page.
 
 <div class=example>
 <p>Float figure to top of natural column:
-<pre>
+<pre class=css>
 .figure { float: top }
 </pre>
 <img alt="sample rendering" src=7.png>
 </div>
 
 <div class=example>
-<pre>
+<pre class=css>
 .figure { float: top; width: 50% }
 </pre>
 <img alt="sample rendering" src=7b.png>
@@ -167,7 +168,7 @@ floats should appear in their natural column on the natural page.
 
 <p>To avoid the white space, the image can be floated to the nearest edge (in the block direction):</p>
 
-<pre>
+<pre class=css>
 .figure { float: snap }
 </pre>
 
@@ -184,7 +185,7 @@ floats should appear in their natural column on the natural page.
 
 <p>A typographer would typically try to avoid single lines of text above/below figures, which can be achieved with:
 
-<pre>
+<pre class=css>
 div.figure { float: snap(1.5em) }
 </pre>
 
@@ -199,7 +200,7 @@ div.figure { float: snap(1.5em) }
 
 <p>To make the figures snap to the nearest edges, this code can be applied:
 
-<pre>
+<pre class=css>
 div.figure { float: snap(2.5em) }
 </pre>
 
@@ -215,7 +216,7 @@ div.figure { float: snap(2.5em) }
 
 <p>Float figure to top of the natural column, spanning all columns:
 
-<pre>
+<pre class=css>
 .figure { float: top; column-span: all }
 </pre>
 
@@ -227,7 +228,7 @@ div.figure { float: snap(2.5em) }
 <div class=example>
 <p>In this example, tables will snap to the top/bottom if the top/bottom of the border box is closer than '3em' from the top/bottom of the page/column.
 
-<pre>
+<pre class=css>
 table { float: snap }
 table { float: snap(3em) }
 table { float: snap(3em, bottom) }
@@ -245,7 +246,7 @@ table { float: snap(3em 2em, bottom) }
 
 <div class=example>
 <p>In this example, a commonly used newspaper layout is easily described:
-<pre>
+<pre class=css>
 body { columns: 3 }
 img.A { column-span: 2; width: 100% }  /* image spans two columns */
 .one { column-span: 2 }                /* lead paragraph spans two columns */
@@ -258,7 +259,7 @@ img.A { column-span: 2; width: 100% }  /* image spans two columns */
 <div class=example>
 <p>In this example, the footer is floated to the bottom of the last page (and not the bottom of the article element):
 
-<pre>
+<pre class=css>
 footer { float: bottom; column-span: page }
 
 &lt;article>
@@ -351,7 +352,7 @@ footer { float: bottom; column-span: page }
 <div class=example>
 <p>Float figure to the top of the column that follows the natural column:
 
-<pre>
+<pre class=css>
 .figure { float: top }
 .figure { float-defer-column: 1 }
 </pre>
@@ -360,7 +361,7 @@ footer { float: bottom; column-span: page }
 <div class=example>
 <p>Float figure to the top of the next-to-last column:
 
-<pre>
+<pre class=css>
 .figure { float: top; float-defer-column: -1 }
 </pre>
 <img alt="sample rendering" src=7.png>
@@ -368,7 +369,7 @@ footer { float: bottom; column-span: page }
 
 <div class=example>
 <p>Float figure to top of the last column of the multicol element on the current page:
-<pre>
+<pre class=css>
 .figure { float: top; float-defer-column: last }
 </pre>
 <img alt="sample rendering" src=6.png>
@@ -377,7 +378,7 @@ footer { float: bottom; column-span: page }
 
 <div class=example>
 <p>In combination with 'column-span', the figure is floated to the top corner of the multicol element on that page:
-<pre>
+<pre class=css>
 .figure { float: top; column-span: 2; float-defer-column: last; width: 100% }
 </pre>
 <img alt="sample rendering" src=8.png>
@@ -387,7 +388,7 @@ footer { float: bottom; column-span: page }
 <div class=example>
 <p>Float figure to the top of the second column, spanning two columns:
 
-<pre>
+<pre class=css>
 .figure { 
   float: top; column-span: 2;
   float-defer-column: 1;
@@ -400,7 +401,7 @@ footer { float: bottom; column-span: page }
 <div class=example>
 <p>Float figure to the top right, leaving one full column:
 
-<pre>
+<pre class=css>
 .figure { 
   float: top; column-span: 2;
   float-defer-column: -1;
@@ -411,7 +412,7 @@ footer { float: bottom; column-span: page }
 
 <p>Given that there are four columnn, the same layout would be achived with this code:
 
-<pre>
+<pre class=css>
 .figure { 
   float: top; column-span: 2;
   float-defer-column: 1;
@@ -426,7 +427,7 @@ footer { float: bottom; column-span: page }
 <div class=example>
 <p>Float figure to the top of the first column on the next-to-last page:
 
-<pre>
+<pre class=css>
 .figure { float: top }
 .figure { float-defer-page: -1 }
 </pre>
@@ -435,7 +436,7 @@ footer { float: bottom; column-span: page }
 <div class=example>
 <p>Float figure to the top of the next-to-last column on the next-to-last page:
 
-<pre>
+<pre class=css>
 .figure { float: top }
 .figure { float-defer-column: -1 }
 .figure { float-defer-page: -1 }
@@ -449,7 +450,7 @@ footer { float: bottom; column-span: page }
 <div class=example>
 <p>Float figure to the top of the last column on the natural page:
 
-<pre>
+<pre class=css>
 .figure { float: top }
 .figure { float-defer-column: last }
 </pre>
@@ -460,7 +461,7 @@ footer { float: bottom; column-span: page }
 <div class=example>
 <p>Float figure to the last column on the last page:
 
-<pre>
+<pre class=css>
 .figure { float: top }
 .figure { float-defer-column: last }
 .figure { float-defer-page: last }
@@ -501,22 +502,22 @@ footer { float: bottom; column-span: page }
 
 <div class=example>
 <p>In this example, the two figures may appear in the same column:
-<pre>
+<pre class=css>
 .figure { float: bottom; clear: none }
 
-&ltdiv class=figure>&lt;/div>
-&ltdiv class=figure>&lt;/div>
+&lt;div class=figure>&lt;/div>
+&lt;div class=figure>&lt;/div>
 </pre>
 <img src="16.png">
 </div>
 
 <div class=example>
 <p>In this example, the two figures will appear in different columns:
-<pre>
+<pre class=css>
 .figure { float: bottom; clear: column }
 
-&ltdiv class=figure>&lt;/div>
-&ltdiv class=figure>&lt;/div>
+&lt;div class=figure>&lt;/div>
+&lt;div class=figure>&lt;/div>
 </pre>
 <img src="17.png">
 </div>
@@ -527,8 +528,8 @@ footer { float: bottom; column-span: page }
 <pre>
 .figure { float: bottom; clear: top }
 
-&ltdiv class=figure>&lt;/div>
-&ltdiv class=figure>&lt;/div>
+&lt;div class=figure>&lt;/div>
+&lt;div class=figure>&lt;/div>
 </pre>
 <img src="16.png">
 </div>
@@ -538,8 +539,8 @@ footer { float: bottom; column-span: page }
 <pre>
 .figure { float: bottom; clear: bottom }
 
-&ltdiv class=figure>&lt;/div>
-&ltdiv class=figure>&lt;/div>
+&lt;div class=figure>&lt;/div>
+&lt;div class=figure>&lt;/div>
 </pre>
 <img src="17.png">
 </div>
@@ -550,8 +551,8 @@ footer { float: bottom; column-span: page }
 <pre>
 .figure { float: top; float-defer-column: last; clear: page }
 
-&ltdiv class=figure>&lt;/div>
-&ltdiv class=figure>&lt;/div>
+&lt;div class=figure>&lt;/div>
+&lt;div class=figure>&lt;/div>
 </pre>
 </div>
 
@@ -562,8 +563,8 @@ they may therefore end up in the same column:
 .figure.one { float: top; clear: top }
 .figure.two { float: bottom; clear: bottom }
 
-&ltdiv class="figure one">&lt;/div>
-&ltdiv class="figure two">&lt;/div>
+&lt;div class="figure one">&lt;/div>
+&lt;div class="figure two">&lt;/div>
 </pre>
 </div>
 
@@ -588,7 +589,7 @@ they may therefore end up in the same column:
 <p>These new values do not create page floats, the are simply aliases for 'left' and 'right'.
 
 <div class=example>
-<pre>
+<pre class=css>
 .figure { float: outside }
 </pre>
 </div>
@@ -638,7 +639,7 @@ has been specified, the vertical offset is set to zero.
 <p>This property can only influence a float along an axis it has been floated.
 
 <div class=example>
-<pre>
+<pre class=css>
 img {
   float: left;
   float-offset: 2em 3em;
@@ -656,7 +657,7 @@ in the same direction as it has been floated with 'float'
 naturally appear.
 
 <div class=example>
-<pre>img {
+<pre class=css>img {
   float: right;
   float-offset: 5px;
 }
@@ -696,7 +697,7 @@ Pull quotes are often centered in a column. In this example, the pull quote is f
 </pre>
 
 <div class=example>
-<pre>img {
+<pre class=css>img {
   float: top right;
   float-offset: -50% 3em;  /* 50% centers the box */
   width: 120%;
@@ -710,7 +711,7 @@ Pull quotes are often centered in a column. In this example, the pull quote is f
 
 <div class="example">
 
-<pre>
+<pre class=css>
 img {
   float: top right;
   float-offset: -80% 2em;
@@ -801,19 +802,19 @@ img {
 <p>In many cases, the specified values on these properties cannot be honored. 
 
 <div class=example>The number of columns is limited, and high values therefore cannot be honored:
-<pre>
+<pre class=css>
 .figure { float: top; float-defer-column: 1000 }
 </pre>
 </div>
 
 <div class=example>A narrow screen may only have room for one column, in which case this request cannot be honored:
-<pre>
+<pre class=css>
 .figure { float: top; float-defer-column: -5 }
 </pre>
 </div>
 
 <div class=example>In long documents, all content cannot fit on the last page, and this rule therefore cannot be honored:
-<pre>
+<pre class=css>
 p { float: top; float-defer-page: last }
 </pre>
 </div>
@@ -912,7 +913,7 @@ p { float: top; float-defer-page: last }
 
 <div class=example>
 
-<pre class=css>
+<pre class=css class=css>
 img { float: top; column-span: 2; float-wrap: wrap; width: 120%;  }
 </pre>
 
@@ -1069,7 +1070,6 @@ content. Values have the following meaning:
 
 
 <h3>Wrapping around images</h3>
-
 <p>Exclusions are often based on shapes found in images. In this specification, background image can carry the shape, around which text is wrapped. The new property 'background-exclude-level' indicates a level in the alpha channel of the background image(s) that defines the shape.
 
 
@@ -1078,7 +1078,7 @@ content. Values have the following meaning:
 
 <p><img style="width: 90%; border: thin solid black" src=landscape-4col.png>
 
-<pre>
+<pre class=css>
 article {
   columns: 15em;
   background: url(horizon.jpg);
