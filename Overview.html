@@ -281,10 +281,22 @@ table { float: snap(3em 2em, bottom) }
 <div class="example">
 <p>In this example, a commonly used newspaper layout is easily described:
 <pre>body { columns: 3 }
-img.A { column-span: 2; width: 100% }  /* image spans two columns */
-.one { column-span: 2 }                /* lead paragraph spans two columns */
+img  { column-span: 2; width: 100% }  /* image spans two columns */
+p.one { column-span: 2 }              /* lead paragraph spans two columns */
 </pre>
-<img src="regions.png" alt="sample rendering">
+
+<pre>┌──────────────────────┐┌──────────┐
+│                      ││          │
+│         img          ││    4     │	          
+│                      ││          │   
+└──────────────────────┘│          │
+┌──────────────────────┐│          │
+│        p.one         ││          │   
+└──────────────────────┘│          │
+┌──────────┐┌──────────┐│          │
+│     2    ││    3     ││          │   
+└──────────┘└──────────┘└──────────┘
+</pre>
 </div>
 
 <h3 id="setting-float-reference"><span class="secno">2.3 </span>Setting float reference</h3>
