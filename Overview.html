@@ -5,6 +5,24 @@
 <style>
 .head h1 { padding: 1em 0 }
 span.minor { letter-spacing: 0; color: black; font-size: 0.8em; font-weight: normal }
+
+div.example {
+  border-left: 0.3em solid black;
+  margin: 0;
+}
+.code-example {
+  text-align: right;
+  float: left;
+  width: 6em;
+  margin-left: -7em;
+}
+a { text-decoration: none }
+a.pass { color: green }
+a.fail { color: red }
+a.unclear, a.almost { color: orange }
+.issue { background: #FAA; padding: 0.3em 0.4em }
+.issue::before { content: "Issue: " }
+
 </style>
 <link rel="stylesheet" href="http://www.whatwg.org/style/specification" type="text/css">
 
@@ -14,7 +32,7 @@ span.minor { letter-spacing: 0; color: black; font-size: 0.8em; font-weight: nor
   <p><a href="http://www.whatwg.org/" class="logo"><img width="100" src="http://resources.whatwg.org/logo.svg" alt="WHATWG" height="100"></a></p>
 	<h1>CSS Figures</h1>
 	
-	<h2 class="no-num no-toc" id="soon-to-become-a-living-standard-last-updated-14-october-2013"><span class="minor">[soon to become a]</span> Living Standard — Last Updated 14 October 2013</h2>
+	<h2 class="no-num no-toc" id="soon-to-become-a-living-standard-last-updated-8-november-2013"><span class="minor">[soon to become a]</span> Living Standard — Last Updated 8 November 2013</h2>
 	
 	<dl>
 		<dt>This version:
@@ -35,7 +53,7 @@ span.minor { letter-spacing: 0; color: black; font-size: 0.8em; font-weight: nor
 
 	</dl>
 	
-<p class="copyright"><a rel="license" href="http://creativecommons.org/publicdomain/zero/1.0/"><img src="http://i.creativecommons.org/p/zero/1.0/80x15.png" alt="CC0"></a>To the extent possible under law, the editor has waived all copyright and related or neighboring rights to this work. In addition, as of 14 October 2013, the editor has made this specification available under the
+<p class="copyright"><a rel="license" href="http://creativecommons.org/publicdomain/zero/1.0/"><img src="http://i.creativecommons.org/p/zero/1.0/80x15.png" alt="CC0"></a>To the extent possible under law, the editor has waived all copyright and related or neighboring rights to this work. In addition, as of 8 November 2013, the editor has made this specification available under the
 <a rel="license" href="http://www.openwebfoundation.org/legal/the-owf-1-0-agreements/owfa-1-0">Open Web Foundation Agreement Version 1.0</a>, which is available at <!--begin-link--><a href="http://www.openwebfoundation.org/legal/the-owf-1-0-agreements/owfa-1-0">http://www.openwebfoundation.org/legal/the-owf-1-0-agreements/owfa-1-0</a><!--end-link-->.
 
 </div>
@@ -59,14 +77,15 @@ span.minor { letter-spacing: 0; color: black; font-size: 0.8em; font-weight: nor
   <ol>
    <li><a href="#floating-to-the-top-bottom:-top-bottom-snap"><span class="secno">2.1 </span>Floating to the top/bottom: top, bottom, snap</a></li>
    <li><a href="#spanning-columns"><span class="secno">2.2 </span>Spanning columns</a></li>
-   <li><a href="#deferring-floats:-float-defer-column-float-defer-page"><span class="secno">2.3 </span>Deferring floats: float-defer-column, float-defer-page</a>
+   <li><a href="#setting-float-reference"><span class="secno">2.3 </span>Setting float reference</a></li>
+   <li><a href="#deferring-floats:-float-defer-column-float-defer-page"><span class="secno">2.4 </span>Deferring floats: float-defer-column, float-defer-page</a>
     <ol>
-     <li><a href="#float-defer-column"><span class="secno">2.3.1 </span>'float-defer-column'</a></li>
-     <li><a href="#float-defer-page"><span class="secno">2.3.2 </span>'float-defer-page'</a></ol></li>
-   <li><a href="#clearing-page-floats"><span class="secno">2.4 </span>Clearing page floats</a></li>
-   <li><a href="#floating-inside-and-outside-pages"><span class="secno">2.5 </span>Floating inside and outside pages</a></li>
-   <li><a href="#the-float-offset-property"><span class="secno">2.6 </span>The 'float-offset' property</a></li>
-   <li><a href="#overconstrained-page-floats"><span class="secno">2.7 </span>Overconstrained page floats</a></ol></li>
+     <li><a href="#float-defer-column"><span class="secno">2.4.1 </span>'float-defer-column'</a></li>
+     <li><a href="#float-defer-page"><span class="secno">2.4.2 </span>'float-defer-page'</a></ol></li>
+   <li><a href="#clearing-page-floats"><span class="secno">2.5 </span>Clearing page floats</a></li>
+   <li><a href="#floating-inside-and-outside-pages"><span class="secno">2.6 </span>Floating inside and outside pages</a></li>
+   <li><a href="#the-float-offset-property"><span class="secno">2.7 </span>The 'float-offset' property</a></li>
+   <li><a href="#overconstrained-page-floats"><span class="secno">2.8 </span>Overconstrained page floats</a></ol></li>
  <li><a href="#wrapping"><span class="secno">3 </span>Wrapping</a>
   <ol>
    <li><a href="#wrapping-around-page-floats"><span class="secno">3.1 </span>Wrapping around page floats</a></li>
@@ -267,12 +286,14 @@ img.A { column-span: 2; width: 100% }  /* image spans two columns */
 <img src="regions.png" alt="sample rendering">
 </div>
 
-<p>Further, the 'page' value is added to 'column-span' so that the page (and not the column or element) becomes the reference. 
+<h3 id="setting-float-reference"><span class="secno">2.3 </span>Setting float reference</h3>
+
+<p>Normally, floats are positioned wrt their containing block. Sometimes it's 
 
 <div class="example">
 <p>In this example, the footer is floated to the bottom of the last page (and not the bottom of the article element):
 
-<pre class="css">footer { float: bottom; column-span: page }
+<pre class="css">footer { float: bottom; column-span: all; floa }
 
 &lt;article&gt;
   ...
@@ -281,14 +302,15 @@ img.A { column-span: 2; width: 100% }  /* image spans two columns */
 </pre>
 </div>
 
-<p class="issue">An alternative way to express this would be to add a separate property, e.g., <code>float-reference: column | multicol | page</code>
+<p class="issue">An alternative way to express this would be to add a separate property, e.g., <code>float-reference: column | multicol | page | spread</code>. Othewise, it's hard to express that an element should span 3 columns on a spread with 4 columns
 
 
-<h3 id="deferring-floats:-float-defer-column-float-defer-page"><span class="secno">2.3 </span>Deferring floats: float-defer-column, float-defer-page</h3>
+
+<h3 id="deferring-floats:-float-defer-column-float-defer-page"><span class="secno">2.4 </span>Deferring floats: float-defer-column, float-defer-page</h3>
 
 <p>A page float can be deferred to a following column/page with these new properties:
 
-<h4 id="float-defer-column"><span class="secno">2.3.1 </span>'float-defer-column'</h4>
+<h4 id="float-defer-column"><span class="secno">2.4.1 </span>'float-defer-column'</h4>
 
 <table class="propdef">
     <tr>
@@ -318,7 +340,7 @@ img.A { column-span: 2; width: 100% }  /* image spans two columns */
 </table>
 
 
-<h4 id="float-defer-page"><span class="secno">2.3.2 </span>'float-defer-page'</h4>
+<h4 id="float-defer-page"><span class="secno">2.4.2 </span>'float-defer-page'</h4>
 
 <table class="propdef">
     <tr>
@@ -480,7 +502,7 @@ img.A { column-span: 2; width: 100% }  /* image spans two columns */
 
 
 
-<h3 id="clearing-page-floats"><span class="secno">2.4 </span>Clearing page floats</h3>
+<h3 id="clearing-page-floats"><span class="secno">2.5 </span>Clearing page floats</h3>
 
 <p>Page floats may request to not be stacked, or to be the first page float on a page/column through new values on the 'clear' property:
 
@@ -566,7 +588,7 @@ they may therefore end up in the same column:
 
 
 
-<h3 id="floating-inside-and-outside-pages"><span class="secno">2.5 </span>Floating inside and outside pages</h3>
+<h3 id="floating-inside-and-outside-pages"><span class="secno">2.6 </span>Floating inside and outside pages</h3>
 
 <p>Two allow content to flow to the inside and outside of a page, these keywords are added to the 'float' property:
 
@@ -595,7 +617,7 @@ they may therefore end up in the same column:
 
 
 
-<h3 id="the-float-offset-property"><span class="secno">2.6 </span>The 'float-offset' property</h3>
+<h3 id="the-float-offset-property"><span class="secno">2.7 </span>The 'float-offset' property</h3>
 
 <table class="propdef">
     <tr>
@@ -787,7 +809,7 @@ Pull quotes are often centered in a column. In this example, the pull quote is f
 
 -->
 
-<h3 id="overconstrained-page-floats"><span class="secno">2.7 </span>Overconstrained page floats</h3>
+<h3 id="overconstrained-page-floats"><span class="secno">2.8 </span>Overconstrained page floats</h3>
 
 <p>In many cases, the specified values on these properties cannot be honored. 
 
