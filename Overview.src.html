@@ -9,6 +9,24 @@
 <style>
 .head h1 { padding: 1em 0 }
 span.minor { letter-spacing: 0; color: black; font-size: 0.8em; font-weight: normal }
+
+div.example {
+  border-left: 0.3em solid black;
+  margin: 0;
+}
+.code-example {
+  text-align: right;
+  float: left;
+  width: 6em;
+  margin-left: -7em;
+}
+a { text-decoration: none }
+a.pass { color: green }
+a.fail { color: red }
+a.unclear, a.almost { color: orange }
+.issue { background: #FAA; padding: 0.3em 0.4em }
+.issue::before { content: "Issue: " }
+
 </style>
 <link rel="stylesheet" type="text/css" href="http://www.whatwg.org/style/specification">
 
@@ -254,13 +272,15 @@ img.A { column-span: 2; width: 100% }  /* image spans two columns */
 <img alt="sample rendering" src=regions.png>
 </div>
 
-<p>Further, the 'page' value is added to 'column-span' so that the page (and not the column or element) becomes the reference. 
+<h3>Setting float reference</h3>
+
+<p>Normally, floats are positioned wrt their containing block. Sometimes it's 
 
 <div class=example>
 <p>In this example, the footer is floated to the bottom of the last page (and not the bottom of the article element):
 
 <pre class=css>
-footer { float: bottom; column-span: page }
+footer { float: bottom; column-span: all; floa }
 
 &lt;article>
   ...
@@ -269,7 +289,8 @@ footer { float: bottom; column-span: page }
 </pre>
 </div>
 
-<p class=issue>An alternative way to express this would be to add a separate property, e.g., <code>float-reference: column | multicol | page</code></dfn>
+<p class=issue>An alternative way to express this would be to add a separate property, e.g., <code>float-reference: column | multicol | page | spread</code></dfn>. Othewise, it's hard to express that an element should span 3 columns on a spread with 4 columns
+
 
 
 <h3>Deferring floats: float-defer-column, float-defer-page</h3>
