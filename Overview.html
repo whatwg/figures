@@ -301,13 +301,40 @@ p.one { column-span: 2 }              /* lead paragraph spans two columns */
 
 <h3 id="setting-float-reference"><span class="secno">2.3 </span>Setting float reference</h3>
 
+<table class="propdef">
+    <tr>
+      <td><em>Name:</em>
+      <td><dfn id="float-reference">float-reference</dfn>
+    <tr>
+      <td><em>Value:</em>
+      <td>auto | column | multicol | page | spread
+    <tr>
+      <td><em>Initial:</em>
+      <td>none
+    <tr>
+      <td><em>Applies to:</em>
+      <td>page floats
+    <tr>
+      <td><em>Inherited:</em>
+      <td>no
+    <tr>
+      <td><em>Percentages:</em>
+      <td>N/A
+    <tr>
+      <td><em>Media:</em>
+      <td>visual
+    <tr>
+      <td><em>Computed value:</em>
+      <td>specified value
+</table>
+
 
 <p>Normally, floats are positioned wrt their containing block. 
 
 <div class="example">
-<p>In this example, the footer is floated to the bottom of the last page (and not the bottom of the article element):
+<p>In this example, the footer is floated to the bottom of the page (and not the bottom of the article element):
 
-<pre>footer { float: bottom; column-span: all; floa }
+<pre>footer { float: bottom; float-reference: page }
 
 &lt;article&gt;
   ...
