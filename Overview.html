@@ -33,7 +33,7 @@ pre.lineart { line-height: 1 }
   <p><a href="http://www.whatwg.org/" class="logo"><img width="100" src="http://resources.whatwg.org/logo.svg" alt="WHATWG" height="100"></a></p>
 	<h1>CSS Figures</h1>
 	
-	<h2 class="no-num no-toc" id="soon-to-become-a-living-standard-last-updated-8-november-2013"><span class="minor">[soon to become a]</span> Living Standard — Last Updated 8 November 2013</h2>
+	<h2 class="no-num no-toc" id="soon-to-become-a-living-standard-last-updated-13-november-2013"><span class="minor">[soon to become a]</span> Living Standard — Last Updated 13 November 2013</h2>
 	
 	<dl>
 		<dt>This version:
@@ -54,7 +54,7 @@ pre.lineart { line-height: 1 }
 
 	</dl>
 	
-<p class="copyright"><a rel="license" href="http://creativecommons.org/publicdomain/zero/1.0/"><img src="http://i.creativecommons.org/p/zero/1.0/80x15.png" alt="CC0"></a>To the extent possible under law, the editor has waived all copyright and related or neighboring rights to this work. In addition, as of 8 November 2013, the editor has made this specification available under the
+<p class="copyright"><a rel="license" href="http://creativecommons.org/publicdomain/zero/1.0/"><img src="http://i.creativecommons.org/p/zero/1.0/80x15.png" alt="CC0"></a>To the extent possible under law, the editor has waived all copyright and related or neighboring rights to this work. In addition, as of 13 November 2013, the editor has made this specification available under the
 <a rel="license" href="http://www.openwebfoundation.org/legal/the-owf-1-0-agreements/owfa-1-0">Open Web Foundation Agreement Version 1.0</a>, which is available at <!--begin-link--><a href="http://www.openwebfoundation.org/legal/the-owf-1-0-agreements/owfa-1-0">http://www.openwebfoundation.org/legal/the-owf-1-0-agreements/owfa-1-0</a><!--end-link-->.
 
 </div>
@@ -78,7 +78,7 @@ pre.lineart { line-height: 1 }
   <ol>
    <li><a href="#floating-to-the-top-bottom:-top-bottom-snap"><span class="secno">2.1 </span>Floating to the top/bottom: top, bottom, snap</a></li>
    <li><a href="#spanning-columns"><span class="secno">2.2 </span>Spanning columns</a></li>
-   <li><a href="#setting-float-reference"><span class="secno">2.3 </span>Setting float reference</a></li>
+   <li><a href="#setting-float-reference:-float-reference"><span class="secno">2.3 </span>Setting float reference: 'float-reference'</a></li>
    <li><a href="#deferring-floats:-float-defer-column-float-defer-page"><span class="secno">2.4 </span>Deferring floats: float-defer-column, float-defer-page</a>
     <ol>
      <li><a href="#float-defer-column"><span class="secno">2.4.1 </span>'float-defer-column'</a></li>
@@ -154,14 +154,6 @@ in most cases, page floats seems like a better term.
 <dt>bottom
 <dd>The float is floated to the bottom of the column
 
-<!--
-<dt>top-corner
-<dd>the box is floated to the top of the last column (in the inline direction) that fits inside the multicol element on the same page.
-
-<dt>bottom-corner
-<dd>similar to 'top-corner', exept the box is floated to the bottom
--->
-
 <dt>snap(&lt;length&gt; &lt;length&gt;? [, top | bottom | near ]?)
 
 <dd><p>Makes the element float to the top or bottom if it naturally appears within a certain distance from the top or bottom. The length value(s) specifies the maxium distance from the top/bottom that an element must be within in order to be floated; one length value specifies the distance from both the top and the bottom, two length values specify the distance from the top and  bottom, respectively. 
@@ -172,16 +164,17 @@ in most cases, page floats seems like a better term.
 
 <dt>snap
 
-<dd>same as <tt>snap(2em, near)</tt>
+<dd>same as <code>snap(2em, near)</code>
 
 </dl>
 
-<p>These new keywords only apply in paged media; in continous media
-declarations with these keywords are ignored.
-
 <p>Elements with any of these new keywords are called 'page floats'.
-Each page float has a <em>natural column</em>, which is the column
-where the element would have started to appears it it was not a float.
+
+
+
+
+<p>Each page float has a <em>natural column</em>, which is the column
+where the start of the element would have been if it was not floated.
 Also, each page float has a <em>natural page</em>, which is the page
 where the element would have started if the was not a float. Unless
 other constrained by lack of space or other float-* properties, page
@@ -299,7 +292,8 @@ p.one { column-span: 2 }              /* lead paragraph spans two columns */
 </pre>
 </div>
 
-<h3 id="setting-float-reference"><span class="secno">2.3 </span>Setting float reference</h3>
+
+<h3 id="setting-float-reference:-float-reference"><span class="secno">2.3 </span>Setting float reference: 'float-reference'</h3>
 
 <table class="propdef">
     <tr>
@@ -307,10 +301,10 @@ p.one { column-span: 2 }              /* lead paragraph spans two columns */
       <td><dfn id="float-reference">float-reference</dfn>
     <tr>
       <td><em>Value:</em>
-      <td>auto | column | multicol | page | spread
+      <td>column | multicol | page | spread
     <tr>
       <td><em>Initial:</em>
-      <td>none
+      <td>column
     <tr>
       <td><em>Applies to:</em>
       <td>page floats
@@ -325,11 +319,10 @@ p.one { column-span: 2 }              /* lead paragraph spans two columns */
       <td>visual
     <tr>
       <td><em>Computed value:</em>
-      <td>specified value
+      <td>Same as specified value
 </table>
 
-
-<p>Normally, floats are positioned wrt their containing block. 
+<p>This property indicates the float reference for a page float
 
 <div class="example">
 <p>In this example, the footer is floated to the bottom of the page (and not the bottom of the article element):
@@ -343,8 +336,9 @@ p.one { column-span: 2 }              /* lead paragraph spans two columns */
 </pre>
 </div>
 
-<p class="issue">An alternative way to express this would be to add a separate property, e.g., <code>float-reference: column | multicol | page | spread</code>. Othewise, it's hard to express that an element should span 3 columns on a spread with 4 columns
-
+<!--
+<p class=issue>An alternative way to express this would be to add a separate property, e.g., <code>float-reference: column | multicol | page | spread</code></dfn>. Othewise, it's hard to express that an element should span 3 columns on a spread with 4 columns
+-->
 
 
 <h3 id="deferring-floats:-float-defer-column-float-defer-page"><span class="secno">2.4 </span>Deferring floats: float-defer-column, float-defer-page</h3>
@@ -692,7 +686,6 @@ it has been floated with 'float'. If one value is specified, it is
 the horizontal offset. If two values are specified, the first is the
 horizontal and the second is the vertical offset. If no vertical value
 has been specified, the vertical offset is set to zero.
-
 <p>This property can only influence a float along an axis it has been floated.
 
 <div class="example">
