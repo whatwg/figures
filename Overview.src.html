@@ -149,8 +149,6 @@ in most cases, page floats seems like a better term.
 <p>Elements with any of these new keywords are called 'page floats'.
 
 
-
-
 <p>Each page float has a <em>natural column</em>, which is the column
 where the start of the element would have been if it was not floated.
 Also, each page float has a <em>natural page</em>, which is the page
@@ -323,6 +321,10 @@ footer { float: bottom; float-reference: page }
 &lt;/article>
 </pre>
 </div>
+
+
+<p class=issue>Describe relationship between 'column-span' and float-referecne 
+
 
 <!--
 <p class=issue>An alternative way to express this would be to add a separate property, e.g., <code>float-reference: column | multicol | page | spread</code></dfn>. Othewise, it's hard to express that an element should span 3 columns on a spread with 4 columns
