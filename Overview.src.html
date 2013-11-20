@@ -120,34 +120,21 @@ box. Therefore, a more accurate term for page floats may be <em>column
 floats</em> as all of them are constrained by the column box. However,
 in most cases, page floats seems like a better term.
 
-<h3>Floating to the top/bottom: top, bottom, snap</h3>
+<h3>Floating to the top/bottom</h3>
 
 <p>These new keywords on 'float' have been added:
 
 <dl>
 
 <dt>top
-<dd>The float is floated to the top of the column
+<dd>The float is floated to the top of the column. If other page floats have already taken the top position, the float is stacked underneath or moved to another column (see <a href=#clearing-page-floats>Clearing Page floats</a> below).
 
 <dt>bottom
-<dd>The float is floated to the bottom of the column
-
-<dt>snap(&lt;length> &lt;length>? [, top | bottom | near ]?)
-
-<dd><p>Makes the element float to the top or bottom if it naturally appears within a certain distance from the top or bottom. The length value(s) specifies the maxium distance from the top/bottom that an element must be within in order to be floated; one length value specifies the distance from both the top and the bottom, two length values specify the distance from the top and  bottom, respectively. 
-
-<p>The optional keyword value specifies where the element is floated: top, bottom, or the nearest of the two. The initial value is 'near'. If 'near' is in effect and the element is within the specified distance both from the top and the bottom, bottom wins.
-
-<p>An element is considered to be a float if it has a snap() value, even if the element does not appear within the specified distance. This way, it can be determined whether an element is float or not without laying out the document.
-
-<dt>snap
-
-<dd>same as <code>snap(2em, near)</code>
+<dd>The float is floated to the bottom of the column. If other page floats have already taken the bottom position, the float is stacked underneath or moved to another column (see <a href=#clearing-page-floats>Clearing Page floats</a> below).
 
 </dl>
 
-<p>Elements with any of these new keywords are called 'page floats'.
-
+<p>When a page float is floated to the top or bottom of a column, it is moved as high as possible in that column. Other floats may already have occupied the requested position, in which case the floats may be stacked in the 
 
 <p>Each page float has a <em>natural column</em>, which is the column
 where the start of the element would have been if it was not floated.
@@ -170,6 +157,27 @@ floats should appear in their natural column on the natural page.
 </pre>
 <img alt="sample rendering" src=7b.png>
 </div>
+
+
+
+<h3>snap</h3>
+
+<dl>
+
+<dt>snap(&lt;length> &lt;length>? [, top | bottom | near ]?)
+
+<dd><p>Makes the element float to the top or bottom if it naturally appears within a certain distance from the top or bottom. The length value(s) specifies the maxium distance from the top/bottom that an element must be within in order to be floated; one length value specifies the distance from both the top and the bottom, two length values specify the distance from the top and  bottom, respectively. 
+
+<p>The optional keyword value specifies where the element is floated: top, bottom, or the nearest of the two. The initial value is 'near'. If 'near' is in effect and the element is within the specified distance both from the top and the bottom, bottom wins.
+
+<p>An element is considered to be a float if it has a snap() value, even if the element does not appear within the specified distance. This way, it can be determined whether an element is float or not without laying out the document.
+
+<dt>snap
+
+<dd>same as <code>snap(2em, near)</code>
+
+</dl>
+
 
 <div class=example>
 <p>In this example, a figure naturally appears close to a column break. There is not enough space for the figure in the first column, and it is therefore placed in the second column, leaving white space at the bottom of the first column.</p>
@@ -221,20 +229,6 @@ div.figure { float: snap(2.5em) }
 </div>
 
 
-
-<div class=example>
-
-<p>Float figure to top of the natural column, spanning all columns:
-
-<pre>
-.figure { float: top; column-span: all }
-</pre>
-
-<img alt="sample redering" src=15.png>
-
-</div>
-
-
 <div class=example>
 <p>In this example, tables will snap to the top/bottom if the top/bottom of the border box is closer than '3em' from the top/bottom of the page/column.
 
@@ -248,6 +242,28 @@ table { float: snap(3em 2em, bottom) }
 
 
 <p class=issue>Do numeric values, to represent line numbers, make sense, like for orphans/widows?
+
+<h3>float-x, float-y</h3>
+
+<p>The left/right/top/bottom/inside/outside values on 'float' can be expressed as floating along the x and y axis. 
+
+<p>In horizontal writing mode:
+
+<table>
+<tr><td><td>left<td>right<td>top<td>bottom
+<tr><td>float-x<td class=ok><td class=ok><td class=no><td class=no>
+<tr><td>float-y<td class=no><td class=no><td class=ok><td class=ok>
+</table>
+
+
+<p>In vertical writing mode:
+
+<table>
+<tr><td><td>left<td>right<td>top<td>bottom
+<tr><td>float-x<td class=no><td class=no><td class=ok><td class=ok>
+<tr><td>float-y<td class=ok><td class=ok><td class=no><td class=no>
+</table>
+
 
 
 <h3>Spanning columns</h3>
@@ -276,6 +292,21 @@ p.one { column-span: 2 }              /* lead paragraph spans two columns */
 └──────────┘└──────────┘└──────────┘
 </pre>
 </div>
+
+
+<div class=example>
+
+<p>Float figure to top of the natural column, spanning all columns:
+
+<pre>
+.figure { float: top; column-span: all }
+</pre>
+
+<img alt="sample redering" src=15.png>
+
+</div>
+
+
 
 
 <h3>Setting float reference: 'float-reference'</h3>
@@ -404,8 +435,6 @@ footer { float: bottom; float-reference: page }
 <dt>&lt;integer>
 
 <dd>A positive integer value indicates that the page float should be displayed in a following column/page. A negative integer value indicates that the page float should be displayed in a following column/page, counted from the last column/page. When counting columns, the starting point is the last column of the multicol element on the natural page. When counting pages, the starting point is the last page of the multicol element. 
-
-</dl>
 
 
 <div class=example>
