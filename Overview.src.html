@@ -436,6 +436,19 @@ footer { float: bottom; float-reference: page }
 
 <dd>A positive integer value indicates that the page float should be displayed in a following column/page. A negative integer value indicates that the page float should be displayed in a following column/page, counted from the last column/page. When counting columns, the starting point is the last column of the multicol element on the natural page. When counting pages, the starting point is the last page of the multicol element. 
 
+<dt>last
+<dd>The page float should be displayed in the last colum, or on the last page.
+
+<dt>none
+<dd>The page floats should appear in their natural column/page, if possible. 
+
+</dl>
+
+<p>Zero is not a legal value.
+
+
+
+
 
 <div class=example>
 <p>Float figure to the top of the column that follows the natural column:
@@ -531,9 +544,6 @@ footer { float: bottom; float-reference: page }
 </pre>
 </div>
 
-<dt>last
-
-<dd>The page float should be displayed in the last colum, or on the last page.
 
 <div class=example>
 <p>Float figure to the top of the last column on the natural page:
@@ -556,13 +566,6 @@ footer { float: bottom; float-reference: page }
 </pre>
 
 </div>
-
-<dt>none
-<dd>The page floats should appear in their natural column/page, if possible. 
-
-</dl>
-
-<p>Zero is not a legal value.
 
 
 
