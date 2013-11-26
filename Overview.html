@@ -33,7 +33,7 @@ pre.lineart { line-height: 1 }
   <p><a href="http://www.whatwg.org/" class="logo"><img width="100" src="http://resources.whatwg.org/logo.svg" alt="WHATWG" height="100"></a></p>
 	<h1>CSS Figures</h1>
 	
-	<h2 class="no-num no-toc" id="soon-to-become-a-living-standard-last-updated-20-november-2013"><span class="minor">[soon to become a]</span> Living Standard — Last Updated 20 November 2013</h2>
+	<h2 class="no-num no-toc" id="soon-to-become-a-living-standard-last-updated-26-november-2013"><span class="minor">[soon to become a]</span> Living Standard — Last Updated 26 November 2013</h2>
 	
 	<dl>
 		<dt>This version:
@@ -54,7 +54,7 @@ pre.lineart { line-height: 1 }
 
 	</dl>
 	
-<p class="copyright"><a rel="license" href="http://creativecommons.org/publicdomain/zero/1.0/"><img src="http://i.creativecommons.org/p/zero/1.0/80x15.png" alt="CC0"></a>To the extent possible under law, the editor has waived all copyright and related or neighboring rights to this work. In addition, as of 20 November 2013, the editor has made this specification available under the
+<p class="copyright"><a rel="license" href="http://creativecommons.org/publicdomain/zero/1.0/"><img src="http://i.creativecommons.org/p/zero/1.0/80x15.png" alt="CC0"></a>To the extent possible under law, the editor has waived all copyright and related or neighboring rights to this work. In addition, as of 26 November 2013, the editor has made this specification available under the
 <a rel="license" href="http://www.openwebfoundation.org/legal/the-owf-1-0-agreements/owfa-1-0">Open Web Foundation Agreement Version 1.0</a>, which is available at <!--begin-link--><a href="http://www.openwebfoundation.org/legal/the-owf-1-0-agreements/owfa-1-0">http://www.openwebfoundation.org/legal/the-owf-1-0-agreements/owfa-1-0</a><!--end-link-->.
 
 </div>
@@ -86,9 +86,7 @@ pre.lineart { line-height: 1 }
      <li><a href="#float-defer-column"><span class="secno">2.6.1 </span>'float-defer-column'</a></li>
      <li><a href="#float-defer-page"><span class="secno">2.6.2 </span>'float-defer-page'</a></ol></li>
    <li><a href="#clearing-page-floats"><span class="secno">2.7 </span>Clearing page floats</a></li>
-   <li><a href="#floating-inside-and-outside-pages"><span class="secno">2.8 </span>Floating inside and outside pages</a></li>
-   <li><a href="#the-float-offset-property"><span class="secno">2.9 </span>The 'float-offset' property</a></li>
-   <li><a href="#overconstrained-page-floats"><span class="secno">2.10 </span>Overconstrained page floats</a></ol></li>
+   <li><a href="#overconstrained-page-floats"><span class="secno">2.8 </span>Overconstrained page floats</a></ol></li>
  <li><a href="#wrapping"><span class="secno">3 </span>Wrapping</a>
   <ol>
    <li><a href="#wrapping-around-page-floats"><span class="secno">3.1 </span>Wrapping around page floats</a></li>
@@ -577,89 +575,106 @@ p.one { column-span: 2 }              /* lead paragraph spans two columns */
 
 <dl>
 
-<dt>top/bottom
+<dt>top
 
-<dd>The page float requests to be the first page float at the top/bottom of the column. If there is already a page float at the requested position, the page float is moved to the next column which does not have a page float in the requested position. 
+<dd>The page float requests to be the first page float at the top of the column. If there is already a page float at the requested position, the page float is moved to the next column. 
+
+<dt>bottom
+
+<dd>The page float requests to be the first page float at the bottom of the column. If there is already a page float at the requested position, the page float is moved to the next column. 
+
+<dt>top-bottom
+
+<dd>The page float requests to be the first page float at the top of the column. If there is already a page float at the top of the column, the page float is moved to the bottom of the column. 
 
 <dt>column
 
-<dd>The page float requests to be the first page float in the column. If there is already another page float on the page, the page float is moved to the next page which does not have a page float. 
+<dd>The page float requests to be the first page float in the column. If there is already another page float in the column, the page float is moved to the next column. 
 
 <dt>page
 
-<dd>The page float requests to be the first page float on the page. If there is already another page float on the page, the page float is moved to the next page which does not have a page float. 
+<dd>The page float requests to be the first page float on the page. If there is already another page float on the page, the page float is moved to the next page.
 
 </dl>
 
+<p>The placement process is iterative; if a the position that a page float is moved to cannot be honored, the page float is moved further.
 
-<div class="example">
+<!-- issue: first vs only
+
+<div class=example>
 <p>In this example, the two figures may appear in the same column:
-<pre>.figure { float: bottom; clear: none }
+<pre>
+.figure { float: bottom; clear: none }
 
-&lt;div class=figure&gt;&lt;/div&gt;
-&lt;div class=figure&gt;&lt;/div&gt;
+&lt;div class=figure>&lt;/div>
+&lt;div class=figure>&lt;/div>
 </pre>
 <img src="16.png">
 
 <p>The first figure will appear at the bottom of the column, the second will appear above the first.
 </div>
 
-<div class="example">
+<div class=example>
 <p>In this example, the two figures will appear in different columns:
-<pre>.figure { float: bottom; clear: column }
+<pre>
+.figure { float: bottom; clear: column }
 
-&lt;div class=figure&gt;&lt;/div&gt;
-&lt;div class=figure&gt;&lt;/div&gt;
+&lt;div class=figure>&lt;/div>
+&lt;div class=figure>&lt;/div>
 </pre>
 <img src="17.png">
 </div>
 
 
-<div class="example">
+<div class=example>
 <p>In this example, the two figures may appear at the bottom of the same column due to clearing only at the top:
-<pre>.figure { float: bottom; clear: top }
+<pre>
+.figure { float: bottom; clear: top }
 
-&lt;div class=figure&gt;&lt;/div&gt;
-&lt;div class=figure&gt;&lt;/div&gt;
+&lt;div class=figure>&lt;/div>
+&lt;div class=figure>&lt;/div>
 </pre>
 <img src="16.png">
 </div>
 
-<div class="example">
+<div class=example>
 <p>In this example, the two figures will appear in different columns due to clearing at the bottom:
-<pre>.figure { float: bottom; clear: bottom }
+<pre>
+.figure { float: bottom; clear: bottom }
 
-&lt;div class=figure&gt;&lt;/div&gt;
-&lt;div class=figure&gt;&lt;/div&gt;
+&lt;div class=figure>&lt;/div>
+&lt;div class=figure>&lt;/div>
 </pre>
 <img src="17.png">
 </div>
 
 
-<div class="example">
+<div class=example>
 <p>In this example, the two figures end up the top corner of two different pages:
-<pre>.figure { float: top; float-defer-column: last; clear: page }
+<pre>
+.figure { float: top; float-defer-column: last; clear: page }
 
-&lt;div class=figure&gt;&lt;/div&gt;
-&lt;div class=figure&gt;&lt;/div&gt;
+&lt;div class=figure>&lt;/div>
+&lt;div class=figure>&lt;/div>
 </pre>
 </div>
 
-<div class="example">
+<div class=example>
 <p>In this example, the two figures request different positions, and
 they may therefore end up in the same column:
-<pre>.figure.one { float: top; clear: top }
+<pre>
+.figure.one { float: top; clear: top }
 .figure.two { float: bottom; clear: bottom }
 
-&lt;div class="figure one"&gt;&lt;/div&gt;
-&lt;div class="figure two"&gt;&lt;/div&gt;
+&lt;div class="figure one">&lt;/div>
+&lt;div class="figure two">&lt;/div>
 </pre>
 </div>
 
 
 
 
-<h3 id="floating-inside-and-outside-pages"><span class="secno">2.8 </span>Floating inside and outside pages</h3>
+<h3>Floating inside and outside pages</h3>
 
 <p>Two allow content to flow to the inside and outside of a page, these keywords are added to the 'float' property:
 
@@ -676,27 +691,28 @@ they may therefore end up in the same column:
 
 <p>These new values do not create page floats, the are simply aliases for 'left' and 'right'.
 
-<div class="example">
-<pre>.figure { float: outside }
+<div class=example>
+<pre>
+.figure { float: outside }
 </pre>
 </div>
 
 
-<p class="issue">Should there be a way to combine float: top/bottom with left/right?
-<p class="issue">Should there be a way to delete page floats that end up lonesome on pages?
+<p class=issue>Should there be a way to combine float: top/bottom with left/right?
+<p class=issue>Should there be a way to delete page floats that end up lonesome on pages?
 
 
 
 
-<h3 id="the-float-offset-property"><span class="secno">2.9 </span>The 'float-offset' property</h3>
+<h3>The 'float-offset' property</h3>
 
-<table class="propdef">
+<table class=propdef>
     <tr>
       <td><em>Name:</em>
-      <td><dfn id="float-offset">float-offset</dfn>
+      <td><dfn>float-offset</dfn>
     <tr>
       <td><em>Value:</em>
-    <td>&lt;length&gt; &lt;length&gt; ?
+    <td>&lt;length> &lt;length> ?
     <tr>
       <td><em>Initial:</em>
       <td>0 0
@@ -713,7 +729,7 @@ they may therefore end up in the same column:
       <td><em>Media:</em>
       <td>visual, paged
     <tr>
-      <td><em>Computed value:</em>
+      <td><em>Computed&nbsp;value:</em>
       <td>one or two absolute lengths
 </table>
 
@@ -724,8 +740,9 @@ horizontal and the second is the vertical offset. If no vertical value
 has been specified, the vertical offset is set to zero.
 <p>This property can only influence a float along an axis it has been floated.
 
-<div class="example">
-<pre>img {
+<div class=example>
+<pre>
+img {
   float: left;
   float-offset: 2em 3em;
 }
@@ -741,20 +758,21 @@ in the same direction as it has been floated with 'float'
 <p>This property may move floats into other column than where they
 naturally appear.
 
-<div class="example">
+<div class=example>
 <pre>img {
   float: right;
   float-offset: 5px;
 }
 </pre>
 
-<img src="14.png" alt="sample rendering">
+<img alt="sample rendering" src=14.png>
 
 </div>
 
 <p>Percentage values are computed according to this formula:
 
-<pre>  (containing-block-width - float-width) * percentage
+<pre>
+  (containing-block-width - float-width) * percentage
   (containing-block-height - float-height) * percentage
 </pre>
 
@@ -879,7 +897,7 @@ Pull quotes are often centered in a column. In this example, the pull quote is f
 
 -->
 
-<h3 id="overconstrained-page-floats"><span class="secno">2.10 </span>Overconstrained page floats</h3>
+<h3 id="overconstrained-page-floats"><span class="secno">2.8 </span>Overconstrained page floats</h3>
 
 <p>In many cases, the specified values on these properties cannot be honored. 
 
