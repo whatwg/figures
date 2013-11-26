@@ -574,20 +574,31 @@ footer { float: bottom; float-reference: page }
 
 <dl>
 
-<dt>top/bottom
+<dt>top
 
-<dd>The page float requests to be the first page float at the top/bottom of the column. If there is already a page float at the requested position, the page float is moved to the next column which does not have a page float in the requested position. 
+<dd>The page float requests to be the first page float at the top of the column. If there is already a page float at the requested position, the page float is moved to the next column. 
+
+<dt>bottom
+
+<dd>The page float requests to be the first page float at the bottom of the column. If there is already a page float at the requested position, the page float is moved to the next column. 
+
+<dt>top-bottom
+
+<dd>The page float requests to be the first page float at the top of the column. If there is already a page float at the top of the column, the page float is moved to the bottom of the column. 
 
 <dt>column
 
-<dd>The page float requests to be the first page float in the column. If there is already another page float on the page, the page float is moved to the next page which does not have a page float. 
+<dd>The page float requests to be the first page float in the column. If there is already another page float in the column, the page float is moved to the next column. 
 
 <dt>page
 
-<dd>The page float requests to be the first page float on the page. If there is already another page float on the page, the page float is moved to the next page which does not have a page float. 
+<dd>The page float requests to be the first page float on the page. If there is already another page float on the page, the page float is moved to the next page.
 
 </dl>
 
+<p>The placement process is iterative; if a the position that a page float is moved to cannot be honored, the page float is moved further.
+
+<!-- issue: first vs only
 
 <div class=example>
 <p>In this example, the two figures may appear in the same column:
