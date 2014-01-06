@@ -1,8 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd"><html lang="en"><head>
-
-<meta content="text/html; charset=utf-8" http-equiv="content-type">
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
 <title>CSS Figures</title>
-<link rel="stylesheet" href="http://www.whatwg.org/style/specification" type="text/css">
+<link href="http://www.whatwg.org/style/specification" type="text/css" rel="stylesheet">
 
 <style>
 .head h1 { padding: 1em 0 }
@@ -30,10 +29,10 @@ pre.lineart { line-height: 1 }
 <body class="draft">
 
 <div class="head">
-  <p><a href="http://www.whatwg.org/" class="logo"><img width="100" src="http://resources.whatwg.org/logo.svg" alt="WHATWG" height="100"></a></p>
+  <p><a href="http://www.whatwg.org/" class="logo"><img width="100" alt="WHATWG" height="100" src="http://resources.whatwg.org/logo.svg"></a></p>
 	<h1>CSS Figures</h1>
 	
-	<h2 class="no-num no-toc" id="soon-to-become-a-living-standard-last-updated-26-november-2013"><span class="minor">[soon to become a]</span> Living Standard — Last Updated 26 November 2013</h2>
+	<h2 class="no-num no-toc" id="soon-to-become-a-living-standard-last-updated-6-january-2014"><span class="minor">[soon to become a]</span> Living Standard — Last Updated 6 January 2014</h2>
 	
 	<dl>
 		<dt>This version:
@@ -54,8 +53,8 @@ pre.lineart { line-height: 1 }
 
 	</dl>
 	
-<p class="copyright"><a rel="license" href="http://creativecommons.org/publicdomain/zero/1.0/"><img src="http://i.creativecommons.org/p/zero/1.0/80x15.png" alt="CC0"></a>To the extent possible under law, the editor has waived all copyright and related or neighboring rights to this work. In addition, as of 26 November 2013, the editor has made this specification available under the
-<a rel="license" href="http://www.openwebfoundation.org/legal/the-owf-1-0-agreements/owfa-1-0">Open Web Foundation Agreement Version 1.0</a>, which is available at <!--begin-link--><a href="http://www.openwebfoundation.org/legal/the-owf-1-0-agreements/owfa-1-0">http://www.openwebfoundation.org/legal/the-owf-1-0-agreements/owfa-1-0</a><!--end-link-->.
+<p class="copyright"><a href="http://creativecommons.org/publicdomain/zero/1.0/" rel="license"><img src="http://i.creativecommons.org/p/zero/1.0/80x15.png" alt="CC0"></a>To the extent possible under law, the editor has waived all copyright and related or neighboring rights to this work. In addition, as of 6 January 2014, the editor has made this specification available under the
+<a href="http://www.openwebfoundation.org/legal/the-owf-1-0-agreements/owfa-1-0" rel="license">Open Web Foundation Agreement Version 1.0</a>, which is available at <!--begin-link--><a href="http://www.openwebfoundation.org/legal/the-owf-1-0-agreements/owfa-1-0">http://www.openwebfoundation.org/legal/the-owf-1-0-agreements/owfa-1-0</a><!--end-link-->.
 
 </div>
 
@@ -128,7 +127,7 @@ out of memory, or to work around platform-specific limitations.
 <h2 id="page-floats"><span class="secno">2 </span>Page floats</h2>
 
 <p>In page-based layouts, images and figures are often displayed at
-the top or bottom of pages. This specificaton adds new keywords on the
+the top or bottom of pages. This specification adds new keywords on the
 <a href="http://www.w3.org/TR/CSS2/visuren.html#propdef-float">'float'</a> <a href="#refsCSS">[CSS]</a>
 property to create <em>page floats</em>. A page float can
 float inside its natural column/page, or its placement can be deferred
@@ -364,11 +363,11 @@ p.one { column-span: 2 }              /* lead paragraph spans two columns */
 </div>
 
 
-<p class="issue">Describe relationship between 'column-span' and float-referecne 
+<p class="issue">Describe relationship between 'column-span' and float-reference 
 
 
 <!--
-<p class=issue>An alternative way to express this would be to add a separate property, e.g., <code>float-reference: column | multicol | page | spread</code></dfn>. Othewise, it's hard to express that an element should span 3 columns on a spread with 4 columns
+<p class=issue>An alternative way to express this would be to add a separate property, e.g., <code>float-reference: column | multicol | page | spread</code></dfn>. Otherwise, it's hard to express that an element should span 3 columns on a spread with 4 columns
 -->
 
 
@@ -447,7 +446,7 @@ p.one { column-span: 2 }              /* lead paragraph spans two columns */
 <dd>A positive integer value indicates that the page float should be displayed in a following column/page. A negative integer value indicates that the page float should be displayed in a following column/page, counted from the last column/page. When counting columns, the starting point is the last column of the multicol element on the natural page. When counting pages, the starting point is the last page of the multicol element. 
 
 <dt>last
-<dd>The page float should be displayed in the last colum, or on the last page.
+<dd>The page float should be displayed in the last column, or on the last page.
 
 <dt>none
 <dd>The page floats should appear in their natural column/page, if possible. 
@@ -515,7 +514,7 @@ p.one { column-span: 2 }              /* lead paragraph spans two columns */
 
 <img src="18.png" alt="sample rendering">
 
-<p>Given that there are four columnn, the same layout would be achived with this code:
+<p>Given that there are four columns, the same layout would be achieved with this code:
 
 <pre>.figure { 
   float: top; column-span: 2;
@@ -916,7 +915,7 @@ Pull quotes are often centered in a column. In this example, the pull quote is f
 </pre>
 </div>
 
-<p>Page floats are processed in the order they appear in the source. However, the visual order of page floats may not ne the same as the source order. 
+<p>Page floats are processed in the order they appear in the source. However, the resulting visual order of page floats may be different from the source order. 
 
 <div class="example">Consider this code:
 
@@ -941,7 +940,7 @@ Pull quotes are often centered in a column. In this example, the pull quote is f
 &lt;div class=two&gt;&lt;/div&gt;
 </pre>
 
-<p>If all content can fit on one page, the first page will also be the last page. The first element is processed first and is placed on top of the first page. Then the second element is processed. It reqests a clear top, somthing which is not possible on the first page. Therefore, a second page is created and the first element is moved there. Even if the first element requests to be on the last page, it will not appear there.
+<p>If all content can fit on one page, the first page will also be the last page. The first element is processed first and is placed on top of the first page. Then the second element is processed. It requests a clear top, something which is not possible on the first page. Therefore, a second page is created and the first element is moved there. Even if the first element requests to be on the last page, it will not appear there.
 </div>
 
 <p>When resolving over-constrained layouts, the order of importance for defined goals are:
