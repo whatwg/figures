@@ -3,7 +3,6 @@
 <html lang="en">
 
 <head>
-
 <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <title>CSS Figures</title>
 <link rel="stylesheet" type="text/css" href="http://www.whatwg.org/style/specification">
@@ -106,7 +105,7 @@ out of memory, or to work around platform-specific limitations.
 <h2>Page floats</h2>
 
 <p>In page-based layouts, images and figures are often displayed at
-the top or bottom of pages. This specificaton adds new keywords on the
+the top or bottom of pages. This specification adds new keywords on the
 <a href="http://www.w3.org/TR/CSS2/visuren.html#propdef-float">'float'</a> <span data-anolis-ref>CSS</span>
 property to create <em>page floats</em>. A page float can
 float inside its natural column/page, or its placement can be deferred
@@ -352,11 +351,11 @@ footer { float: bottom; float-reference: page }
 </div>
 
 
-<p class=issue>Describe relationship between 'column-span' and float-referecne 
+<p class=issue>Describe relationship between 'column-span' and float-reference 
 
 
 <!--
-<p class=issue>An alternative way to express this would be to add a separate property, e.g., <code>float-reference: column | multicol | page | spread</code></dfn>. Othewise, it's hard to express that an element should span 3 columns on a spread with 4 columns
+<p class=issue>An alternative way to express this would be to add a separate property, e.g., <code>float-reference: column | multicol | page | spread</code></dfn>. Otherwise, it's hard to express that an element should span 3 columns on a spread with 4 columns
 -->
 
 
@@ -435,7 +434,7 @@ footer { float: bottom; float-reference: page }
 <dd>A positive integer value indicates that the page float should be displayed in a following column/page. A negative integer value indicates that the page float should be displayed in a following column/page, counted from the last column/page. When counting columns, the starting point is the last column of the multicol element on the natural page. When counting pages, the starting point is the last page of the multicol element. 
 
 <dt>last
-<dd>The page float should be displayed in the last colum, or on the last page.
+<dd>The page float should be displayed in the last column, or on the last page.
 
 <dt>none
 <dd>The page floats should appear in their natural column/page, if possible. 
@@ -509,7 +508,7 @@ footer { float: bottom; float-reference: page }
 
 <img alt="sample rendering" src=18.png>
 
-<p>Given that there are four columnn, the same layout would be achived with this code:
+<p>Given that there are four columns, the same layout would be achieved with this code:
 
 <pre>
 .figure { 
@@ -920,7 +919,7 @@ p { float: top; float-defer-page: last }
 </pre>
 </div>
 
-<p>Page floats are processed in the order they appear in the source. However, the visual order of page floats may not ne the same as the source order. 
+<p>Page floats are processed in the order they appear in the source. However, the resulting visual order of page floats may be different from the source order. 
 
 <div class=example>Consider this code:
 
@@ -947,7 +946,7 @@ p { float: top; float-defer-page: last }
 &lt;div class=two>&lt;/div>
 </pre>
 
-<p>If all content can fit on one page, the first page will also be the last page. The first element is processed first and is placed on top of the first page. Then the second element is processed. It reqests a clear top, somthing which is not possible on the first page. Therefore, a second page is created and the first element is moved there. Even if the first element requests to be on the last page, it will not appear there.
+<p>If all content can fit on one page, the first page will also be the last page. The first element is processed first and is placed on top of the first page. Then the second element is processed. It requests a clear top, something which is not possible on the first page. Therefore, a second page is created and the first element is moved there. Even if the first element requests to be on the last page, it will not appear there.
 </div>
 
 <p>When resolving over-constrained layouts, the order of importance for defined goals are:
