@@ -959,6 +959,8 @@ Pull quotes are often centered in a column. In this example, the pull quote is f
 
 <h2 id="the-gr-unit"><span class="secno">3 </span>The 'gr' unit</h2>
 
+<p>The 'gr' unit is introduced to size 
+
 <!--
 <p>The <code class=css>gr</code> unit has two purposes. When
 used on the 'float-offset' property it identifies a
@@ -977,7 +979,11 @@ unit refer to the last gap or column counted.
 
 <div class="example">
 
-<pre>img { width: 2gr }
+<pre>img { 
+  float-x: right;
+  float-y: top;
+  width: 2gr;
+}
 </pre>
 
 
@@ -988,7 +994,11 @@ unit refer to the last gap or column counted.
 
 <div class="example">
 
-<pre>img { width: 1.5gr }
+<pre>img { 
+  float-x: right;
+  float-y: top;
+  width: 1.5gr
+}
 </pre>
 
 <img src="31.png">
