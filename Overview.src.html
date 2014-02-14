@@ -314,7 +314,7 @@ p.one { column-span: 2 }              /* lead paragraph spans two columns */
       <td><dfn>float-reference</dfn>
     <tr>
       <td><em>Value:</em>
-      <td>column | multicol | page | spread
+      <td>column | element | page | spread
     <tr>
       <td><em>Initial:</em>
       <td>column
@@ -350,7 +350,7 @@ footer { float: bottom; float-reference: page }
 </pre>
 </div>
 
-
+<p class=issue>element vs multicol
 <p class=issue>Describe relationship between 'column-span' and float-reference 
 
 
@@ -967,6 +967,48 @@ p { float: top; float-defer-page: last }
 <li>display all content (as described by other CSS properties)
 <li>keep the number of pages to a minimum
 </ol>
+
+
+<h2>The 'gr' unit</h2>
+
+<!--
+<p>The <code class=css>gr</code> unit has two purposes. When
+used on the 'float-offset' property it identifies a
+position by counting columns and gaps from the position established by the
+<code class=property>float</code> property. Fractions on the
+<code class=property>gr</code> unit refer to fractions of
+the last counted gap or column.
+
+<p>When used on the <code class=property>width</code>
+property, the <code class=property>gr</code> unit identifies
+a length by counting gaps and columns, starting at the point where the
+element naturally finds itself and continuing in the direction of box
+expansion. Fractions on the <code class=property>gr</code>
+unit refer to the last gap or column counted.
+-->
+
+<div class=example>
+
+<pre>
+img { width: 2gr }
+</pre>
+
+
+<img src=30.png>
+
+
+</div>
+
+<div class=example>
+
+<pre>
+img { width: 1.5gr }
+</pre>
+
+<img src=31.png>
+
+</div>
+
 
 
 <h2>Wrapping</h2>
