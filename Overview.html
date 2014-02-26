@@ -32,7 +32,7 @@ pre.lineart { line-height: 1 }
   <p><a href="http://www.whatwg.org/" class="logo"><img width="100" alt="WHATWG" height="100" src="http://resources.whatwg.org/logo.svg"></a></p>
 	<h1>CSS Figures</h1>
 	
-	<h2 class="no-num no-toc" id="soon-to-become-a-living-standard-last-updated-14-february-2014"><span class="minor">[soon to become a]</span> Living Standard — Last Updated 14 February 2014</h2>
+	<h2 class="no-num no-toc" id="soon-to-become-a-living-standard-last-updated-26-february-2014"><span class="minor">[soon to become a]</span> Living Standard — Last Updated 26 February 2014</h2>
 	
 	<dl>
 		<dt>This version:
@@ -53,7 +53,7 @@ pre.lineart { line-height: 1 }
 
 	</dl>
 	
-<p class="copyright"><a href="http://creativecommons.org/publicdomain/zero/1.0/" rel="license"><img src="http://i.creativecommons.org/p/zero/1.0/80x15.png" alt="CC0"></a>To the extent possible under law, the editor has waived all copyright and related or neighboring rights to this work. In addition, as of 14 February 2014, the editor has made this specification available under the
+<p class="copyright"><a href="http://creativecommons.org/publicdomain/zero/1.0/" rel="license"><img src="http://i.creativecommons.org/p/zero/1.0/80x15.png" alt="CC0"></a>To the extent possible under law, the editor has waived all copyright and related or neighboring rights to this work. In addition, as of 26 February 2014, the editor has made this specification available under the
 <a href="http://www.openwebfoundation.org/legal/the-owf-1-0-agreements/owfa-1-0" rel="license">Open Web Foundation Agreement Version 1.0</a>, which is available at <!--begin-link--><a href="http://www.openwebfoundation.org/legal/the-owf-1-0-agreements/owfa-1-0">http://www.openwebfoundation.org/legal/the-owf-1-0-agreements/owfa-1-0</a><!--end-link-->.
 
 </div>
@@ -151,18 +151,22 @@ in most cases, page floats seems like a better term.
 <dl>
 
 <dt>top
-<dd>The float is floated to the top of the column. If other page floats have already taken the top position, the float is stacked underneath or moved to another column (see <a href="#clearing-page-floats">Clearing Page floats</a> below).
+<dd>The float is floated to the top of the natural column. If other page floats have already taken the top position, the float is stacked underneath or moved to another column (see <a href="#clearing-page-floats">Clearing Page floats</a> below).
 
 <dt>bottom
 <dd>The float is floated to the bottom of the column. If other page floats have already taken the bottom position, the float is stacked on top or moved to another column (see <a href="#clearing-page-floats">Clearing Page floats</a> below).
 
-</dl>
+<dt>top-bottom
+
+<dt>bottom
+
+</dt></dl>
 
 <p>Each page float has a <em>natural column</em>, which is the column
 where the start of the element would have been if it was not floated.
 Also, each page float has a <em>natural page</em>, which is the page
 where the element would have started if the was not a float. Unless
-other constrained by lack of space or other float-* properties, page
+constrained by lack of space or settings on other float-* properties, page
 floats should appear in their natural column on the natural page.
 
 <div class="example">
@@ -178,6 +182,7 @@ floats should appear in their natural column on the natural page.
 <img src="7b.png" alt="sample rendering">
 </div>
 
+<p class="issue">aliases to 
 
 
 <h3 id="snap"><span class="secno">2.2 </span>snap</h3>
@@ -330,7 +335,7 @@ p.one { column-span: 2 }              /* lead paragraph spans two columns */
       <td><dfn id="float-reference">float-reference</dfn>
     <tr>
       <td><em>Value:</em>
-      <td>column | element | page | spread
+      <td>column | element | page | sheet | spread
     <tr>
       <td><em>Initial:</em>
       <td>column
@@ -351,7 +356,19 @@ p.one { column-span: 2 }              /* lead paragraph spans two columns */
       <td>Same as specified value
 </table>
 
-<p>This property indicates the float reference for a page float
+<p>This property indicates the float reference for a page float. The values are
+
+<dl>
+<dt>column
+<dt>element
+<dt>page 
+<dt>sheet
+<!--
+<dt>spread
+<dt>spreadsheet
+-->
+</dt></dl>
+
 
 <div class="example">
 <p>In this example, the footer is floated to the bottom of the page (and not the bottom of the article element):
