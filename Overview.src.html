@@ -126,10 +126,14 @@ in most cases, page floats seems like a better term.
 <dl>
 
 <dt>top
-<dd>The float is floated to the top of the column. If other page floats have already taken the top position, the float is stacked underneath or moved to another column (see <a href=#clearing-page-floats>Clearing Page floats</a> below).
+<dd>The float is floated to the top of the natural column. If other page floats have already taken the top position, the float is stacked underneath or moved to another column (see <a href=#clearing-page-floats>Clearing Page floats</a> below).
 
 <dt>bottom
 <dd>The float is floated to the bottom of the column. If other page floats have already taken the bottom position, the float is stacked on top or moved to another column (see <a href=#clearing-page-floats>Clearing Page floats</a> below).
+
+<dt>top-bottom
+
+<dt>bottom
 
 </dl>
 
@@ -137,7 +141,7 @@ in most cases, page floats seems like a better term.
 where the start of the element would have been if it was not floated.
 Also, each page float has a <em>natural page</em>, which is the page
 where the element would have started if the was not a float. Unless
-other constrained by lack of space or other float-* properties, page
+constrained by lack of space or settings on other float-* properties, page
 floats should appear in their natural column on the natural page.
 
 <div class=example>
@@ -155,6 +159,7 @@ floats should appear in their natural column on the natural page.
 <img alt="sample rendering" src=7b.png>
 </div>
 
+<p class=issue>aliases to 
 
 
 <h3>snap</h3>
@@ -314,7 +319,7 @@ p.one { column-span: 2 }              /* lead paragraph spans two columns */
       <td><dfn>float-reference</dfn>
     <tr>
       <td><em>Value:</em>
-      <td>column | element | page | spread
+      <td>column | element | page | sheet | spread
     <tr>
       <td><em>Initial:</em>
       <td>column
@@ -335,7 +340,19 @@ p.one { column-span: 2 }              /* lead paragraph spans two columns */
       <td>Same as specified value
 </table>
 
-<p>This property indicates the float reference for a page float
+<p>This property indicates the float reference for a page float. The values are
+
+<dl>
+<dt>column
+<dt>element
+<dt>page 
+<dt>sheet
+<!--
+<dt>spread
+<dt>spreadsheet
+-->
+</dl>
+
 
 <div class=example>
 <p>In this example, the footer is floated to the bottom of the page (and not the bottom of the article element):
