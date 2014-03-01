@@ -77,17 +77,16 @@ pre.lineart { line-height: 1 }
   <ol>
    <li><a href="#floating-to-the-top-bottom"><span class="secno">2.1 </span>Floating to the top/bottom</a></li>
    <li><a href="#snap"><span class="secno">2.2 </span>snap</a></li>
-   <li><a href="#float-x-float-y"><span class="secno">2.3 </span>float-x, float-y</a></li>
-   <li><a href="#spanning-columns"><span class="secno">2.4 </span>Spanning columns</a></li>
-   <li><a href="#setting-float-reference:-float-reference"><span class="secno">2.5 </span>Setting float reference: 'float-reference'</a></li>
-   <li><a href="#deferring-floats:-float-defer-column-float-defer-page"><span class="secno">2.6 </span>Deferring floats: float-defer-column, float-defer-page</a>
+   <li><a href="#spanning-columns"><span class="secno">2.3 </span>Spanning columns</a></li>
+   <li><a href="#setting-float-reference:-float-reference"><span class="secno">2.4 </span>Setting float reference: 'float-reference'</a></li>
+   <li><a href="#deferring-floats:-float-defer-column-float-defer-page"><span class="secno">2.5 </span>Deferring floats: float-defer-column, float-defer-page</a>
     <ol>
-     <li><a href="#float-defer-column"><span class="secno">2.6.1 </span>'float-defer-column'</a></li>
-     <li><a href="#float-defer-page"><span class="secno">2.6.2 </span>'float-defer-page'</a></ol></li>
-   <li><a href="#clearing-page-floats"><span class="secno">2.7 </span>Clearing page floats</a></li>
-   <li><a href="#floating-inside-and-outside-pages"><span class="secno">2.8 </span>Floating inside and outside pages</a></li>
-   <li><a href="#the-float-offset-property"><span class="secno">2.9 </span>The 'float-offset' property</a></li>
-   <li><a href="#overconstrained-page-floats"><span class="secno">2.10 </span>Overconstrained page floats</a></ol></li>
+     <li><a href="#float-defer-column"><span class="secno">2.5.1 </span>'float-defer-column'</a></li>
+     <li><a href="#float-defer-page"><span class="secno">2.5.2 </span>'float-defer-page'</a></ol></li>
+   <li><a href="#clearing-page-floats"><span class="secno">2.6 </span>Clearing page floats</a></li>
+   <li><a href="#floating-inside-and-outside-pages"><span class="secno">2.7 </span>Floating inside and outside pages</a></li>
+   <li><a href="#the-float-offset-property"><span class="secno">2.8 </span>The 'float-offset' property</a></li>
+   <li><a href="#overconstrained-page-floats"><span class="secno">2.9 </span>Overconstrained page floats</a></ol></li>
  <li><a href="#wrapping"><span class="secno">3 </span>Wrapping</a>
   <ol>
    <li><a href="#wrapping-around-page-floats"><span class="secno">3.1 </span>Wrapping around page floats</a></li>
@@ -263,7 +262,8 @@ table { float: snap(3em 2em, bottom) }
 
 <p class="issue">Do numeric values, to represent line numbers, make sense, like for orphans/widows?
 
-<h3 id="float-x-float-y"><span class="secno">2.3 </span>float-x, float-y</h3>
+<!--
+<h3>float-x, float-y</h3>
 
 <p>The left/right/top/bottom/inside/outside values on 'float' can be expressed as floating along the x and y axis. 
 
@@ -271,8 +271,8 @@ table { float: snap(3em 2em, bottom) }
 
 <table>
 <tr><td><td>left<td>right<td>top<td>bottom
-<tr><td>float-x<td class="ok"><td class="ok"><td class="no"><td class="no">
-<tr><td>float-y<td class="no"><td class="no"><td class="ok"><td class="ok">
+<tr><td>float-x<td class=ok><td class=ok><td class=no><td class=no>
+<tr><td>float-y<td class=no><td class=no><td class=ok><td class=ok>
 </table>
 
 
@@ -280,13 +280,13 @@ table { float: snap(3em 2em, bottom) }
 
 <table>
 <tr><td><td>left<td>right<td>top<td>bottom
-<tr><td>float-x<td class="no"><td class="no"><td class="ok"><td class="ok">
-<tr><td>float-y<td class="ok"><td class="ok"><td class="no"><td class="no">
+<tr><td>float-x<td class=no><td class=no><td class=ok><td class=ok>
+<tr><td>float-y<td class=ok><td class=ok><td class=no><td class=no>
 </table>
 
+-->
 
-
-<h3 id="spanning-columns"><span class="secno">2.4 </span>Spanning columns</h3>
+<h3 id="spanning-columns"><span class="secno">2.3 </span>Spanning columns</h3>
 
 <p>The 'column-span' property is extended with integer values so that elements can span several columns. If the specified integer value is equal to, or larger than the number of columns in the multicol element, the number of columns spanned will be the same as if 'column-span: all' had been specified.
 
@@ -326,7 +326,7 @@ p.one { column-span: 2 }              /* lead paragraph spans two columns */
 
 
 
-<h3 id="setting-float-reference:-float-reference"><span class="secno">2.5 </span>Setting float reference: 'float-reference'</h3>
+<h3 id="setting-float-reference:-float-reference"><span class="secno">2.4 </span>Setting float reference: 'float-reference'</h3>
 
 <table class="propdef">
     <tr>
@@ -390,11 +390,11 @@ p.one { column-span: 2 }              /* lead paragraph spans two columns */
 -->
 
 
-<h3 id="deferring-floats:-float-defer-column-float-defer-page"><span class="secno">2.6 </span>Deferring floats: float-defer-column, float-defer-page</h3>
+<h3 id="deferring-floats:-float-defer-column-float-defer-page"><span class="secno">2.5 </span>Deferring floats: float-defer-column, float-defer-page</h3>
 
 <p>A page float can be deferred to a following column/page with these new properties:
 
-<h4 id="float-defer-column"><span class="secno">2.6.1 </span>'float-defer-column'</h4>
+<h4 id="float-defer-column"><span class="secno">2.5.1 </span>'float-defer-column'</h4>
 
 <table class="propdef">
     <tr>
@@ -424,7 +424,7 @@ p.one { column-span: 2 }              /* lead paragraph spans two columns */
 </table>
 
 
-<h4 id="float-defer-page"><span class="secno">2.6.2 </span>'float-defer-page'</h4>
+<h4 id="float-defer-page"><span class="secno">2.5.2 </span>'float-defer-page'</h4>
 
 <table class="propdef">
     <tr>
@@ -587,7 +587,7 @@ p.one { column-span: 2 }              /* lead paragraph spans two columns */
 
 
 
-<h3 id="clearing-page-floats"><span class="secno">2.7 </span>Clearing page floats</h3>
+<h3 id="clearing-page-floats"><span class="secno">2.6 </span>Clearing page floats</h3>
 
 <p>Page floats may request to not be stacked, or to be the first page float on a page/column through new values on the 'clear' property:
 
@@ -686,7 +686,7 @@ they may therefore end up in the same column:
 
 
 
-<h3 id="floating-inside-and-outside-pages"><span class="secno">2.8 </span>Floating inside and outside pages</h3>
+<h3 id="floating-inside-and-outside-pages"><span class="secno">2.7 </span>Floating inside and outside pages</h3>
 
 <p>Two allow content to flow to the inside and outside of a page, these keywords are added to the 'float' property:
 
@@ -715,7 +715,7 @@ they may therefore end up in the same column:
 
 
 
-<h3 id="the-float-offset-property"><span class="secno">2.9 </span>The 'float-offset' property</h3>
+<h3 id="the-float-offset-property"><span class="secno">2.8 </span>The 'float-offset' property</h3>
 
 <table class="propdef">
     <tr>
@@ -912,7 +912,7 @@ Pull quotes are often centered in a column. In this example, the pull quote is f
 
 -->
 
-<h3 id="overconstrained-page-floats"><span class="secno">2.10 </span>Overconstrained page floats</h3>
+<h3 id="overconstrained-page-floats"><span class="secno">2.9 </span>Overconstrained page floats</h3>
 
 <p>In many cases, the specified values on these properties cannot be honored. 
 
