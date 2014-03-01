@@ -32,7 +32,7 @@ pre.lineart { line-height: 1 }
   <p><a href="http://www.whatwg.org/" class="logo"><img width="100" alt="WHATWG" height="100" src="http://resources.whatwg.org/logo.svg"></a></p>
 	<h1>CSS Figures</h1>
 	
-	<h2 class="no-num no-toc" id="soon-to-become-a-living-standard-last-updated-26-february-2014"><span class="minor">[soon to become a]</span> Living Standard — Last Updated 26 February 2014</h2>
+	<h2 class="no-num no-toc" id="soon-to-become-a-living-standard-last-updated-1-march-2014"><span class="minor">[soon to become a]</span> Living Standard — Last Updated 1 March 2014</h2>
 	
 	<dl>
 		<dt>This version:
@@ -53,7 +53,7 @@ pre.lineart { line-height: 1 }
 
 	</dl>
 	
-<p class="copyright"><a href="http://creativecommons.org/publicdomain/zero/1.0/" rel="license"><img src="http://i.creativecommons.org/p/zero/1.0/80x15.png" alt="CC0"></a>To the extent possible under law, the editor has waived all copyright and related or neighboring rights to this work. In addition, as of 26 February 2014, the editor has made this specification available under the
+<p class="copyright"><a href="http://creativecommons.org/publicdomain/zero/1.0/" rel="license"><img src="http://i.creativecommons.org/p/zero/1.0/80x15.png" alt="CC0"></a>To the extent possible under law, the editor has waived all copyright and related or neighboring rights to this work. In addition, as of 1 March 2014, the editor has made this specification available under the
 <a href="http://www.openwebfoundation.org/legal/the-owf-1-0-agreements/owfa-1-0" rel="license">Open Web Foundation Agreement Version 1.0</a>, which is available at <!--begin-link--><a href="http://www.openwebfoundation.org/legal/the-owf-1-0-agreements/owfa-1-0">http://www.openwebfoundation.org/legal/the-owf-1-0-agreements/owfa-1-0</a><!--end-link-->.
 
 </div>
@@ -88,13 +88,12 @@ pre.lineart { line-height: 1 }
    <li><a href="#floating-inside-and-outside-pages"><span class="secno">2.8 </span>Floating inside and outside pages</a></li>
    <li><a href="#the-float-offset-property"><span class="secno">2.9 </span>The 'float-offset' property</a></li>
    <li><a href="#overconstrained-page-floats"><span class="secno">2.10 </span>Overconstrained page floats</a></ol></li>
- <li><a href="#the-gr-unit"><span class="secno">3 </span>The 'gr' unit</a></li>
- <li><a href="#wrapping"><span class="secno">4 </span>Wrapping</a>
+ <li><a href="#wrapping"><span class="secno">3 </span>Wrapping</a>
   <ol>
-   <li><a href="#wrapping-around-page-floats"><span class="secno">4.1 </span>Wrapping around page floats</a></li>
-   <li><a href="#the-clear-side-property"><span class="secno">4.2 </span>The 'clear-side' property</a></li>
-   <li><a href="#wrapping-around-images"><span class="secno">4.3 </span>Wrapping around images</a></li>
-   <li><a href="#wrapping-around-text"><span class="secno">4.4 </span>Wrapping around text</a></ol></li>
+   <li><a href="#wrapping-around-page-floats"><span class="secno">3.1 </span>Wrapping around page floats</a></li>
+   <li><a href="#the-clear-side-property"><span class="secno">3.2 </span>The 'clear-side' property</a></li>
+   <li><a href="#wrapping-around-images"><span class="secno">3.3 </span>Wrapping around images</a></li>
+   <li><a href="#wrapping-around-text"><span class="secno">3.4 </span>Wrapping around text</a></ol></li>
  <li><a href="#references" class="no-num">References</a></li>
  <li><a href="#acknowledgments" class="no-num">Acknowledgments</a></ol>
 <!--end-toc-->
@@ -973,12 +972,9 @@ Pull quotes are often centered in a column. In this example, the pull quote is f
 <li>keep the number of pages to a minimum
 </ol>
 
-
-<h2 id="the-gr-unit"><span class="secno">3 </span>The 'gr' unit</h2>
-
-<p>The 'gr' unit is introduced to size 
-
 <!--
+<h2>The 'gr' unit</h2>
+
 <p>The <code class=css>gr</code> unit has two purposes. When
 used on the 'float-offset' property it identifies a
 position by counting columns and gaps from the position established by the
@@ -992,11 +988,11 @@ a length by counting gaps and columns, starting at the point where the
 element naturally finds itself and continuing in the direction of box
 expansion. Fractions on the <code class=property>gr</code>
 unit refer to the last gap or column counted.
--->
 
-<div class="example">
+<div class=example>
 
-<pre>img { 
+<pre>
+img { 
   float-x: right;
   float-y: top;
   width: 2gr;
@@ -1004,31 +1000,33 @@ unit refer to the last gap or column counted.
 </pre>
 
 
-<img src="30.png">
+<img src=30.png>
 
 
 </div>
 
-<div class="example">
+<div class=example>
 
-<pre>img { 
+<pre>
+img { 
   float-x: right;
   float-y: top;
   width: 1.5gr
 }
 </pre>
 
-<img src="31.png">
+<img src=31.png>
 
 </div>
 
+-->
 
 
-<h2 id="wrapping"><span class="secno">4 </span>Wrapping</h2>
+<h2 id="wrapping"><span class="secno">3 </span>Wrapping</h2>
 
 <p class="XXX">This part is work-in-progress, even more so than other parts.
 
-<h3 id="wrapping-around-page-floats"><span class="secno">4.1 </span>Wrapping around page floats</h3>
+<h3 id="wrapping-around-page-floats"><span class="secno">3.1 </span>Wrapping around page floats</h3>
 
 <table class="propdef">
     <tr>
@@ -1087,7 +1085,7 @@ column gap.
 </div>
 
 
-<h3 id="the-clear-side-property"><span class="secno">4.2 </span>The 'clear-side' property</h3>
+<h3 id="the-clear-side-property"><span class="secno">3.2 </span>The 'clear-side' property</h3>
 
 <table class="propdef">
     <tr>
@@ -1229,7 +1227,7 @@ content. Values have the following meaning:
 
 
 
-<h3 id="wrapping-around-images"><span class="secno">4.3 </span>Wrapping around images</h3>
+<h3 id="wrapping-around-images"><span class="secno">3.3 </span>Wrapping around images</h3>
 <p>Exclusions are often based on shapes found in images. In this specification, background image can carry the shape, around which text is wrapped. The new property 'background-exclude-level' indicates a level in the alpha channel of the background image(s) that defines the shape.
 
 
@@ -1281,7 +1279,7 @@ article h1 {
 </div>
 -->
 
-<h3 id="wrapping-around-text"><span class="secno">4.4 </span>Wrapping around text</h3>
+<h3 id="wrapping-around-text"><span class="secno">3.4 </span>Wrapping around text</h3>
 
 <p>A new property. 'wrap-level', is introduced to allow wraps around the rendered content of the element.
 
