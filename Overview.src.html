@@ -107,10 +107,11 @@ out of memory, or to work around platform-specific limitations.
 <p>In page-based layouts, images and figures are often displayed at
 the top or bottom of pages, spanning several columns. This
 specification extends the CSS float model with <em>page floats</em>,
-which are floats that move in the block direction (as opposed to the
-inline direction, which normal CSS floats move in). The 'float'
-property is used to specify if the page float should be move to the
-top, bottom or to the nearest edge.
+which are floats that primarily move in the block direction (as
+opposed to the inline direction, which normal CSS floats primarily
+move in). The 'float' property is used to specify if the page float
+should be move to the top, bottom or to the nearest edge of the
+column.
 
 <p>By default, page floats are contained by their natural column,
 i.e., the column where the element would naturally start. The
@@ -125,7 +126,9 @@ the multicol element, the page area, or the bleed box.
 later column, perhaps on a lager page, by using the 'float-defer-column' and
 'float-defer-page' properties. 
 
-<p>Like for normal floats, the position of page floats can also b
+<p>Like normal floats, elements can be set to clear page floats through the 'clear' property. 
+
+
 <!--
 
 Page floats can be set to span several columns with new values on the 'column-span' property. New values on the 'clear' property
@@ -387,8 +390,7 @@ p.one { column-span: 2 }              /* lead paragraph spans two columns */
 
 
 
-
-
+<h3>Setting the float reference: 'float-reference'</h3>
 
 <table class=propdef>
     <tr>
@@ -445,12 +447,7 @@ footer { float: bottom; float-reference: page }
 </div>
 
 <p class=issue>element vs multicol
-<p class=issue>Describe relationship between 'column-span' and float-reference 
-
-
-<!--
-<p class=issue>An alternative way to express this would be to add a separate property, e.g., <code>float-reference: column | multicol | page | spread</code></dfn>. Otherwise, it's hard to express that an element should span 3 columns on a spread with 4 columns
--->
+<p class=issue>Describe relationship between 'column-span' and 'float-reference'
 
 
 <h3>Deferring floats: float-defer-column, float-defer-page</h3>
