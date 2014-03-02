@@ -476,7 +476,7 @@ p.one { column-span: 2 }              /* lead paragraph spans two columns */
       <td><dfn id="float-defer-column-0">float-defer-column</dfn>
     <tr>
       <td><em>Value:</em>
-      <td>&lt;integer&gt; | last | none
+      <td>none | &lt;integer&gt; | last
     <tr>
       <td><em>Initial:</em>
       <td>none
@@ -496,6 +496,23 @@ p.one { column-span: 2 }              /* lead paragraph spans two columns */
       <td><em>Computed value:</em>
       <td>specified value
 </table>
+
+<p>This property specifies a <em>defer column</em>, which is a later column where the formatter will try to place the page float. Values are:
+
+<dl>
+<dt>none
+
+<dd>the natural column is the defer column
+
+<dt>&lt;integer&gt;
+
+<dd>a positive integer indicates that the page float is deferred by the specified number. A negative integer indicates that the page float is deferred by counting from the last column; -1 means the last column, -2 means the next-to-last column, etc. If the specified negative integer would result in a previous column, the value is ignored. Zero is ignored. Integer values only have effect when the page float is shown on its natural page; on other pages the defer column will be the first column on the page.
+
+<dt>last
+
+<dd>the last column on the natural page becomes the defer column. If the page float cannot be shown on its natural page, this keword still has effect. 
+
+</dl>
 
 
 <h4 id="float-defer-page"><span class="secno">2.5.2 </span>'float-defer-page'</h4>
