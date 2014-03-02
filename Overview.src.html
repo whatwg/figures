@@ -105,13 +105,30 @@ out of memory, or to work around platform-specific limitations.
 <h2>Page floats</h2>
 
 <p>In page-based layouts, images and figures are often displayed at
-the top or bottom of pages. This specification adds new keywords on the
-<a href="http://www.w3.org/TR/CSS2/visuren.html#propdef-float">'float'</a> <span data-anolis-ref>CSS</span>
-property to create <em>page floats</em>. A page float can
-float inside its natural column/page, or its placement can be deferred
-to a following column/page with the <em>float-defer</em> properties.
-Page floats can be set to span several columns, thereby supporting
-commonly used newspaper layouts. New values on the 'clear' property
+the top or bottom of pages, spanning several columns. This
+specification extends the CSS float model with <em>page floats</em>,
+which are floats that move in the block direction (as opposed to the
+inline direction, which normal CSS floats move in). The 'float'
+property is used to specify if the page float should be move to the
+top, bottom or to the nearest edge.
+
+<p>By default, page floats are contained by their natural column,
+i.e., the column where the element would naturally start. The
+'column-span' property can extend the containing box to several
+columns, or even parts of columns and column gaps. 
+
+<p>Page floats can also be told to escape their natural column by
+using the 'float-reference' property to set the containing block to
+the multicol element, the page area, or the bleed box.
+
+<p>Another way to escape the natural column is to defer placement to a
+later column, perhaps on a lager page, by using the 'float-defer-column' and
+'float-defer-page' properties. 
+
+<p>Like for normal floats, the position of page floats can also b
+<!--
+
+Page floats can be set to span several columns with new values on the 'column-span' property. New values on the 'clear' property
 adds further ways of refining layouts with page floats.
 
 <p class=note>Not all multicol elements are constrained by the page
@@ -119,7 +136,16 @@ box. Therefore, a more accurate term for page floats may be <em>column
 floats</em> as all of them are constrained by the column box. However,
 in most cases, page floats seems like a better term.
 
-<h3>Floating to the top/bottom</h3>
+<!--
+<a href="http://www.w3.org/TR/CSS2/visuren.html#propdef-float">'float'</a> <span data-anolis-ref>CSS</span>
+property to create <em>page floats</em>.
+-->
+
+
+
+<h3>Floating to the top/bottom: 'float'</h3>
+
+
 
 <p>These new keywords on 'float' have been added:
 
@@ -162,7 +188,7 @@ floats should appear in their natural column on the natural page.
 <p class=issue>aliases to 
 
 
-<h3>snap</h3>
+<h3>Snapping to nearest edge: 'snap'</h3>
 
 <dl>
 
