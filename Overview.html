@@ -32,7 +32,7 @@ pre.lineart { line-height: 1 }
   <p><a href="http://www.whatwg.org/" class="logo"><img width="100" alt="WHATWG" height="100" src="http://resources.whatwg.org/logo.svg"></a></p>
 	<h1>CSS Figures</h1>
 	
-	<h2 class="no-num no-toc" id="soon-to-become-a-living-standard-last-updated-1-march-2014"><span class="minor">[soon to become a]</span> Living Standard — Last Updated 1 March 2014</h2>
+	<h2 class="no-num no-toc" id="soon-to-become-a-living-standard-last-updated-2-march-2014"><span class="minor">[soon to become a]</span> Living Standard — Last Updated 2 March 2014</h2>
 	
 	<dl>
 		<dt>This version:
@@ -53,7 +53,7 @@ pre.lineart { line-height: 1 }
 
 	</dl>
 	
-<p class="copyright"><a href="http://creativecommons.org/publicdomain/zero/1.0/" rel="license"><img src="http://i.creativecommons.org/p/zero/1.0/80x15.png" alt="CC0"></a>To the extent possible under law, the editor has waived all copyright and related or neighboring rights to this work. In addition, as of 1 March 2014, the editor has made this specification available under the
+<p class="copyright"><a href="http://creativecommons.org/publicdomain/zero/1.0/" rel="license"><img src="http://i.creativecommons.org/p/zero/1.0/80x15.png" alt="CC0"></a>To the extent possible under law, the editor has waived all copyright and related or neighboring rights to this work. In addition, as of 2 March 2014, the editor has made this specification available under the
 <a href="http://www.openwebfoundation.org/legal/the-owf-1-0-agreements/owfa-1-0" rel="license">Open Web Foundation Agreement Version 1.0</a>, which is available at <!--begin-link--><a href="http://www.openwebfoundation.org/legal/the-owf-1-0-agreements/owfa-1-0">http://www.openwebfoundation.org/legal/the-owf-1-0-agreements/owfa-1-0</a><!--end-link-->.
 
 </div>
@@ -77,22 +77,23 @@ pre.lineart { line-height: 1 }
   <ol>
    <li><a href="#floating-to-the-top-bottom"><span class="secno">2.1 </span>Floating to the top/bottom</a></li>
    <li><a href="#snap"><span class="secno">2.2 </span>snap</a></li>
-   <li><a href="#spanning-columns"><span class="secno">2.3 </span>Spanning columns</a></li>
-   <li><a href="#setting-float-reference:-float-reference"><span class="secno">2.4 </span>Setting float reference: 'float-reference'</a></li>
-   <li><a href="#deferring-floats:-float-defer-column-float-defer-page"><span class="secno">2.5 </span>Deferring floats: float-defer-column, float-defer-page</a>
+   <li><a href="#spanning-columns:-column-span"><span class="secno">2.3 </span>Spanning columns: 'column-span'</a></li>
+   <li><a href="#deferring-floats:-float-defer-column-float-defer-page"><span class="secno">2.4 </span>Deferring floats: float-defer-column, float-defer-page</a>
     <ol>
-     <li><a href="#float-defer-column"><span class="secno">2.5.1 </span>'float-defer-column'</a></li>
-     <li><a href="#float-defer-page"><span class="secno">2.5.2 </span>'float-defer-page'</a></ol></li>
-   <li><a href="#clearing-page-floats"><span class="secno">2.6 </span>Clearing page floats</a></li>
-   <li><a href="#floating-inside-and-outside-pages"><span class="secno">2.7 </span>Floating inside and outside pages</a></li>
-   <li><a href="#the-float-offset-property"><span class="secno">2.8 </span>The 'float-offset' property</a></li>
-   <li><a href="#overconstrained-page-floats"><span class="secno">2.9 </span>Overconstrained page floats</a></ol></li>
- <li><a href="#wrapping"><span class="secno">3 </span>Wrapping</a>
+     <li><a href="#float-defer-column"><span class="secno">2.4.1 </span>'float-defer-column'</a></li>
+     <li><a href="#float-defer-page"><span class="secno">2.4.2 </span>'float-defer-page'</a></ol></li>
+   <li><a href="#clearing-page-floats"><span class="secno">2.5 </span>Clearing page floats</a></li>
+   <li><a href="#floating-inside-and-outside-pages"><span class="secno">2.6 </span>Floating inside and outside pages</a></li>
+   <li><a href="#overconstrained-page-floats"><span class="secno">2.7 </span>Overconstrained page floats</a></ol></li>
+ <li><a href="#adjusting-the-page-float-position"><span class="secno">3 </span>Adjusting the page float position</a>
   <ol>
-   <li><a href="#wrapping-around-page-floats"><span class="secno">3.1 </span>Wrapping around page floats</a></li>
-   <li><a href="#the-clear-side-property"><span class="secno">3.2 </span>The 'clear-side' property</a></li>
-   <li><a href="#wrapping-around-images"><span class="secno">3.3 </span>Wrapping around images</a></li>
-   <li><a href="#wrapping-around-text"><span class="secno">3.4 </span>Wrapping around text</a></ol></li>
+   <li><a href="#the-float-offset-property"><span class="secno">3.1 </span>The 'float-offset' property</a></ol></li>
+ <li><a href="#wrapping"><span class="secno">4 </span>Wrapping</a>
+  <ol>
+   <li><a href="#wrapping-around-page-floats"><span class="secno">4.1 </span>Wrapping around page floats</a></li>
+   <li><a href="#the-clear-side-property"><span class="secno">4.2 </span>The 'clear-side' property</a></li>
+   <li><a href="#wrapping-around-images"><span class="secno">4.3 </span>Wrapping around images</a></li>
+   <li><a href="#wrapping-around-text"><span class="secno">4.4 </span>Wrapping around text</a></ol></li>
  <li><a href="#references" class="no-num">References</a></li>
  <li><a href="#acknowledgments" class="no-num">Acknowledgments</a></ol>
 <!--end-toc-->
@@ -286,9 +287,59 @@ table { float: snap(3em 2em, bottom) }
 
 -->
 
-<h3 id="spanning-columns"><span class="secno">2.3 </span>Spanning columns</h3>
+<h3 id="spanning-columns:-column-span"><span class="secno">2.3 </span>Spanning columns: 'column-span'</h3>
 
-<p>The 'column-span' property is extended with integer values so that elements can span several columns. If the specified integer value is equal to, or larger than the number of columns in the multicol element, the number of columns spanned will be the same as if 'column-span: all' had been specified.
+<p>This specification adds number and length values to the
+'column-span' property so that elements elements can span several
+columns. The new definition is:
+
+<table class="propdef">
+    <tr>
+      <td><em>Name:</em>
+      <td><dfn id="column-span">column-span</dfn>
+    <tr>
+      <td><em>Value:</em>
+      <td>none | all | &lt;number&gt; | &lt;length&gt;
+    <tr>
+      <td><em>Initial:</em>
+      <td>none
+    <tr>
+      <td><em>Applies to:</em>
+      <td>
+    <tr>
+      <td><em>Inherited:</em>
+      <td>no
+    <tr>
+      <td><em>Percentages:</em>
+      <td>N/A
+    <tr>
+      <td><em>Media:</em>
+      <td>visual
+    <tr>
+      <td><em>Computed value:</em>
+      <td>Same as specified value
+</table>
+
+<p>This property describes how many columns the element spans in the nearest multicol ancestor in the same block formatting context.
+
+<dl>
+
+<dt>none
+<dd>The element does not span multiple columns.
+
+<dt>all
+<dd>The element spans across all columns.
+
+<dt>&lt;number&gt;
+<dd>The element spans across the number of columns specified. If a decimal number is specified, the fraction indicates how much of the next column gap and/or the next column which is to be spanned; up to 0.5 indicates a linear fraction of the column gap, between 0.5 and 1.0 indicates the column gap and a linear fraction of the next column. 
+
+<dt>&lt;length&gt;
+<dd>as many columns as is necessary to find room for the length
+
+</dl>
+
+<p>If the resulting number of columns is equal to, or larger than the number of columns in the multicol element, the number of columns spanned will be the same as if 'column-span: all' had been specified.
+
 
 <div class="example">
 <p>In this example, a commonly used newspaper layout is easily described:
@@ -326,7 +377,7 @@ p.one { column-span: 2 }              /* lead paragraph spans two columns */
 
 
 
-<h3 id="setting-float-reference:-float-reference"><span class="secno">2.4 </span>Setting float reference: 'float-reference'</h3>
+
 
 <table class="propdef">
     <tr>
@@ -334,7 +385,7 @@ p.one { column-span: 2 }              /* lead paragraph spans two columns */
       <td><dfn id="float-reference">float-reference</dfn>
     <tr>
       <td><em>Value:</em>
-      <td>column | element | page | sheet | spread
+      <td>column | element | page | bleed-box  <!-- sheet | spread -->
     <tr>
       <td><em>Initial:</em>
       <td>column
@@ -361,7 +412,7 @@ p.one { column-span: 2 }              /* lead paragraph spans two columns */
 <dt>column
 <dt>element
 <dt>page 
-<dt>sheet
+<dt>bleed-box
 <!--
 <dt>spread
 <dt>spreadsheet
@@ -390,11 +441,11 @@ p.one { column-span: 2 }              /* lead paragraph spans two columns */
 -->
 
 
-<h3 id="deferring-floats:-float-defer-column-float-defer-page"><span class="secno">2.5 </span>Deferring floats: float-defer-column, float-defer-page</h3>
+<h3 id="deferring-floats:-float-defer-column-float-defer-page"><span class="secno">2.4 </span>Deferring floats: float-defer-column, float-defer-page</h3>
 
 <p>A page float can be deferred to a following column/page with these new properties:
 
-<h4 id="float-defer-column"><span class="secno">2.5.1 </span>'float-defer-column'</h4>
+<h4 id="float-defer-column"><span class="secno">2.4.1 </span>'float-defer-column'</h4>
 
 <table class="propdef">
     <tr>
@@ -424,7 +475,7 @@ p.one { column-span: 2 }              /* lead paragraph spans two columns */
 </table>
 
 
-<h4 id="float-defer-page"><span class="secno">2.5.2 </span>'float-defer-page'</h4>
+<h4 id="float-defer-page"><span class="secno">2.4.2 </span>'float-defer-page'</h4>
 
 <table class="propdef">
     <tr>
@@ -587,7 +638,7 @@ p.one { column-span: 2 }              /* lead paragraph spans two columns */
 
 
 
-<h3 id="clearing-page-floats"><span class="secno">2.6 </span>Clearing page floats</h3>
+<h3 id="clearing-page-floats"><span class="secno">2.5 </span>Clearing page floats</h3>
 
 <p>Page floats may request to not be stacked, or to be the first page float on a page/column through new values on the 'clear' property:
 
@@ -686,7 +737,7 @@ they may therefore end up in the same column:
 
 
 
-<h3 id="floating-inside-and-outside-pages"><span class="secno">2.7 </span>Floating inside and outside pages</h3>
+<h3 id="floating-inside-and-outside-pages"><span class="secno">2.6 </span>Floating inside and outside pages</h3>
 
 <p>Two allow content to flow to the inside and outside of a page, these keywords are added to the 'float' property:
 
@@ -714,8 +765,191 @@ they may therefore end up in the same column:
 
 
 
+<!--
+<h2>Page and column floats, alternative syntax</h2>
 
-<h3 id="the-float-offset-property"><span class="secno">2.8 </span>The 'float-offset' property</h3>
+<p>This section describes an alternative syntax for page and column floats.
+
+<p>Four new keywords on 'float' have been added:
+
+<dl>
+
+<dt>left, right, top, bottom
+<dd>relative to physical viewport
+
+<dt>line-left, line-right
+<dd>relative to inline axis
+
+<dt>before, after
+<dd>relative to block direction
+
+<dt>inside, outside
+<dd>as described in the previous section
+
+<dt>footnote
+<dd>as described above
+
+<dt>columns(n)
+<dd>makes the float span n columns, and sets the float context to be the multicol element
+
+<dt>page
+<dd>sets the float context to be the page
+
+</dl>
+
+
+
+<div class=example>
+<p>Float figure to the top right corner of the multicol element, spanning two columns:
+
+<pre>
+.figure { float: top rigth columns(2); width: 100% }
+</pre>
+
+<img alt="sample rendering" src=8.png>
+</div>
+
+<div class=example>
+<p>Float figure to top of the last column of the multicol element on the current page:
+<pre>
+.figure { float: top right columns(1) }
+</pre>
+
+<img alt="sample rendering" src=6.png>
+</div>
+
+<div class=example>
+<p>Float figure to the top right of the current element, allowing other content on its side:
+
+<pre>
+.figure { float: top right; width: 60% }
+</pre>
+<img alt="sample rendering" src=13.png>
+</div>
+
+
+<div class=example>
+<p>Escape the multicol element and float to the top right of the page area:
+
+<pre>
+.figure { float: top right page }
+</pre>
+</div>
+
+-->
+
+<h3 id="overconstrained-page-floats"><span class="secno">2.7 </span>Overconstrained page floats</h3>
+
+<p>In many cases, the specified values on these properties cannot be honored. 
+
+<div class="example">The number of columns is limited, and high values therefore cannot be honored:
+<pre>.figure { float: top; float-defer-column: 1000 }
+</pre>
+</div>
+
+<div class="example">A narrow screen may only have room for one column, in which case this request cannot be honored:
+<pre>.figure { float: top; float-defer-column: -5 }
+</pre>
+</div>
+
+<div class="example">In long documents, all content cannot fit on the last page, and this rule therefore cannot be honored:
+<pre>p { float: top; float-defer-page: last }
+</pre>
+</div>
+
+<p>Page floats are processed in the order they appear in the source. However, the resulting visual order of page floats may be different from the source order. 
+
+<div class="example">Consider this code:
+
+<pre>.one { float: top; float-defer-page: last; column-span: all }
+.two { float: top; clear: column }
+
+&lt;div class=one&gt;&lt;/div&gt;
+&lt;div class=two&gt;&lt;/div&gt;
+</pre>
+
+<p>In this example, the first element requests to appear on the last page, while the second element requests to appear in the natural column. If the natural column of the second element appears on a page before the last page, the second element will appear visually before the first. 
+
+</div>
+
+
+<div class="example">Consider this code:
+
+<pre>.one { float: top; float-defer-page: last; column-span: all }
+.two { float: top; clear: column }
+
+&lt;div class=one&gt;&lt;/div&gt;
+&lt;div class=two&gt;&lt;/div&gt;
+</pre>
+
+<p>If all content can fit on one page, the first page will also be the last page. The first element is processed first and is placed on top of the first page. Then the second element is processed. It requests a clear top, something which is not possible on the first page. Therefore, a second page is created and the first element is moved there. Even if the first element requests to be on the last page, it will not appear there.
+</div>
+
+<p>When resolving over-constrained layouts, the order of importance for defined goals are:
+
+<ol>
+<li>honor basic multi-column layout ('columns', 'column-span: all', 'column-gap' etc)
+<li>honor 'column-span: &lt;integer&gt;'
+<li>honor 'clear: top/bottom/pcolumn/page'
+<li>honor 'float-defer-page'
+<li>honor 'float-defer-column'
+<li>honor 'float: top/bottom'
+<li>display all content (as described by other CSS properties)
+<li>keep the number of pages to a minimum
+</ol>
+
+<!--
+<h2>The 'gr' unit</h2>
+
+<p>The <code class=css>gr</code> unit has two purposes. When
+used on the 'float-offset' property it identifies a
+position by counting columns and gaps from the position established by the
+<code class=property>float</code> property. Fractions on the
+<code class=property>gr</code> unit refer to fractions of
+the last counted gap or column.
+
+<p>When used on the <code class=property>width</code>
+property, the <code class=property>gr</code> unit identifies
+a length by counting gaps and columns, starting at the point where the
+element naturally finds itself and continuing in the direction of box
+expansion. Fractions on the <code class=property>gr</code>
+unit refer to the last gap or column counted.
+
+<div class=example>
+
+<pre>
+img { 
+  float-x: right;
+  float-y: top;
+  width: 2gr;
+}
+</pre>
+
+
+<img src=30.png>
+
+
+</div>
+
+<div class=example>
+
+<pre>
+img { 
+  float-x: right;
+  float-y: top;
+  width: 1.5gr
+}
+</pre>
+
+<img src=31.png>
+
+</div>
+
+-->
+
+<h2 id="adjusting-the-page-float-position"><span class="secno">3 </span>Adjusting the page float position</h2>
+
+<h3 id="the-float-offset-property"><span class="secno">3.1 </span>The 'float-offset' property</h3>
 
 <table class="propdef">
     <tr>
@@ -838,195 +1072,14 @@ Pull quotes are often centered in a column. In this example, the pull quote is f
 
 </div>
 
-
-<!--
-<h2>Page and column floats, alternative syntax</h2>
-
-<p>This section describes an alternative syntax for page and column floats.
-
-<p>Four new keywords on 'float' have been added:
-
-<dl>
-
-<dt>left, right, top, bottom
-<dd>relative to physical viewport
-
-<dt>line-left, line-right
-<dd>relative to inline axis
-
-<dt>before, after
-<dd>relative to block direction
-
-<dt>inside, outside
-<dd>as described in the previous section
-
-<dt>footnote
-<dd>as described above
-
-<dt>columns(n)
-<dd>makes the float span n columns, and sets the float context to be the multicol element
-
-<dt>page
-<dd>sets the float context to be the page
-
-</dl>
+<p class="issue">'float-defer-lines' could be an alternative to float offsets
 
 
-
-<div class=example>
-<p>Float figure to the top right corner of the multicol element, spanning two columns:
-
-<pre>
-.figure { float: top rigth columns(2); width: 100% }
-</pre>
-
-<img alt="sample rendering" src=8.png>
-</div>
-
-<div class=example>
-<p>Float figure to top of the last column of the multicol element on the current page:
-<pre>
-.figure { float: top right columns(1) }
-</pre>
-
-<img alt="sample rendering" src=6.png>
-</div>
-
-<div class=example>
-<p>Float figure to the top right of the current element, allowing other content on its side:
-
-<pre>
-.figure { float: top right; width: 60% }
-</pre>
-<img alt="sample rendering" src=13.png>
-</div>
-
-
-<div class=example>
-<p>Escape the multicol element and float to the top right of the page area:
-
-<pre>
-.figure { float: top right page }
-</pre>
-</div>
-
--->
-
-<h3 id="overconstrained-page-floats"><span class="secno">2.9 </span>Overconstrained page floats</h3>
-
-<p>In many cases, the specified values on these properties cannot be honored. 
-
-<div class="example">The number of columns is limited, and high values therefore cannot be honored:
-<pre>.figure { float: top; float-defer-column: 1000 }
-</pre>
-</div>
-
-<div class="example">A narrow screen may only have room for one column, in which case this request cannot be honored:
-<pre>.figure { float: top; float-defer-column: -5 }
-</pre>
-</div>
-
-<div class="example">In long documents, all content cannot fit on the last page, and this rule therefore cannot be honored:
-<pre>p { float: top; float-defer-page: last }
-</pre>
-</div>
-
-<p>Page floats are processed in the order they appear in the source. However, the resulting visual order of page floats may be different from the source order. 
-
-<div class="example">Consider this code:
-
-<pre>.one { float: top; float-defer-page: last; column-span: all }
-.two { float: top; clear: column }
-
-&lt;div class=one&gt;&lt;/div&gt;
-&lt;div class=two&gt;&lt;/div&gt;
-</pre>
-
-<p>In this example, the first element requests to appear on the last page, while the second element requests to appear in the natural column. If the natural column of the second element appears on a page before the last page, the second element will appear visually before the first. 
-
-</div>
-
-
-<div class="example">Consider this code:
-
-<pre>.one { float: top; float-defer-page: last; column-span: all }
-.two { float: top; clear: column }
-
-&lt;div class=one&gt;&lt;/div&gt;
-&lt;div class=two&gt;&lt;/div&gt;
-</pre>
-
-<p>If all content can fit on one page, the first page will also be the last page. The first element is processed first and is placed on top of the first page. Then the second element is processed. It requests a clear top, something which is not possible on the first page. Therefore, a second page is created and the first element is moved there. Even if the first element requests to be on the last page, it will not appear there.
-</div>
-
-<p>When resolving over-constrained layouts, the order of importance for defined goals are:
-
-<ol>
-<li>honor basic multi-column layout ('columns', 'column-span: all', 'column-gap' etc)
-<li>honor 'column-span: &lt;integer&gt;'
-<li>honor 'clear: top/bottom/pcolumn/page'
-<li>honor 'float-defer-page'
-<li>honor 'float-defer-column'
-<li>honor 'float: top/bottom'
-<li>display all content (as described by other CSS properties)
-<li>keep the number of pages to a minimum
-</ol>
-
-<!--
-<h2>The 'gr' unit</h2>
-
-<p>The <code class=css>gr</code> unit has two purposes. When
-used on the 'float-offset' property it identifies a
-position by counting columns and gaps from the position established by the
-<code class=property>float</code> property. Fractions on the
-<code class=property>gr</code> unit refer to fractions of
-the last counted gap or column.
-
-<p>When used on the <code class=property>width</code>
-property, the <code class=property>gr</code> unit identifies
-a length by counting gaps and columns, starting at the point where the
-element naturally finds itself and continuing in the direction of box
-expansion. Fractions on the <code class=property>gr</code>
-unit refer to the last gap or column counted.
-
-<div class=example>
-
-<pre>
-img { 
-  float-x: right;
-  float-y: top;
-  width: 2gr;
-}
-</pre>
-
-
-<img src=30.png>
-
-
-</div>
-
-<div class=example>
-
-<pre>
-img { 
-  float-x: right;
-  float-y: top;
-  width: 1.5gr
-}
-</pre>
-
-<img src=31.png>
-
-</div>
-
--->
-
-
-<h2 id="wrapping"><span class="secno">3 </span>Wrapping</h2>
+<h2 id="wrapping"><span class="secno">4 </span>Wrapping</h2>
 
 <p class="XXX">This part is work-in-progress, even more so than other parts.
 
-<h3 id="wrapping-around-page-floats"><span class="secno">3.1 </span>Wrapping around page floats</h3>
+<h3 id="wrapping-around-page-floats"><span class="secno">4.1 </span>Wrapping around page floats</h3>
 
 <table class="propdef">
     <tr>
@@ -1085,7 +1138,7 @@ column gap.
 </div>
 
 
-<h3 id="the-clear-side-property"><span class="secno">3.2 </span>The 'clear-side' property</h3>
+<h3 id="the-clear-side-property"><span class="secno">4.2 </span>The 'clear-side' property</h3>
 
 <table class="propdef">
     <tr>
@@ -1227,7 +1280,7 @@ content. Values have the following meaning:
 
 
 
-<h3 id="wrapping-around-images"><span class="secno">3.3 </span>Wrapping around images</h3>
+<h3 id="wrapping-around-images"><span class="secno">4.3 </span>Wrapping around images</h3>
 <p>Exclusions are often based on shapes found in images. In this specification, background image can carry the shape, around which text is wrapped. The new property 'background-exclude-level' indicates a level in the alpha channel of the background image(s) that defines the shape.
 
 
@@ -1279,7 +1332,7 @@ article h1 {
 </div>
 -->
 
-<h3 id="wrapping-around-text"><span class="secno">3.4 </span>Wrapping around text</h3>
+<h3 id="wrapping-around-text"><span class="secno">4.4 </span>Wrapping around text</h3>
 
 <p>A new property. 'wrap-level', is introduced to allow wraps around the rendered content of the element.
 
