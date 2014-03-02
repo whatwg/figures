@@ -408,6 +408,8 @@ p.one { column-span: 2 }              /* lead paragraph spans two columns */
 
 <h3 id="setting-the-float-reference:-float-reference"><span class="secno">2.4 </span>Setting the float reference: 'float-reference'</h3>
 
+<p>Normally, page floats are moved to the top or bottom of a column, and the column is the <em>float reference</em>. In some cases it is necessary to change the float reference to be the element, the page area, or the bleed box. This is possible with the 'float-reference' property.
+
 <table class="propdef">
     <tr>
       <td><em>Name:</em>
@@ -435,18 +437,26 @@ p.one { column-span: 2 }              /* lead paragraph spans two columns */
       <td>Same as specified value
 </table>
 
-<p>This property indicates the float reference for a page float. The values are
+<p>This property indicates the float reference for a page float. The values are:
 
 <dl>
 <dt>column
+<dd>a column is the float reference
+
 <dt>element
+<dd>the youngest block-level ancestor element is the float reference
+
 <dt>page 
+<dd>the page area is the float reference
+
 <dt>bleed-box
+<dd>the bleed box is the reference
+
 <!--
 <dt>spread
 <dt>spreadsheet
 -->
-</dt></dl>
+</dl>
 
 
 <div class="example">
@@ -461,8 +471,29 @@ p.one { column-span: 2 }              /* lead paragraph spans two columns */
 </pre>
 </div>
 
-<p class="issue">element vs multicol
-<p class="issue">Describe relationship between 'column-span' and 'float-reference'
+
+<div class="example">
+
+<p>In this example, the full-page ad uses the bleed box as the referece. Thus, when the image width is set to 100%, the image will extend slightly outside the page box (exactly how long depends on the value of the <a href="http://dev.w3.org/csswg/css-page/#bleed">bleed</a> property.
+
+<pre>aside.full-page-ad { 
+  float: top; 
+  float-reference: bleed-box;
+}
+aside.full-page-ad img { 
+  width: 100%; 
+  object-fill: fill;
+}
+
+&lt;aside class=fullpagead&gt;
+  &lt;img&gt;
+&lt;/aside&gt;
+</pre>
+</div>
+
+
+<p class="issue">Describe relationship between 'column-span' and 'float-reference'. Is there a difference on the last page?
+
 
 <h3 id="deferring-floats:-float-defer-column-float-defer-page"><span class="secno">2.5 </span>Deferring floats: float-defer-column, float-defer-page</h3>
 
