@@ -444,17 +444,71 @@ p.one { column-span: 2 }              /* lead paragraph spans two columns */
 
 
 <div class=example>
-<p>In this example, the footer is floated to the bottom of the page (and not the bottom of the article element):
+<p>In this example, the footer is floated to the bottom of the page:
 
 <pre>
 footer { float: bottom; float-reference: page }
 
 &lt;article>
   ...
-  &lt;footer>...&lt;.footer>
+  &lt;footer>...&lt;/footer>
 &lt;/article>
 </pre>
+
+<p>The resultant rendering could be:
+
+<pre class=lineart>
+┌──────────────────────────────────────┐
+│ ┌──────────┐┌──────────┐┌──────────┐ │
+│ │          ││          ││          │ │
+│ │     1    ││    2     ││    3     │ │   
+│ │          ││          ││          │ │
+│ └──────────┘└──────────┘└──────────┘ │
+│                                      │
+│                                      │
+│                                      │
+│ ┌──────────────────────────────────┐ │
+│ │ footer                           │ │
+│ └──────────────────────────────────┘ │
+└──────────────────────────────────────┘
+</pre>
+
 </div>
+
+<div class=example>
+<p>In this example, the footer sets the element as the float reference:
+
+<pre>
+footer { float: bottom; float-reference: element; column-span: 3 }
+
+&lt;article>
+  ...
+  &lt;footer>...&lt;/footer>
+&lt;/article>
+</pre>
+
+<p>In the resulatant rendering, the footer is shown after the
+(balanced) columns on the last page of the article element.
+
+<pre class=lineart>
+┌──────────────────────────────────────┐
+│ ┌──────────┐┌──────────┐┌──────────┐ │
+│ │          ││          ││          │ │
+│ │     1    ││    2     ││    3     │ │   
+│ │          ││          ││          │ │
+│ └──────────┘└──────────┘└──────────┘ │
+│ ┌──────────────────────────────────┐ │
+│ │ footer                           │ │
+│ └──────────────────────────────────┘ │
+│                                      │
+│                                      │
+│                                      │
+│                                      │
+└──────────────────────────────────────┘
+</pre>
+
+</div>
+
 
 
 <div class=example>
