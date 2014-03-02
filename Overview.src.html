@@ -269,9 +269,59 @@ table { float: snap(3em 2em, bottom) }
 
 -->
 
-<h3>Spanning columns</h3>
+<h3>Spanning columns: 'column-span'</h3>
 
-<p>The 'column-span' property is extended with integer values so that elements can span several columns. If the specified integer value is equal to, or larger than the number of columns in the multicol element, the number of columns spanned will be the same as if 'column-span: all' had been specified.
+<p>This specification adds number and length values to the
+'column-span' property so that elements elements can span several
+columns. The new definition is:
+
+<table class=propdef>
+    <tr>
+      <td><em>Name:</em>
+      <td><dfn>column-span</dfn>
+    <tr>
+      <td><em>Value:</em>
+      <td>none | all | &lt;number> | &lt;length>
+    <tr>
+      <td><em>Initial:</em>
+      <td>none
+    <tr>
+      <td><em>Applies to:</em>
+      <td>
+    <tr>
+      <td><em>Inherited:</em>
+      <td>no
+    <tr>
+      <td><em>Percentages:</em>
+      <td>N/A
+    <tr>
+      <td><em>Media:</em>
+      <td>visual
+    <tr>
+      <td><em>Computed&nbsp;value:</em>
+      <td>Same as specified value
+</table>
+
+<p>This property describes how many columns the element spans in the nearest multicol ancestor in the same block formatting context.
+
+<dl>
+
+<dt>none
+<dd>The element does not span multiple columns.
+
+<dt>all
+<dd>The element spans across all columns.
+
+<dt>&lt;number>
+<dd>The element spans across the number of columns specified. If a decimal number is specified, the fraction indicates how much of the next column gap and/or the next column which is to be spanned; up to 0.5 indicates a linear fraction of the column gap, between 0.5 and 1.0 indicates the column gap and a linear fraction of the next column. 
+
+<dt>&lt;length>
+<dd>as many columns as is necessary to find room for the length
+
+</dl>
+
+<p>If the resulting number of columns is equal to, or larger than the number of columns in the multicol element, the number of columns spanned will be the same as if 'column-span: all' had been specified.
+
 
 <div class=example>
 <p>In this example, a commonly used newspaper layout is easily described:
@@ -312,7 +362,7 @@ p.one { column-span: 2 }              /* lead paragraph spans two columns */
 
 
 
-<h3>Setting float reference: 'float-reference'</h3>
+
 
 <table class=propdef>
     <tr>
@@ -320,7 +370,7 @@ p.one { column-span: 2 }              /* lead paragraph spans two columns */
       <td><dfn>float-reference</dfn>
     <tr>
       <td><em>Value:</em>
-      <td>column | element | page | sheet | spread
+      <td>column | element | page | bleed-box  <!-- sheet | spread -->
     <tr>
       <td><em>Initial:</em>
       <td>column
@@ -347,7 +397,7 @@ p.one { column-span: 2 }              /* lead paragraph spans two columns */
 <dt>column
 <dt>element
 <dt>page 
-<dt>sheet
+<dt>bleed-box
 <!--
 <dt>spread
 <dt>spreadsheet
@@ -719,135 +769,6 @@ they may therefore end up in the same column:
 
 
 
-
-<h3>The 'float-offset' property</h3>
-
-<table class=propdef>
-    <tr>
-      <td><em>Name:</em>
-      <td><dfn>float-offset</dfn>
-    <tr>
-      <td><em>Value:</em>
-    <td>&lt;length> &lt;length> ?
-    <tr>
-      <td><em>Initial:</em>
-      <td>0 0
-    <tr>
-      <td><em>Applies to:</em>
-      <td>floated elements
-    <tr>
-      <td><em>Inherited:</em>
-      <td>no
-    <tr>
-      <td><em>Percentages:</em>
-      <td>see prose
-    <tr>
-      <td><em>Media:</em>
-      <td>visual, paged
-    <tr>
-      <td><em>Computed&nbsp;value:</em>
-      <td>one or two absolute lengths
-</table>
-
-<p>This property pushes a float in opposite direction of the where
-it has been floated with 'float'. If one value is specified, it is
-the horizontal offset. If two values are specified, the first is the
-horizontal and the second is the vertical offset. If no vertical value
-has been specified, the vertical offset is set to zero.
-
-
-
-<p>This property can only influence a float along an axis it has been floated.
-
-<div class=example>
-<pre>
-img {
-  float: left;
-  float-offset: 2em 3em;
-}
-</pre>
-
-<p>In this example, the image is floated to the left. Therefore, 'float-offset' may only push the element in the horizontal direction, and the vertical value is ignored.
-
-</div>
-
-<p>Negative values are allowed; a negative values will push the float
-in the same direction as it has been floated with 'float'
-
-<p>This property may move floats into other column than where they
-naturally appear.
-
-<div class=example>
-<p>In this example, the first declaration float the image to the top, while the second pushes it down. 
-
-<pre>img {
-  float: top;
-  float-offset: 2.5em;
-}
-</pre>
-
-
-<img alt="sample rendering" src=24.png>
-
-</div>
-
-<p>Percentage values are computed according to this formula:
-
-<pre>
-  (containing-block-width - float-width) * percentage
-  (containing-block-height - float-height) * percentage
-</pre>
-
-<!--
-<div class=example>
-Pull quotes are often centered in a column. In this example, the pull quote is floated to the right, and then pushed back into the center.
-
-<img width=213 src="exclusion_wrap_side_left.png">
-
-<pre>
-.pullquote {
-  float: right;
-  float-offset: 50%; /* 50% centers the box */
-}
-</pre>
-
-</div>
--->
-
-<p>When negative values are set on this property, the column gap is also part of the calculation:
-
-<pre>
-  ((containing-block-width + 2 * column-gap) - float-width) * percentage
-</pre>
-
-<div class=example>
-<pre>img {
-  float: top right;
-  float-offset: -50% 3em;  /* 50% centers the box */
-  width: 120%;
-}
-</pre>
-
-<img alt="sample rendering" src=11.png>
-
-</div>
-
-
-<div class="example">
-
-<pre>
-img {
-  float: top right;
-  float-offset: -80% 2em;
-  width: 100%;
-}
-</pre>
-
-<img alt="sample rendering" src=12.png>
-
-</div>
-
-
 <!--
 <h2>Page and column floats, alternative syntax</h2>
 
@@ -1034,6 +955,137 @@ img {
 </div>
 
 -->
+
+<h2>Adjusting the page float position</h2>
+
+<h3>The 'float-offset' property</h3>
+
+<table class=propdef>
+    <tr>
+      <td><em>Name:</em>
+      <td><dfn>float-offset</dfn>
+    <tr>
+      <td><em>Value:</em>
+    <td>&lt;length> &lt;length> ?
+    <tr>
+      <td><em>Initial:</em>
+      <td>0 0
+    <tr>
+      <td><em>Applies to:</em>
+      <td>floated elements
+    <tr>
+      <td><em>Inherited:</em>
+      <td>no
+    <tr>
+      <td><em>Percentages:</em>
+      <td>see prose
+    <tr>
+      <td><em>Media:</em>
+      <td>visual, paged
+    <tr>
+      <td><em>Computed&nbsp;value:</em>
+      <td>one or two absolute lengths
+</table>
+
+<p>This property pushes a float in opposite direction of the where
+it has been floated with 'float'. If one value is specified, it is
+the horizontal offset. If two values are specified, the first is the
+horizontal and the second is the vertical offset. If no vertical value
+has been specified, the vertical offset is set to zero.
+
+
+
+<p>This property can only influence a float along an axis it has been floated.
+
+<div class=example>
+<pre>
+img {
+  float: left;
+  float-offset: 2em 3em;
+}
+</pre>
+
+<p>In this example, the image is floated to the left. Therefore, 'float-offset' may only push the element in the horizontal direction, and the vertical value is ignored.
+
+</div>
+
+<p>Negative values are allowed; a negative values will push the float
+in the same direction as it has been floated with 'float'
+
+<p>This property may move floats into other column than where they
+naturally appear.
+
+<div class=example>
+<p>In this example, the first declaration float the image to the top, while the second pushes it down. 
+
+<pre>img {
+  float: top;
+  float-offset: 2.5em;
+}
+</pre>
+
+
+<img alt="sample rendering" src=24.png>
+
+</div>
+
+<p>Percentage values are computed according to this formula:
+
+<pre>
+  (containing-block-width - float-width) * percentage
+  (containing-block-height - float-height) * percentage
+</pre>
+
+<!--
+<div class=example>
+Pull quotes are often centered in a column. In this example, the pull quote is floated to the right, and then pushed back into the center.
+
+<img width=213 src="exclusion_wrap_side_left.png">
+
+<pre>
+.pullquote {
+  float: right;
+  float-offset: 50%; /* 50% centers the box */
+}
+</pre>
+
+</div>
+-->
+
+<p>When negative values are set on this property, the column gap is also part of the calculation:
+
+<pre>
+  ((containing-block-width + 2 * column-gap) - float-width) * percentage
+</pre>
+
+<div class=example>
+<pre>img {
+  float: top right;
+  float-offset: -50% 3em;  /* 50% centers the box */
+  width: 120%;
+}
+</pre>
+
+<img alt="sample rendering" src=11.png>
+
+</div>
+
+
+<div class="example">
+
+<pre>
+img {
+  float: top right;
+  float-offset: -80% 2em;
+  width: 100%;
+}
+</pre>
+
+<img alt="sample rendering" src=12.png>
+
+</div>
+
+<p class=issue>'float-defer-lines' could be an alternative to float offsets
 
 
 <h2>Wrapping</h2>
