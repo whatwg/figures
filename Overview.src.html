@@ -107,26 +107,39 @@ out of memory, or to work around platform-specific limitations.
 <p>In page-based layouts, images and figures are often displayed at
 the top or bottom of pages, spanning several columns. This
 specification extends the CSS float model with <em>page floats</em>,
-which are floats that primarily move in the block direction (as
-opposed to the inline direction, which normal CSS floats primarily
-move in). The 'float' property is used to specify if the page float
-should be move to the top, bottom or to the nearest edge of the
+which are floats that primarily move in the block direction, as
+opposed to normal CSS float that primarily move in the inline
+direcdtion. The 'float' property is used to specify that the page
+float should move to the top, bottom or to the nearest edge of the
 column.
 
 <p>By default, page floats are contained by their natural column,
-i.e., the column where the element would naturally start. The
-'column-span' property can extend the containing box to several
-columns, or even parts of columns and column gaps. 
+i.e., the column where the element would naturally start. All visible
+elements have at least one column. Elements that are split over
+several pages will have several columns, and multicol elements can
+have several columns on the same page. Columns exist in both paged and
+continous media, and page floats can therefore also be used in
+scrolled enviroments.
 
-<p>Page floats can also be told to escape their natural column by
+<!--As such, <em>column float</em> may be a more accurate term, but column   than page floats. However, most columns will be contained by the page area, and this sp for page floats may be <em>column
+floats</em> as all of them are constrained by the column box. However,
+in most cases, page floats seems like a better term.-->
+
+<p>The page float's conataining block can be extended by the
+'column-span' property. A typical use case is to make the page float
+span two columns, but parts of columns or column gaps can also be
+specified.
+
+<p>Page floats can be told to escape their natural column by
 using the 'float-reference' property to set the containing block to
-the multicol element, the page area, or the bleed box.
+be an element, the page area, or the bleed box.
 
 <p>Another way to escape the natural column is to defer placement to a
 later column, perhaps on a lager page, by using the 'float-defer-column' and
 'float-defer-page' properties. 
 
-<p>Like normal floats, elements can be set to clear page floats through the 'clear' property. 
+<p>Like normal floats, elements can be set to clear page floats
+through the 'clear' property, which is extended with some new values. 
 
 
 <!--
@@ -310,7 +323,7 @@ columns. The new definition is:
       <td><dfn>column-span</dfn>
     <tr>
       <td><em>Value:</em>
-      <td>none | all | &lt;number> | &lt;length>
+      <td>none | all | &lt;number> | &lt;length> | auto
     <tr>
       <td><em>Initial:</em>
       <td>none
@@ -336,16 +349,19 @@ columns. The new definition is:
 <dl>
 
 <dt>none
-<dd>The element does not span multiple columns.
+<dd>the element does not span multiple columns.
 
 <dt>all
-<dd>The element spans across all columns.
+<dd>the element spans across all columns.
 
 <dt>&lt;number>
 <dd>The element spans across the number of columns specified. If a decimal number is specified, the fraction indicates how much of the next column gap and/or the next column which is to be spanned; up to 0.5 indicates a linear fraction of the column gap, between 0.5 and 1.0 indicates the column gap and a linear fraction of the next column. 
 
 <dt>&lt;length>
-<dd>as many columns as is necessary to find room for the length
+<dd>the length value determins how many columns the element will span, rounding upwards to an integer number of columns
+
+<dt>auto
+<dd>the intrinsic width of the element determines how many columns it will span, rounding upwards to an integer number of columns
 
 </dl>
 
@@ -428,7 +444,7 @@ p.one { column-span: 2 }              /* lead paragraph spans two columns */
 <dd>a column is the float reference
 
 <dt>element
-<dd>the youngest block-level ancestor element is the float reference
+<dd>the youngest block formatting context is the float reference
 
 <dt>page 
 <dd>the page area is the float reference
@@ -458,28 +474,59 @@ footer { float: bottom; float-reference: page }
 <p>The resultant rendering could be:
 
 <pre class=lineart>
+
+  ┌──────────┬┬──────────┬┬──────────┐
+  │          ││          ││          │
+  │     1    ││    2     ││    3     │
+  │          ││          ││          │
+  ├──────────┴┴──────────┴┴──────────┤
+  │                                  │
+  │      blank area                  │
+  │                                  │
+  ├──────────────────────────────────┤
+  │ footer                           │
+  └──────────────────────────────────┘
+
+</pre>
+</div>
+
+
+<div class=example>
+<p>In this example, the footer is floated to the bottom of the column, and is set to span all columns:
+
+<pre>
+footer { float: bottom; float-reference: column; column-span: all }
+
+&lt;article>
+  ...
+  &lt;footer>...&lt;/footer>
+&lt;/article>
+</pre>
+
+<p>The resultant rendering could be:
+
+<pre class=lineart>
 ┌──────────────────────────────────────┐
 │ ┌──────────┐┌──────────┐┌──────────┐ │
 │ │          ││          ││          │ │
 │ │     1    ││    2     ││    3     │ │   
 │ │          ││          ││          │ │
-│ └──────────┘└──────────┘└──────────┘ │
-│                                      │
-│                                      │
-│                                      │
-│ ┌──────────────────────────────────┐ │
+│ ├──────────┴┴──────────┴┴──────────┤ │
 │ │ footer                           │ │
-│ └──────────────────────────────────┘ │
+│ ╘══════════════════════════════════╛ │
+│                                      │
+│                                      │
+│                                      │
 └──────────────────────────────────────┘
 </pre>
-
 </div>
 
 <div class=example>
-<p>In this example, the footer sets the element as the float reference:
+<p>In this example, the artical element acts as the float reference:
 
 <pre>
-footer { float: bottom; float-reference: element; column-span: 3 }
+footer { float: bottom; float-reference: element }
+article { columns: 3 }
 
 &lt;article>
   ...
@@ -488,7 +535,7 @@ footer { float: bottom; float-reference: element; column-span: 3 }
 </pre>
 
 <p>In the resulatant rendering, the footer is shown after the
-(balanced) columns on the last page of the article element.
+(balanced) columns on the last page of the article element. The 
 
 <pre class=lineart>
 ┌──────────────────────────────────────┐
@@ -496,19 +543,15 @@ footer { float: bottom; float-reference: element; column-span: 3 }
 │ │          ││          ││          │ │
 │ │     1    ││    2     ││    3     │ │   
 │ │          ││          ││          │ │
-│ └──────────┘└──────────┘└──────────┘ │
-│ ┌──────────────────────────────────┐ │
+│ ├──────────┴┴──────────┴┴──────────┤ │
 │ │ footer                           │ │
-│ └──────────────────────────────────┘ │
-│                                      │
+│ ╘══════════════════════════════════╛ │
 │                                      │
 │                                      │
 │                                      │
 └──────────────────────────────────────┘
 </pre>
-
 </div>
-
 
 
 <div class=example>
@@ -521,16 +564,34 @@ aside.full-page-ad {
   float-reference: bleed-box;
 }
 aside.full-page-ad img { 
-  width: 100%; 
+  width: 100%; height: 100%; 
   object-fill: fill;
 }
 
-&lt;aside class=fullpagead>
+&lt;aside class=full-page-ad>
   &lt;img>
 &lt;/aside>
 </pre>
+<pre>
+ ┌─────────────────────────────────────────┐
+ │                                         │
+ │                                         │
+ │                                         │
+ │                                         │
+ │                                         │
+ │                                         │
+ │                                         │
+ └─────────────────────────────────────────┘
+ | │                                     │ |
+ | │                                     │ |
+ | │                                     │ |
+ | │                                     │ |
+ | │                                     │ |
+ | │                                     │ |
+ | └─────────────────────────────────────┘ |
+ | _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ |
+<pre>
 </div>
-
 
 <p class=issue>Describe relationship between 'column-span' and 'float-reference'. Is there a difference on the last page?
 
@@ -1710,3 +1771,41 @@ Merrell, Philip Taylor, Brad Kemper, Peter Linss, Daniel Glazman, Tantek &#xC7;e
 
 
 </html>
+<!--
+<pre class=lineart>
+┌──────────────────────────────────────┐
+│ ┌──────────┐┌──────────┐┌──────────┐ │
+│ │          ││          ││          │ │
+│ │     1    ││    2     ││    3     │ │   
+│ │          ││          ││          │ │
+│ └──────────┘└──────────┘└──────────┘ │
+│                                      │
+│                                      │
+│                                      │
+│ ┌──────────────────────────────────┐ │
+│ │ footer                           │ │
+│ └──────────────────────────────────┘ │
+└──────────────────────────────────────┘
+
+┌──────────────────────────────────────┐
+│ ┌──────────┐┌──────────┐┌──────────┐ │
+│ │          ││          ││          │ │
+│ │     1    ││    2     ││    3     │ │   
+│ │          ││          ││          │ │
+│ └──────────┘└──────────┘└──────────┘ │
+│ ┌──────────────────────────────────┐ │
+│ │ footer                           │ │
+│ └──────────────────────────────────┘ │
+│                                      │
+│                                      │
+│                                      │
+│                                      │
+└──────────────────────────────────────┘
+
+</pre>
+-->
+<!--
+│┤╡╢╖╕╣║╗╝╜╛┐C└
+┬┴
+├─┼╞╟╚╔╩╦╠═╬╧D╨╤╥╙╘╒╓╫╪┘┌
+-->
