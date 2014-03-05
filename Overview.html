@@ -92,8 +92,8 @@ h2 { clear: both }
  <li><a href="#wrapping-around-page-floats-and-other-elements"><span class="secno">4 </span>Wrapping around page floats (and other elements)</a>
   <ol>
    <li><a href="#wrap-side"><span class="secno">4.1 </span>wrap-side</a></li>
-   <li><a href="#pullquotes"><span class="secno">4.2 </span>Pullquotes</a></li>
-   <li><a href="#wrap-contrast"><span class="secno">4.3 </span>wrap-contrast</a></ol></li>
+   <li><a href="#wrap-contrast"><span class="secno">4.2 </span>wrap-contrast</a></ol></li>
+ <li><a href="#pullquotes"><span class="secno">5 </span>Pullquotes</a></li>
  <li><a href="#references" class="no-num">References</a></li>
  <li><a href="#acknowledgments" class="no-num">Acknowledgments</a></ol>
 <!--end-toc-->
@@ -1355,140 +1355,8 @@ Lorem Ipsum
 
 
 
-<h3 id="pullquotes"><span class="secno">4.2 </span>Pullquotes</h3>
 
-<p>This section sketches various techniques for achieving pull quotes and other content that 
-
-<div class="example">
-<p>Moving an element down.
-
-<img src="38.png">
-
-<pre>.pullquote {
-  float: top;
-  float-defer-column: last;
-  float-defer-line: 2;
-}
-
-.pullquote {
-  float: top;
-  float-defer-column: last;
-  float-offset-y: 2;
-}
-
-.pullquote {
-  float: top;
-  float-defer-column: last;
-  float-offset: 2 top;
-}
-
-.pullquote {
-  float: top;
-  float-defer-column: last;
-  top: 2;
-}
-</pre>
-</div>
-
-
-<div class="example">
-<p>Moving an element down and toward the outside:
-
-<img src="36.png">
-
-<pre>.pullquote {
-  float: top;
-  float-defer-column: last;
-  float-defer-line: 2;
-  float-offset: 3em outside;
-  wrap-side: line-start;
-}
-
-.pullquote {
-  float: top;
-  float-defer-column: last;
-  float-defer-line: 2;
-  float-outside: 3em; /* floats towards the outside of the multicol element */
-  wrap-side: left;
-}
-
-.pullquote {
-  float: top;
-  float-defer-column: last;
-  float-offset-x: 3em;
-  float-offset-y: 2;
-  wrap-side: line-start;
-}
-
-.pullquote {
-  float: top;
-  float-defer-column: last;
-  float-offset: 2 bottom, 3em outside;
-  wrap-side: left;
-}
-
-.pullquote {
-  float: top;
-  float-defer-column: last;
-  left: 3em;
-  top: 2;
-  wrap-side: line-start;
-}
-</pre>
-</div>
-
-<div class="example">
-<p>Moving an element down and to the outside, so that half of the pullquote is outside the BFC:
-
-<img src="37.png">
-
-<pre>.pullquote {
-  width: 120%; /* relative to column width */
-  float: top;
-  float-defer-column: last;
-  float-defer-line: 2;
-  float-offset: 50%; /* relative to page float width */
-  wrap-side: line-start;
-}
-
-.pullquote {
-  width: 120%; /* relative to column width */
-  float: top;
-  float-defer-column: last;
-  float-defer-line: 2;
-  float-outside: 50%; /* floats towards the outside of the multicol element */
-  wrap-side: left;
-}
-
-.pullquote {
-  width: 120%; /* relative to column width */
-  float: top;
-  float-defer-column: last;
-  float-offset-y: 2;
-  float-offset-x: 50%;
-  wrap-side: line-start;
-}
-
-.pullquote {
-  width: 120%; /* relative to column width */
-  float: top;
-  float-defer-column: last;
-  float-offset: 2 bottom, 50% outside;
-  wrap-side: left;
-}
-
-.pullquote {
-  width: 120%; /* relative to column width */
-  float: top;
-  float-defer-column: last;
-  top: 2;
-  left: 50%;
-  wrap-side: line-start;
-}
-</pre>
-</div>
-
-<h3 id="wrap-contrast"><span class="secno">4.3 </span>wrap-contrast</h3>
+<h3 id="wrap-contrast"><span class="secno">4.2 </span>wrap-contrast</h3>
 
 <table class="propdef">
     <tr>
@@ -2095,6 +1963,141 @@ acticle::region(2) {
 </pre>
 </div>
 -->
+
+
+<h2 id="pullquotes"><span class="secno">5 </span>Pullquotes</h2>
+
+<p>This section sketches various techniques for achieving pull quotes and other content that 
+
+<div class="example">
+<p>Moving an element down.
+
+<img src="38.png">
+
+<pre>.pullquote {
+  float: top;
+  float-defer-column: last;
+  float-defer-line: 2;
+}
+
+.pullquote {
+  float: top;
+  float-defer-column: last;
+  float-offset-y: 2;
+}
+
+.pullquote {
+  float: top;
+  float-defer-column: last;
+  float-offset: 2 top;
+}
+
+.pullquote {
+  float: top;
+  float-defer-column: last;
+  top: 2;
+}
+</pre>
+</div>
+
+
+<div class="example">
+<p>Moving an element down and toward the outside:
+
+<img src="36.png">
+
+<pre>.pullquote {
+  float: top;
+  float-defer-column: last;
+  float-defer-line: 2;
+  float-offset: 3em outside;
+  wrap-side: line-start;
+}
+
+.pullquote {
+  float: top;
+  float-defer-column: last;
+  float-defer-line: 2;
+  float-outside: 3em; /* floats towards the outside of the multicol element */
+  wrap-side: left;
+}
+
+.pullquote {
+  float: top;
+  float-defer-column: last;
+  float-offset-x: 3em;
+  float-offset-y: 2;
+  wrap-side: line-start;
+}
+
+.pullquote {
+  float: top;
+  float-defer-column: last;
+  float-offset: 2 bottom, 3em outside;
+  wrap-side: left;
+}
+
+.pullquote {
+  float: top;
+  float-defer-column: last;
+  left: 3em;
+  top: 2;
+  wrap-side: line-start;
+}
+</pre>
+</div>
+
+<div class="example">
+<p>Moving an element down and to the outside, so that half of the pullquote is outside the BFC:
+
+<img src="37.png">
+
+<pre>.pullquote {
+  width: 120%; /* relative to column width */
+  float: top;
+  float-defer-column: last;
+  float-defer-line: 2;
+  float-offset: 50%; /* relative to page float width */
+  wrap-side: line-start;
+}
+
+.pullquote {
+  width: 120%; /* relative to column width */
+  float: top;
+  float-defer-column: last;
+  float-defer-line: 2;
+  float-outside: 50%; /* floats towards the outside of the multicol element */
+  wrap-side: left;
+}
+
+.pullquote {
+  width: 120%; /* relative to column width */
+  float: top;
+  float-defer-column: last;
+  float-offset-y: 2;
+  float-offset-x: 50%;
+  wrap-side: line-start;
+}
+
+.pullquote {
+  width: 120%; /* relative to column width */
+  float: top;
+  float-defer-column: last;
+  float-offset: 2 bottom, 50% outside;
+  wrap-side: left;
+}
+
+.pullquote {
+  width: 120%; /* relative to column width */
+  float: top;
+  float-defer-column: last;
+  top: 2;
+  left: 50%;
+  wrap-side: line-start;
+}
+</pre>
+</div>
+
 
 
 <h2 class="no-num" id="references">References</h2>
