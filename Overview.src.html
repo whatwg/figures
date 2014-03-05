@@ -1295,14 +1295,14 @@ p { float: top; float-defer-page: last }
 
 <p class=note>From here on, the spec is quite experimental. There be devils in details.</p>
 
-<h2>Wrapping around (page) floats</h2>
+<h2>Wrapping around page floats (and other elements)</h2>
 
-<h3>float-wrap-side</h3>
+<h3>wrap-side</h3>
 
 <table class=propdef>
     <tr>
       <td><em>Name:</em>
-      <td><dfn>float-wrap-side</dfn>
+      <td><dfn>wrap-side</dfn>
     <tr>
       <td><em>Value:</em>
       <td>none | [[ all | left | right | top | bottom | line-start | line-end | block-start | block-end | line ] || &lt;integer>? ]
@@ -1357,9 +1357,9 @@ middle column is a long word that is clipped in the middle of the
 column gap.
 
 <pre>
-img { float: top; column-span: 2; width: 65%; float-wrap: all }
+img { float: top; column-span: 2; width: 65%; wrap-side: all }
    /* or */
-img { float: top; column-span: 1.70; width: 100%; float-wrap: line }
+img { float: top; column-span: 1.70; width: 100%; wrap-side: line }
 </pre>
 
 
@@ -1369,7 +1369,7 @@ img { float: top; column-span: 1.70; width: 100%; float-wrap: line }
 
 <div class=example>
 <pre>
-p:first-letter { float: left; font-size: 3em; float-wrap-side: 1 line }
+p:first-letter { float: left; font-size: 3em; wrap-side: 1 line }
 </pre>
 <pre>
 <span style="float: left; font-size: 8em">A</span>
@@ -1431,7 +1431,7 @@ Lorem Ipsum
   float-defer-column: last;
   float-defer-line: 2;
   float-offset: 3em outside;
-  float-wrap-side: line-start;
+  wrap-side: line-start;
 }
 
 .pullquote {
@@ -1439,7 +1439,7 @@ Lorem Ipsum
   float-defer-column: last;
   float-defer-line: 2;
   float-outside: 3em; /* floats towards the outside of the multicol element */
-  float-wrap-side: left;
+  wrap-side: left;
 }
 
 .pullquote {
@@ -1447,14 +1447,14 @@ Lorem Ipsum
   float-defer-column: last;
   float-offset-x: 3em;
   float-offset-y: 2;
-  float-wrap-side: line-start;
+  wrap-side: line-start;
 }
 
 .pullquote {
   float: top;
   float-defer-column: last;
   float-offset: 2 bottom, 3em outside;
-  float-wrap-side: left;
+  wrap-side: left;
 }
 
 .pullquote {
@@ -1462,7 +1462,7 @@ Lorem Ipsum
   float-defer-column: last;
   left: 3em;
   top: 2;
-  float-wrap-side: line-start;
+  wrap-side: line-start;
 }
 </pre>
 </div>
@@ -1479,7 +1479,7 @@ Lorem Ipsum
   float-defer-column: last;
   float-defer-line: 2;
   float-offset: 50%; /* relative to page float width */
-  float-wrap-side: line-start;
+  wrap-side: line-start;
 }
 
 .pullquote {
@@ -1488,7 +1488,7 @@ Lorem Ipsum
   float-defer-column: last;
   float-defer-line: 2;
   float-outside: 50%; /* floats towards the outside of the multicol element */
-  float-wrap-side: left;
+  wrap-side: left;
 }
 
 .pullquote {
@@ -1497,7 +1497,7 @@ Lorem Ipsum
   float-defer-column: last;
   float-offset-y: 2;
   float-offset-x: 50%;
-  float-wrap-side: line-start;
+  wrap-side: line-start;
 }
 
 .pullquote {
@@ -1505,7 +1505,7 @@ Lorem Ipsum
   float: top;
   float-defer-column: last;
   float-offset: 2 bottom, 50% outside;
-  float-wrap-side: left;
+  wrap-side: left;
 }
 
 .pullquote {
@@ -1514,17 +1514,17 @@ Lorem Ipsum
   float-defer-column: last;
   top: 2;
   left: 50%;
-  float-wrap-side: line-start;
+  wrap-side: line-start;
 }
 </pre>
 </div>
 
-<h3>float-wrap-contrast</h3>
+<h3>wrap-contrast</h3>
 
 <table class=propdef>
     <tr>
       <td><em>Name:</em>
-      <td><dfn>float-wrap-contrast</dfn>
+      <td><dfn>wrap-contrast</dfn>
     <tr>
       <td><em>Value:</em>
       <td>normal | [ &lt;number> &lt;length>?
@@ -1573,8 +1573,8 @@ article {
 }
 figure { 
   float: bottom;
-  float-wrap-side: all;
-  float-wrap-contrast: 0.5 1em;
+  wrap-side: all;
+  wrap-contrast: 0.5 1em;
 }
 </pre>
 
