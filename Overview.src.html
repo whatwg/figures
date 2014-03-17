@@ -39,7 +39,7 @@ h2 { clear: both }
   <p><a class="logo" href="http://www.whatwg.org/"><img alt="WHATWG" height="100" src="http://resources.whatwg.org/logo.svg" width="100"></a></p>
 	<h1>[TITLE]</h1>
 	
-	<h2 class="no-num no-toc"><span class=minor>[soon to become a]</span> Living Standard — Last Updated [DATE]</h2>
+	<h2 class="no-num no-toc">Living Standard — Last Updated [DATE]</h2>
 	
 	<dl>
 		<dt>This version:
@@ -188,14 +188,14 @@ property to create <em>page floats</em>.
 <dt>top
 <dd>The page float is moved to the top of its column, i.e., to the beginning (in the block direction) of its <em>defer column</em>. If other page floats have already taken the top position, the float is stacked below or moved to the top of another column (see <a href=#clearing-page-floats>Clearing Page floats</a> below).
 
-<dt>block-start, before
-<dd>aliases for 'top'
+<dt>block-start
+<dd>alias for 'top' (<span class=issue>should 'before' also be an alias?</span>)
 
 <dt>bottom
 <dd>The page float is moved to the bottom of its column, i.e., to the end (in the block direction) of its <em>defer column</em>. If other page floats have already taken the bottom position, the float is stacked above or moved to the bottom of another column (see <a href=#clearing-page-floats>Clearing Page floats</a> below).
 
-<dt>block-end, after
-<dd>aliases for 'bottom'
+<dt>block-end
+<dd>alias for 'bottom' (<span class=issue>should 'after' also be an alias?</span>)
 
 <dt>top-bottom
 <dd>The page float is moved to the top of its column, i.e., to the beginning (in the block direction) of its <em>defer column</em>. If that position is not possible (due to 'column: clear' being set, or due to lack of space), other possibilities are tried in order: the bottom of its column, the top of the next column, the bottom of the next column, etc.
@@ -1112,6 +1112,16 @@ h1 { clear: column }
 
 </div>
 
+<div class=issue>Do we need a way to set column breaks after page floats? Here is one option:
+
+<pre>
+  img { 
+    float: top 
+    margin-bottom: auto;
+  }
+</pre>
+</div>
+
 
 
 <!--
@@ -1382,8 +1392,6 @@ Lorem Ipsum
 </div>
 
 
-
-
 <h3>wrap-contrast</h3>
 
 <table class=propdef>
@@ -1445,6 +1453,203 @@ figure {
 
 <p><img style="width: 90%; border: thin solid black" src=landscape-4col.png>
 </div>
+
+
+<h2>Pullquotes</h2>
+
+<p>This section sketches various techniques for achieving pull quotes and other content that 
+
+<div class=example>
+<p>Moving an element down.
+
+<img src=38.png>
+
+<pre>
+
+.pullquote {
+  float: top;
+  float-defer-column: last;
+  float-defer-line: 2;
+}
+
+.pullquote {
+  float: top;
+  float-defer-column: last;
+  float-offset-y: 2;
+}
+
+.pullquote {
+  float: top;
+  float-defer-column: last;
+  float-offset: 2 top;
+}
+
+.pullquote {
+  float: top;
+  float-defer-column: last;
+  top: 2;
+}
+</pre>
+</div>
+
+
+<div class=example>
+<p>Moving an element down and toward the outside:
+
+<img src=36.png>
+
+<pre>
+.pullquote {
+  float: top;
+  float-defer-column: last;
+  float-defer-line: 2;
+  float-offset: 3em outside;
+  wrap-side: line-start;
+}
+
+.pullquote {
+  float: top;
+  float-defer-column: last;
+  float-defer-line: 2;
+  float-outside: 3em; /* floats towards the outside of the multicol element */
+  wrap-side: left;
+}
+
+.pullquote {
+  float: top;
+  float-defer-column: last;
+  float-offset-x: 3em;
+  float-offset-y: 2;
+  wrap-side: line-start;
+}
+
+.pullquote {
+  float: top;
+  float-defer-column: last;
+  float-offset: 2 bottom, 3em outside;
+  wrap-side: left;
+}
+
+.pullquote {
+  float: top;
+  float-defer-column: last;
+  left: 3em;
+  top: 2;
+  wrap-side: line-start;
+}
+</pre>
+</div>
+
+<div class=example>
+<p>Moving an element down and to the outside, so that half of the pullquote is outside the BFC:
+
+<img src=37.png>
+
+<pre>
+.pullquote {
+  width: 120%; /* relative to column width */
+  float: top;
+  float-defer-column: last;
+  float-defer-line: 2;
+  float-offset: 50%; /* relative to page float width */
+  wrap-side: line-start;
+}
+
+.pullquote {
+  width: 120%; /* relative to column width */
+  float: top;
+  float-defer-column: last;
+  float-defer-line: 2;
+  float-outside: 50%; /* floats towards the outside of the multicol element */
+  wrap-side: left;
+}
+
+.pullquote {
+  width: 120%; /* relative to column width */
+  float: top;
+  float-defer-column: last;
+  float-offset-y: 2;
+  float-offset-x: 50%;
+  wrap-side: line-start;
+}
+
+.pullquote {
+  width: 120%; /* relative to column width */
+  float: top;
+  float-defer-column: last;
+  float-offset: 2 bottom, 50% outside;
+  wrap-side: left;
+}
+
+.pullquote {
+  width: 120%; /* relative to column width */
+  float: top;
+  float-defer-column: last;
+  top: 2;
+  left: 50%;
+  wrap-side: line-start;
+}
+</pre>
+</div>
+
+
+
+<h2 class=no-num>References</h2>
+
+<div id=anolis-references></div>
+
+<h2 class=no-num id=acknowledgments>Acknowledgments</h2>
+
+<p>This document has been improved by Bert Bos, Michael Day, Melinda
+Grant, David Baron, Markus Mielke, Steve Zilles, Ian Hickson, Elika
+Etemad, Laurens Holst, Mike Bremford, Allan Sandfeld Jensen, Kelly
+Miller, Werner Donn&eacute;, Tarquin (Mark) Wilton-Jones, Michel Fortin,
+Christian Roth, Brady Duga, Del Merritt, Ladd Van Tol, Tab Atkins Jr.,
+Jacob Grundtvig Refstrup,  James Elmore, Ian Tindale, Murakami Shinyu, Paul E.
+Merrell, Philip Taylor, Brad Kemper, Peter Linss, Daniel Glazman, Tantek &#xC7;elik, Florian Rivoal, Alex Mogilevsky, Simon Sapin, Cameron McCormack, Liam R E Quin, Peter Moulder, Morten Stenshorne, Rune Lillesveen, Lars Erik Bolstad, Anton Prowse, Michel Onoff</p>
+
+
+</html>
+<!--
+<pre class=lineart>
+┌──────────────────────────────────────┐
+│ ┌──────────┐┌──────────┐┌──────────┐ │
+│ │          ││          ││          │ │
+│ │     1    ││    2     ││    3     │ │   
+│ │          ││          ││          │ │
+│ └──────────┘└──────────┘└──────────┘ │
+│                                      │
+│                                      │
+│                                      │
+│ ┌──────────────────────────────────┐ │
+│ │ footer                           │ │
+│ └──────────────────────────────────┘ │
+└──────────────────────────────────────┘
+
+┌──────────────────────────────────────┐
+│ ┌──────────┐┌──────────┐┌──────────┐ │
+│ │          ││          ││          │ │
+│ │     1    ││    2     ││    3     │ │   
+│ │          ││          ││          │ │
+│ └──────────┘└──────────┘└──────────┘ │
+│ ┌──────────────────────────────────┐ │
+│ │ footer                           │ │
+│ └──────────────────────────────────┘ │
+│                                      │
+│                                      │
+│                                      │
+│                                      │
+└──────────────────────────────────────┘
+
+</pre>
+-->
+<!--
+│┤╡╢╖╕╣║╗╝╜╛┐C└
+┬┴
+├─┼╞╟╚╔╩╦╠═╬╧D╨╤╥╙╘╒╓╫╪┘┌
+-->
+
+
 
 <!--
 <h3 id="the-float-offset-property"><span class="secno">3.1 </span>The 'float-offset' property</h3>
@@ -1994,195 +2199,3 @@ acticle::region(2) {
 -->
 
 
-<h2>Pullquotes</h2>
-
-<p>This section sketches various techniques for achieving pull quotes and other content that 
-
-<div class=example>
-<p>Moving an element down.
-
-<img src=38.png>
-
-<pre>
-.pullquote {
-  float: top;
-  float-defer-column: last;
-  float-defer-line: 2;
-}
-
-.pullquote {
-  float: top;
-  float-defer-column: last;
-  float-offset-y: 2;
-}
-
-.pullquote {
-  float: top;
-  float-defer-column: last;
-  float-offset: 2 top;
-}
-
-.pullquote {
-  float: top;
-  float-defer-column: last;
-  top: 2;
-}
-</pre>
-</div>
-
-
-<div class=example>
-<p>Moving an element down and toward the outside:
-
-<img src=36.png>
-
-<pre>
-.pullquote {
-  float: top;
-  float-defer-column: last;
-  float-defer-line: 2;
-  float-offset: 3em outside;
-  wrap-side: line-start;
-}
-
-.pullquote {
-  float: top;
-  float-defer-column: last;
-  float-defer-line: 2;
-  float-outside: 3em; /* floats towards the outside of the multicol element */
-  wrap-side: left;
-}
-
-.pullquote {
-  float: top;
-  float-defer-column: last;
-  float-offset-x: 3em;
-  float-offset-y: 2;
-  wrap-side: line-start;
-}
-
-.pullquote {
-  float: top;
-  float-defer-column: last;
-  float-offset: 2 bottom, 3em outside;
-  wrap-side: left;
-}
-
-.pullquote {
-  float: top;
-  float-defer-column: last;
-  left: 3em;
-  top: 2;
-  wrap-side: line-start;
-}
-</pre>
-</div>
-
-<div class=example>
-<p>Moving an element down and to the outside, so that half of the pullquote is outside the BFC:
-
-<img src=37.png>
-
-<pre>
-.pullquote {
-  width: 120%; /* relative to column width */
-  float: top;
-  float-defer-column: last;
-  float-defer-line: 2;
-  float-offset: 50%; /* relative to page float width */
-  wrap-side: line-start;
-}
-
-.pullquote {
-  width: 120%; /* relative to column width */
-  float: top;
-  float-defer-column: last;
-  float-defer-line: 2;
-  float-outside: 50%; /* floats towards the outside of the multicol element */
-  wrap-side: left;
-}
-
-.pullquote {
-  width: 120%; /* relative to column width */
-  float: top;
-  float-defer-column: last;
-  float-offset-y: 2;
-  float-offset-x: 50%;
-  wrap-side: line-start;
-}
-
-.pullquote {
-  width: 120%; /* relative to column width */
-  float: top;
-  float-defer-column: last;
-  float-offset: 2 bottom, 50% outside;
-  wrap-side: left;
-}
-
-.pullquote {
-  width: 120%; /* relative to column width */
-  float: top;
-  float-defer-column: last;
-  top: 2;
-  left: 50%;
-  wrap-side: line-start;
-}
-</pre>
-</div>
-
-
-
-<h2 class=no-num>References</h2>
-
-<div id=anolis-references></div>
-
-<h2 class=no-num id=acknowledgments>Acknowledgments</h2>
-
-<p>This document has been improved by Bert Bos, Michael Day, Melinda
-Grant, David Baron, Markus Mielke, Steve Zilles, Ian Hickson, Elika
-Etemad, Laurens Holst, Mike Bremford, Allan Sandfeld Jensen, Kelly
-Miller, Werner Donn&eacute;, Tarquin (Mark) Wilton-Jones, Michel Fortin,
-Christian Roth, Brady Duga, Del Merritt, Ladd Van Tol, Tab Atkins Jr.,
-Jacob Grundtvig Refstrup,  James Elmore, Ian Tindale, Murakami Shinyu, Paul E.
-Merrell, Philip Taylor, Brad Kemper, Peter Linss, Daniel Glazman, Tantek &#xC7;elik, Florian Rivoal, Alex Mogilevsky, Simon Sapin, Cameron McCormack, Liam R E Quin, Peter Moulder, Morten Stenshorne, Rune Lillesveen, Lars Erik Bolstad, Anton Prowse, Michel Onoff</p>
-
-
-</html>
-<!--
-<pre class=lineart>
-┌──────────────────────────────────────┐
-│ ┌──────────┐┌──────────┐┌──────────┐ │
-│ │          ││          ││          │ │
-│ │     1    ││    2     ││    3     │ │   
-│ │          ││          ││          │ │
-│ └──────────┘└──────────┘└──────────┘ │
-│                                      │
-│                                      │
-│                                      │
-│ ┌──────────────────────────────────┐ │
-│ │ footer                           │ │
-│ └──────────────────────────────────┘ │
-└──────────────────────────────────────┘
-
-┌──────────────────────────────────────┐
-│ ┌──────────┐┌──────────┐┌──────────┐ │
-│ │          ││          ││          │ │
-│ │     1    ││    2     ││    3     │ │   
-│ │          ││          ││          │ │
-│ └──────────┘└──────────┘└──────────┘ │
-│ ┌──────────────────────────────────┐ │
-│ │ footer                           │ │
-│ └──────────────────────────────────┘ │
-│                                      │
-│                                      │
-│                                      │
-│                                      │
-└──────────────────────────────────────┘
-
-</pre>
--->
-<!--
-│┤╡╢╖╕╣║╗╝╜╛┐C└
-┬┴
-├─┼╞╟╚╔╩╦╠═╬╧D╨╤╥╙╘╒╓╫╪┘┌
--->
