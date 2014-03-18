@@ -93,7 +93,9 @@ h2 { clear: both }
   <ol>
    <li><a href="#wrap-side"><span class="secno">4.1 </span>wrap-side</a></li>
    <li><a href="#wrap-contrast"><span class="secno">4.2 </span>wrap-contrast</a></ol></li>
- <li><a href="#pullquotes"><span class="secno">5 </span>Pullquotes</a></li>
+ <li><a href="#pullquotes"><span class="secno">5 </span>Pullquotes</a>
+  <ol>
+   <li><a href="#page-float-policy"><span class="secno">5.1 </span>Page float policy</a></ol></li>
  <li><a href="#references" class="no-num">References</a></li>
  <li><a href="#acknowledgments" class="no-num">Acknowledgments</a></ol>
 <!--end-toc-->
@@ -1156,6 +1158,8 @@ h1 { clear: column }
 
 -->
 
+
+
 <h3 id="overconstrained-page-floats"><span class="secno">2.7 </span>Overconstrained page floats</h3>
 
 <p>The properties described above allow rich designs to be described.
@@ -1213,7 +1217,6 @@ specified. UAs are free to find the best resulting column and page.
 </div>
 
 
-<p class="issue">Should there be a way to delete page floats that end up lonesome on pages?
 
 
 <!--
@@ -1540,6 +1543,50 @@ figure {
 }
 </pre>
 </div>
+
+
+<h3 id="page-float-policy"><span class="secno">5.1 </span>Page float policy</h3>
+
+<p class="issue">Sketchy
+
+<table class="propdef">
+    <tr>
+
+      <td><em>Name:</em>
+      <td><dfn id="float-policy">float-policy</dfn>
+    <tr>
+      <td><em>Value:</em>
+      <td>normal | not-alone
+    <tr>
+      <td><em>Initial:</em>
+      <td>normal
+    <tr>
+      <td><em>Applies to:</em>
+      <td>page floats
+    <tr>
+      <td><em>Inherited:</em>
+      <td>no
+    <tr>
+      <td><em>Percentages:</em>
+      <td>N/A
+    <tr>
+      <td><em>Media:</em>
+      <td>visual
+    <tr>
+      <td><em>Computed value:</em>
+      <td>specified value
+</table>
+
+<p>Values are:
+
+<dl>
+<dt>normal
+<dd>
+<dt>delete-if-last 
+<dd>delete element if its resultant columnn would appear after all content in the normal flow 
+</dl>
+
+
 
 
 
