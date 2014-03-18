@@ -1171,6 +1171,8 @@ h1 { clear: column }
 
 -->
 
+
+
 <h3>Overconstrained page floats</h3>
 
 <p>The properties described above allow rich designs to be described.
@@ -1232,7 +1234,6 @@ p { float: top; float-defer-page: last }
 </div>
 
 
-<p class=issue>Should there be a way to delete page floats that end up lonesome on pages?
 
 
 <!--
@@ -1567,6 +1568,50 @@ figure {
 }
 </pre>
 </div>
+
+
+<h3>Page float policy</h3>
+
+<p class=issue>Sketchy
+
+<table class=propdef>
+    <tr>
+
+      <td><em>Name:</em>
+      <td><dfn>float-policy</dfn>
+    <tr>
+      <td><em>Value:</em>
+      <td>normal | not-alone
+    <tr>
+      <td><em>Initial:</em>
+      <td>normal
+    <tr>
+      <td><em>Applies to:</em>
+      <td>page floats
+    <tr>
+      <td><em>Inherited:</em>
+      <td>no
+    <tr>
+      <td><em>Percentages:</em>
+      <td>N/A
+    <tr>
+      <td><em>Media:</em>
+      <td>visual
+    <tr>
+      <td><em>Computed&nbsp;value:</em>
+      <td>specified value
+</table>
+
+<p>Values are:
+
+<dl>
+<dt>normal
+<dd>
+<dt>delete-if-last 
+<dd>delete element if its resultant columnn would appear after all content in the normal flow 
+</dl>
+
+
 
 
 
