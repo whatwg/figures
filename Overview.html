@@ -35,7 +35,7 @@ h2 { clear: both }
   <p><a href="http://www.whatwg.org/" class="logo"><img width="100" alt="WHATWG" height="100" src="http://resources.whatwg.org/logo.svg"></a></p>
 	<h1>CSS Figures</h1>
 	
-	<h2 class="no-num no-toc" id="living-standard-last-updated-17-march-2014">Living Standard — Last Updated 17 March 2014</h2>
+	<h2 class="no-num no-toc" id="living-standard-last-updated-18-march-2014">Living Standard — Last Updated 18 March 2014</h2>
 	
 	<dl>
 		<dt>This version:
@@ -56,7 +56,7 @@ h2 { clear: both }
 
 	</dl>
 	
-<p class="copyright"><a href="http://creativecommons.org/publicdomain/zero/1.0/" rel="license"><img src="http://i.creativecommons.org/p/zero/1.0/80x15.png" alt="CC0"></a>To the extent possible under law, the editor has waived all copyright and related or neighboring rights to this work. In addition, as of 17 March 2014, the editor has made this specification available under the
+<p class="copyright"><a href="http://creativecommons.org/publicdomain/zero/1.0/" rel="license"><img src="http://i.creativecommons.org/p/zero/1.0/80x15.png" alt="CC0"></a>To the extent possible under law, the editor has waived all copyright and related or neighboring rights to this work. In addition, as of 18 March 2014, the editor has made this specification available under the
 <a href="http://www.openwebfoundation.org/legal/the-owf-1-0-agreements/owfa-1-0" rel="license">Open Web Foundation Agreement Version 1.0</a>, which is available at <!--begin-link--><a href="http://www.openwebfoundation.org/legal/the-owf-1-0-agreements/owfa-1-0">http://www.openwebfoundation.org/legal/the-owf-1-0-agreements/owfa-1-0</a><!--end-link-->.
 
 </div>
@@ -221,8 +221,14 @@ property to create <em>page floats</em>.
 <dt>top-bottom
 <dd>The page float is moved to the top of its column, i.e., to the beginning (in the block direction) of its <em>defer column</em>. If that position is not possible (due to 'column: clear' being set, or due to lack of space), other possibilities are tried in order: the bottom of its column, the top of the next column, the bottom of the next column, etc.
 
+<dt>block-start-end
+<dd>alias for 'top-bottom'
+
 <dt>bottom-top
 <dd>The page float is moved to the bottom of its column, i.e., to the end (in the block direction) of its <em>defer column</em>. If that position is not possible (due to 'column: clear' being set, or due to lack of space), other possibilities are tried in order: the bottom of its column, the top of the next column, the bottom of the next column, etc.
+
+<dt>block-end-start
+<dd>alias for 'bottom-top'
 
 </dl>
 
@@ -356,7 +362,6 @@ table { float: snap(3em 2em, bottom) }
 </pre>
 </div>
 -->
-
 
 
 <h3 id="spanning-columns:-column-span"><span class="secno">2.3 </span>Spanning columns: 'column-span'</h3>
