@@ -765,11 +765,11 @@ These properties are evaluated before the 'clear' property.
 
 <dt>&lt;integer&gt;
 
-<dd>A positive integer indicates that the page float is deferred by the specified number of columns. If the number results in column that does not exist, the last column should be attempted. A negative integer indicates that the page float is deferred by counting from the last column; -1 means the last column, -2 means the next-to-last column, etc. If the specified negative integer would result the defer column being a previous column, the value is ignored. Also, zero is ignored. Integer values only have effect when the page float is shown on its natural page; on other pages the defer column will be the first column on the page.
+<dd>A positive integer indicates that the page float is deferred by the specified number of columns. If the number results in column that does not exist, the last column should be attempted. A negative integer indicates that the page float is deferred by counting from the last column; -1 means the last column, -2 means the next-to-last column, etc. If the specified negative integer would result the defer column being a previous column, the value is ignored. Also, zero is ignored. <!--Integer values only have effect when the page float is shown on its natural page; on other pages the defer column will be the first column on the page.-->
 
 <dt>last
 
-<dd>The last column on the natural page becomes the defer column. If the page float cannot be shown on its natural page, this keword still has effect (unlike integer values).
+<dd>The last column on the natural page becomes the defer column. <!--If the page float cannot be shown on its natural page, this keyword still has effect (unlike integer values).-->
 
 </dl>
 
@@ -963,11 +963,11 @@ figure { float-defer-page: -1 }
 
 <dd>The page float requests to be the first page float at the bottom of the column. If there is already a page float at the requested position, the page float is moved to the next column. 
 -->
-<!--
+
 <dt>page
 
-<dd>The page float requests to be the first page float a itson the page. If there is already another page float on the page, the page float is moved to the next page.
--->
+<dd>The page float requests to be the first page float on the page. If there is already another page float on the page, the page float is moved to the next page.
+
 
 </dl>
 
@@ -1583,15 +1583,18 @@ figure {
 <dt>normal
 <dd>nothing special
 <dt>not-last
-<dd>delete element if its resultant columnn would appear after all content in the normal flow 
+<dd>treat element as if 'display: none' had been set if its resultant column appears after all other content in the normal flow of the multicol element.
 </dl>
 
 <div example="" class="">
 
-<p>Only show pullquotes that appear with other content.
+<p>Only show pullquotes that appear with other content; we don't want a stack of pullquotes at the end of an article.
 
 <pre>.pullquote { 
-   float-policy: not-last
+   float: top;
+   clear: page;
+   float-defer-column: 2;
+   float-policy: not-last;
 }
 
 </pre></div>
