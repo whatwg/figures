@@ -1606,14 +1606,21 @@ figure {
 
 <dl>
 <dt>normal
-<dd>
-<dt>delete-if-last 
+<dd>nothing special
+<dt>not-last
 <dd>delete element if its resultant columnn would appear after all content in the normal flow 
 </dl>
 
+<div class example>
 
+<p>Only show pullquotes that appear with other content.
 
+<pre>
+.pullquote { 
+   float-policy: not-last
+}
 
+</div>
 
 <h2 class=no-num>References</h2>
 
