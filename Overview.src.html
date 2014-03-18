@@ -200,8 +200,14 @@ property to create <em>page floats</em>.
 <dt>top-bottom
 <dd>The page float is moved to the top of its column, i.e., to the beginning (in the block direction) of its <em>defer column</em>. If that position is not possible (due to 'column: clear' being set, or due to lack of space), other possibilities are tried in order: the bottom of its column, the top of the next column, the bottom of the next column, etc.
 
+<dt>block-start-end
+<dd>alias for 'top-bottom'
+
 <dt>bottom-top
 <dd>The page float is moved to the bottom of its column, i.e., to the end (in the block direction) of its <em>defer column</em>. If that position is not possible (due to 'column: clear' being set, or due to lack of space), other possibilities are tried in order: the bottom of its column, the top of the next column, the bottom of the next column, etc.
+
+<dt>block-end-start
+<dd>alias for 'bottom-top'
 
 </dl>
 
@@ -341,7 +347,6 @@ table { float: snap(3em 2em, bottom) }
 </pre>
 </div>
 -->
-
 
 
 <h3>Spanning columns: 'column-span'</h3>
