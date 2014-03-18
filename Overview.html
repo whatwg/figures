@@ -349,6 +349,8 @@ float.
 
 <p>To determine the exact meaning of 'near', the Japanese layout requirements document should be consulted.
 
+<!--http://www.w3.org/TR/jlreq/#basic_ideas_about_illustration_positioning_in_JISX4051-->
+
 
 <!--
 <div class=example>
@@ -420,7 +422,7 @@ new definition is:
 
 <p>If the resulting number of columns is equal to, or larger than the number of columns in the multicol element, the number of columns spanned will be the same as if 'column-span: all' had been specified. 
 
-<p>In the line direction, the rectangle described by this property is, by default, placed at the start of the resulting column, extending in the line direction. However, the rectangle will normally not extend outside the content box of the element that defines its block formatting context and must therefore often be extended in the opposite direction. (Negative margins and/or 'float-offet' may possibly move the page float outside the content box.)
+<p>In the line direction, the rectangle described by this property is, by default, placed at the start of the resulting column, extending in the line direction. However, the rectangle will not normally extend outside the content box of the multicol element. Instead, the rectangle extended in the opposite line direction. (Negative margins and/or 'float-offet' may possibly move the page float outside the content box.)
 
 <div class="example">
 <p>In this example, the defer column is the last column on the page. Due to the setting on 'column-span' the page float also covers another column. As it cannot extend outside the content box of the multicol element, it must extend to the left into column 2.
@@ -450,7 +452,7 @@ new definition is:
 </div>
 
 <div class="example">
-<p>This example is a variation of the previous example, showing how page float grow in the oppsite of the line direction.
+<p>This example is a variation of the previous example, showing how the page float grows in the oppsite of the line direction.
 
 <pre>img { 
   float: top;
@@ -1007,18 +1009,6 @@ figure { float-defer-page: -1 }
 </div>
 
 
-<div class="example">
-<p>In this example, the first figure will move to the top of its natural column, while the second will move to the bottom: 
-
-<pre>figure { float: top-bottom; clear: column }
-
-&lt;figure&gt;...&lt;/figure&gt;
-&lt;figure&gt;...&lt;/figure&gt;
-</pre>
-<img src="32.png">
-
-<p>The placement of the second float is due to the 'top-bottom' indicating that the bottom as an acceptable position, and due to it being the first page float in the bottom position. 
-</div>
 
 <div class="example">
 <p>In this example there are three figures, all requesting to be the first page float in their favored position. The first figure will move to the top of its natural column, the second will move to the next-best position, which is the bottom of the natural column. The third-best position is the top of the next column, which is where the third figure will be placed.
@@ -1035,17 +1025,7 @@ figure { float-defer-page: -1 }
 
 
 <div class="example">
-<p>In this example, the two figures may appear at the bottom of the same column as clear has not been set:
-<pre>figure { float: bottom; clear: none }
-
-&lt;figure&gt;...&lt;/figure&gt;
-&lt;figure&gt;...&lt;/figure&gt;
-</pre>
-<img src="16.png">
-</div>
-
-<div class="example">
-<p>In this example, the two figures will appear in different columns due to clearing at the bottom:
+<p>In this example, the two figures will appear in different columns due to clearing:
 <pre>figure { float: bottom; clear: column }
 
 &lt;figure&gt;...&lt;/figure&gt;
@@ -1064,48 +1044,43 @@ figure { float-defer-page: -1 }
 </pre>
 </div>
 
-<div class="example">
-<p>In this example, the two figures request different positions, and
-they may therefore end up in the same column:
-<pre>figure.one { float: top; clear: column }
-figure.two { float: bottom; clear: column }
+<!--
 
-&lt;figure class="one"&gt;&lt;/figure&gt;
-&lt;figure class="two"&gt;&lt;/figure&gt;
-</pre>
-</div>
-
-
-<div class="example">
+<div class=example>
 <p>Consider this code:
-<pre>figure { float: top }
+<pre>
+figure { float: top }
 
-&lt;figure&gt;...&lt;/figure&gt;
-&lt;h1&gt;Heading&lt;/h1&gt;
+&lt;figure>...&lt;/figure>
+&lt;h1>Heading&lt;/h1>
 </pre>
 
 <p>which results in a content being laid out like this, before the content is distributed to its columns
 
-<img src="34.png">
+<img src=34.png>
 
-<p>When the figure is floated to the top, it may end up in column one (if the implementation is able to change previously laid-out content), or in column two. In the latter case, there wille be room for the heading at the bottom of the first column. However, this placement is not optimal as the heading will be shown before the end of the preceding section (amongst other reasons). To make sure the heading is shown before the figure, the following code can be applied:
+<p>When the figure is floated to the top, it may end up in column one (if the implementation is able to change previously laid-out content), or in column two. In the latter case, there will be room for the heading at the bottom of the first column. However, this placement is not optimal as the heading will be shown before the end of the preceding section (amongst other reasons). To make sure the heading is shown before the figure, the following code can be applied:
 
-<pre>h1 { clear: column }
+<pre>
+h1 { clear: column }
 </pre>
 
-<p class="issue">Is this enough? Do we need another value on 'clear' to express this? Should clear have a scope?
+<p class=issue>Is this enough? Do we need another value on 'clear' to express this? 
 
 </div>
 
-<div class="issue">Do we need a way to set column breaks after page floats? Here is one option:
+-->
+<!--
+<div class=issue>Do we need a way to set column breaks after page floats? Here is one option:
 
-<pre>  img { 
+<pre>
+  img { 
     float: top 
     margin-bottom: auto;
   }
 </pre>
 </div>
-
+-->
 
 
 <!--
@@ -1325,7 +1300,7 @@ specified. UAs are free to find the best resulting column and page.
 
 <dd>other content may wrap around on all sides of the float
 
-<dt>all | left | right | top | bottom | line-start | line-end | block-start | block-end 
+<dt>left | right | top | bottom | line-start | line-end | block-start | block-end 
 <dd>specifies which side wrapping is allowed
   
 <dt>line
@@ -1358,13 +1333,15 @@ img { float: top; column-span: 1.70; width: 100%; wrap-side: line }
 <div class="example">
 <pre>p:first-letter { float: left; font-size: 3em; wrap-side: 1 line }
 </pre>
-<pre><span style="float: left; font-size: 8em">A</span>
-<span style="position: relative; left: -1.2em">Lorem Ipsum</span>
-Lorem Ipsum
-Lorem Ipsum
-Lorem Ipsum
-Lorem Ipsum
+
+<pre style="height: 3.4cm; width: 4.6cm; font: 14px Georgia; position: relative;"><span style="position: absolute; top: 0; left: 0; font-size: 5.1em">A</span>
+<span style="position: absolute; left: 1cm; top: 0.3cm">nd so, away with this</span>
+<span style="position: absolute; left: 1.5cm; top: 0.85cm">folly. Science, in-</span>
+<span style="position: absolute; left: 1.5cm; top: 1.4cm">stead of being the</span>
+<span style="position: absolute; left: 0; top: 1.95cm">enemy of poetry, is its quar-</span>
+<span style="position: absolute; left: 0; top: 2.5cm">termaster and commissary.</span>
 </pre>
+
 </div>
 
 
