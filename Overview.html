@@ -35,7 +35,7 @@ h2 { clear: both }
   <p><a href="http://www.whatwg.org/" class="logo"><img width="100" alt="WHATWG" height="100" src="http://resources.whatwg.org/logo.svg"></a></p>
 	<h1>CSS Figures</h1>
 	
-	<h2 class="no-num no-toc" id="living-standard-last-updated-18-march-2014">Living Standard — Last Updated 18 March 2014</h2>
+	<h2 class="no-num no-toc" id="living-standard-last-updated-24-march-2014">Living Standard — Last Updated 24 March 2014</h2>
 	
 	<dl>
 		<dt>This version:
@@ -56,7 +56,7 @@ h2 { clear: both }
 
 	</dl>
 	
-<p class="copyright"><a href="http://creativecommons.org/publicdomain/zero/1.0/" rel="license"><img src="http://i.creativecommons.org/p/zero/1.0/80x15.png" alt="CC0"></a>To the extent possible under law, the editor has waived all copyright and related or neighboring rights to this work. In addition, as of 18 March 2014, the editor has made this specification available under the
+<p class="copyright"><a href="http://creativecommons.org/publicdomain/zero/1.0/" rel="license"><img src="http://i.creativecommons.org/p/zero/1.0/80x15.png" alt="CC0"></a>To the extent possible under law, the editor has waived all copyright and related or neighboring rights to this work. In addition, as of 24 March 2014, the editor has made this specification available under the
 <a href="http://www.openwebfoundation.org/legal/the-owf-1-0-agreements/owfa-1-0" rel="license">Open Web Foundation Agreement Version 1.0</a>, which is available at <!--begin-link--><a href="http://www.openwebfoundation.org/legal/the-owf-1-0-agreements/owfa-1-0">http://www.openwebfoundation.org/legal/the-owf-1-0-agreements/owfa-1-0</a><!--end-link-->.
 
 </div>
@@ -1419,7 +1419,11 @@ figure {
 
 <img src="38.png">
 
-<pre>
+<pre>.pullquote {
+  float: top;
+  float-defer-column: last;
+  float-offset: 2li;
+}
 .pullquote {
   float: top;
   float-defer-column: last;
@@ -1429,22 +1433,48 @@ figure {
 .pullquote {
   float: top;
   float-defer-column: last;
-  float-offset-y: 2;
+  float-offset: 2li;
 }
+</pre>
+</div>
+
+<!--
 
 .pullquote {
   float: top;
   float-defer-column: last;
-  float-offset: 2 top;
+  float-offset-y: 2;
 }
-
 .pullquote {
   float: top;
   float-defer-column: last;
   top: 2;
 }
-</pre>
-</div>
+.pullquote {
+  float: top;
+  float-defer-column: last;
+  left: 3em;
+  top: 2;
+  wrap-side: line-start;
+}
+.pullquote {
+  float: top;
+  float-defer-column: last;
+  float-offset-x: 3em;
+  float-offset-y: 2;
+  wrap-side: line-start;
+}
+
+
+.pullquote {
+  float: top;
+  float-defer-column: last;
+  float-defer-line: 2;
+  float-outside: 3em; /* floats towards the outside of the multicol element */
+  wrap-side: left;
+}
+
+-->
 
 
 <div class="example">
@@ -1455,8 +1485,7 @@ figure {
 <pre>.pullquote {
   float: top;
   float-defer-column: last;
-  float-defer-line: 2;
-  float-offset: 3em outside;
+  float-offset: 2li 3em;
   wrap-side: line-start;
 }
 
@@ -1464,15 +1493,7 @@ figure {
   float: top;
   float-defer-column: last;
   float-defer-line: 2;
-  float-outside: 3em; /* floats towards the outside of the multicol element */
-  wrap-side: left;
-}
-
-.pullquote {
-  float: top;
-  float-defer-column: last;
-  float-offset-x: 3em;
-  float-offset-y: 2;
+  float-offset: 3em outside;
   wrap-side: line-start;
 }
 
@@ -1483,13 +1504,6 @@ figure {
   wrap-side: left;
 }
 
-.pullquote {
-  float: top;
-  float-defer-column: last;
-  left: 3em;
-  top: 2;
-  wrap-side: line-start;
-}
 </pre>
 </div>
 
