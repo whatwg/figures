@@ -1496,6 +1496,15 @@ figure {
   float-outside: 3em; /* floats towards the outside of the multicol element */
   wrap-side: left;
 }
+.pullquote {
+  width: 120%; /* relative to column width */
+  float: top;
+  float-defer-column: last;
+  float-offset-y: 2;
+  float-offset-x: 50%;
+  wrap-side: line-start;
+}
+
 
 -->
 
@@ -1553,15 +1562,6 @@ figure {
   float-defer-line: 2;
   float-outside: 50%; /* floats towards the outside of the multicol element */
   wrap-side: left;
-}
-
-.pullquote {
-  width: 120%; /* relative to column width */
-  float: top;
-  float-defer-column: last;
-  float-offset-y: 2;
-  float-offset-x: 50%;
-  wrap-side: line-start;
 }
 
 .pullquote {
