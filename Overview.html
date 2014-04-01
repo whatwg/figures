@@ -35,7 +35,7 @@ h2 { clear: both }
   <p><a href="http://www.whatwg.org/" class="logo"><img width="100" alt="WHATWG" height="100" src="http://resources.whatwg.org/logo.svg"></a></p>
 	<h1>CSS Figures</h1>
 	
-	<h2 class="no-num no-toc" id="living-standard-last-updated-25-march-2014">Living Standard — Last Updated 25 March 2014</h2>
+	<h2 class="no-num no-toc" id="living-standard-last-updated-1-april-2014">Living Standard — Last Updated 1 April 2014</h2>
 	
 	<dl>
 		<dt>This version:
@@ -56,7 +56,7 @@ h2 { clear: both }
 
 	</dl>
 	
-<p class="copyright"><a href="http://creativecommons.org/publicdomain/zero/1.0/" rel="license"><img src="http://i.creativecommons.org/p/zero/1.0/80x15.png" alt="CC0"></a>To the extent possible under law, the editor has waived all copyright and related or neighboring rights to this work. In addition, as of 25 March 2014, the editor has made this specification available under the
+<p class="copyright"><a href="http://creativecommons.org/publicdomain/zero/1.0/" rel="license"><img src="http://i.creativecommons.org/p/zero/1.0/80x15.png" alt="CC0"></a>To the extent possible under law, the editor has waived all copyright and related or neighboring rights to this work. In addition, as of 1 April 2014, the editor has made this specification available under the
 <a href="http://www.openwebfoundation.org/legal/the-owf-1-0-agreements/owfa-1-0" rel="license">Open Web Foundation Agreement Version 1.0</a>, which is available at <!--begin-link--><a href="http://www.openwebfoundation.org/legal/the-owf-1-0-agreements/owfa-1-0">http://www.openwebfoundation.org/legal/the-owf-1-0-agreements/owfa-1-0</a><!--end-link-->.
 
 </div>
@@ -87,7 +87,8 @@ h2 { clear: both }
      <li><a href="#float-defer-column"><span class="secno">2.5.1 </span>'float-defer-column'</a></li>
      <li><a href="#float-defer-page"><span class="secno">2.5.2 </span>'float-defer-page'</a></ol></li>
    <li><a href="#clearing-page-floats"><span class="secno">2.6 </span>Clearing page floats</a></li>
-   <li><a href="#overconstrained-page-floats"><span class="secno">2.7 </span>Overconstrained page floats</a></ol></li>
+   <li><a href="#avoiding-content-after-page-floats"><span class="secno">2.7 </span>Avoiding content after page floats</a></li>
+   <li><a href="#overconstrained-page-floats"><span class="secno">2.8 </span>Overconstrained page floats</a></ol></li>
  <li><a href="#floating-inside-and-outside-pages"><span class="secno">3 </span>Floating inside and outside pages</a></li>
  <li><a href="#wrapping-around-page-floats-and-other-elements"><span class="secno">4 </span>Wrapping around page floats (and other elements)</a>
   <ol>
@@ -1072,17 +1073,23 @@ h1 { clear: column }
 </div>
 
 -->
-<!--
-<div class=issue>Do we need a way to set column breaks after page floats? Here is one option:
 
-<pre>
-  img { 
-    float: top 
+<h3 id="avoiding-content-after-page-floats"><span class="secno">2.7 </span>Avoiding content after page floats</h3>
+
+<p>Page floats can request that subsequent content is avoided by
+setting margin values in the block direction to 'auto'.
+
+<div class="example">
+<pre>  img { 
+    float: top;
     margin-bottom: auto;
   }
 </pre>
+
+<img src="40.png" alt="sample rendering">
+
 </div>
--->
+
 
 
 <!--
@@ -1160,7 +1167,7 @@ h1 { clear: column }
 
 
 
-<h3 id="overconstrained-page-floats"><span class="secno">2.7 </span>Overconstrained page floats</h3>
+<h3 id="overconstrained-page-floats"><span class="secno">2.8 </span>Overconstrained page floats</h3>
 
 <p>The properties described above allow rich designs to be described.
 However, in many cases page floats must be moved to another column or
