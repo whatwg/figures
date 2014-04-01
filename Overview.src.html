@@ -1085,17 +1085,24 @@ h1 { clear: column }
 </div>
 
 -->
-<!--
-<div class=issue>Do we need a way to set column breaks after page floats? Here is one option:
 
+<h3>Avoiding content after page floats</h3>
+
+<p>Page floats can request that subsequent content is avoided by
+setting margin values in the block direction to 'auto'.
+
+<div class=example>
 <pre>
   img { 
-    float: top 
+    float: top;
     margin-bottom: auto;
   }
 </pre>
+
+<img alt="sample rendering" src=40.png>
+
 </div>
--->
+
 
 
 <!--
