@@ -96,7 +96,7 @@ h2 { clear: both }
    <li><a href="#overconstrained-page-floats"><span class="secno">3.7 </span>Overconstrained page floats</a></ol></li>
  <li><a href="#combo-floats"><span class="secno">4 </span>Combo floats</a>
   <ol>
-   <li><a href="#page-float-policy"><span class="secno">4.1 </span>Page float policy</a></ol></li>
+   <li><a href="#float-policy"><span class="secno">4.1 </span>'float-policy'</a></ol></li>
  <li><a href="#wrapping-around-page-floats-and-other-elements"><span class="secno">5 </span>Wrapping around page floats (and other elements)</a>
   <ol>
    <li><a href="#wrap-side"><span class="secno">5.1 </span>wrap-side</a></li>
@@ -1420,22 +1420,20 @@ therefore intrude into the neighboring column. At the bottom of the
 middle column is a long word that is clipped in the middle of the
 column gap.
 
-<pre>img { float: top left; column-span: 2; width: 65% }
-   /* or */
-img { float: top left; column-span: 1.70; width: 100% }
+<pre>img { float: top left; column-span: 1.70; width: 100% }
 </pre>
 
 <img src="39.png" alt="sample rendering">
 </div>
 
 
-<h3 id="page-float-policy"><span class="secno">4.1 </span>Page float policy</h3>
+<h3 id="float-policy"><span class="secno">4.1 </span>'float-policy'</h3>
 
 <table class="propdef">
     <tr>
 
       <td><em>Name:</em>
-      <td><dfn id="float-policy">float-policy</dfn>
+      <td><dfn id="float-policy-0">float-policy</dfn>
     <tr>
       <td><em>Value:</em>
       <td>normal | not-last | in-order
@@ -1471,7 +1469,7 @@ img { float: top left; column-span: 1.70; width: 100% }
 </dl>
 
 
-<div example="" class="">
+<div class="example">
 
 <p>Only show pullquotes that appear with other content; we don't want a stack of pullquotes at the end of an article.
 
