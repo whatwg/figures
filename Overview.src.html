@@ -1300,6 +1300,70 @@ setting margin values in the block direction to 'auto'.
 
 -->
 
+<h3>'float-policy'</h3>
+
+<table class=propdef>
+    <tr>
+
+      <td><em>Name:</em>
+      <td><dfn>float-policy</dfn>
+    <tr>
+      <td><em>Value:</em>
+      <td>normal | not-last | in-order
+    <tr>
+      <td><em>Initial:</em>
+      <td>normal
+    <tr>
+      <td><em>Applies to:</em>
+      <td>page floats
+    <tr>
+      <td><em>Inherited:</em>
+      <td>no
+    <tr>
+      <td><em>Percentages:</em>
+      <td>N/A
+    <tr>
+      <td><em>Media:</em>
+      <td>visual
+    <tr>
+      <td><em>Computed&nbsp;value:</em>
+      <td>specified value
+</table>
+
+<p>Values are:
+
+<dl>
+<dt>normal
+<dd>no extra constraints are added
+<dt>not-last
+<dd>treat page float as if 'display: none' had been set if its resultant column appears after all other content in the normal flow of the multicol element.
+<dt>in-order
+<dd>page float must be displayed after all previous page floats in the source order
+</dl>
+
+
+<div class=example>
+
+<p>Only show pullquotes that appear with other content; we don't want a stack of pullquotes at the end of an article.
+
+<pre>
+.pullquote { 
+   float: top;
+   clear: page;
+   float-defer-column: 2;
+   float-policy: not-last;
+}
+</div>
+
+<div class example>
+<p>Indicate that all figures must be shown in order.
+
+<pre>
+figure { 
+   float-policy: in-order;
+}
+</pre>
+</div>
 
 
 <h3>Overconstrained page floats</h3>
@@ -1445,74 +1509,6 @@ img { float: top left; column-span: 1.70; width: 100% }
 
 <img alt="sample rendering" src=39.png>
 </div>
-
-
-<h3>'float-policy'</h3>
-
-<table class=propdef>
-    <tr>
-
-      <td><em>Name:</em>
-      <td><dfn>float-policy</dfn>
-    <tr>
-      <td><em>Value:</em>
-      <td>normal | not-last | in-order
-    <tr>
-      <td><em>Initial:</em>
-      <td>normal
-    <tr>
-      <td><em>Applies to:</em>
-      <td>page floats
-    <tr>
-      <td><em>Inherited:</em>
-      <td>no
-    <tr>
-      <td><em>Percentages:</em>
-      <td>N/A
-    <tr>
-      <td><em>Media:</em>
-      <td>visual
-    <tr>
-      <td><em>Computed&nbsp;value:</em>
-      <td>specified value
-</table>
-
-<p>Values are:
-
-<dl>
-<dt>normal
-<dd>no extra constraints are added
-<dt>not-last
-<dd>treat page float as if 'display: none' had been set if its resultant column appears after all other content in the normal flow of the multicol element.
-<dt>in-order
-<dd>page float must be displayed after all previous page floats in the source order
-</dl>
-
-
-<div class=example>
-
-<p>Only show pullquotes that appear with other content; we don't want a stack of pullquotes at the end of an article.
-
-<pre>
-.pullquote { 
-   float: top;
-   clear: page;
-   float-defer-column: 2;
-   float-policy: not-last;
-}
-</div>
-
-<div class example>
-<p>Indicate that all figures must be shown in order.
-
-<pre>
-figure { 
-   float-policy: in-order;
-}
-</pre>
-</div>
-
-
 
 
 
