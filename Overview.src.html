@@ -1055,16 +1055,6 @@ figure { float-defer-page: -1 }
       <td>specified value
 </table>
 
-<div class=example>
-<pre>
-.pullquote { 
-  float: top outside;
-  float-defer-column: last; 
-  float-defer-line: 50%;
-  float-offset: -50%;
-}
-</pre>
-</div>
 
 <div class=example>
 <p>Move a pullquote to the top, bar two lines.
@@ -1079,39 +1069,7 @@ figure { float-defer-page: -1 }
 <img src=38.png>
 </div>
 
-<div class=example>
-<p>Move an element down and toward the outside:
 
-<img src=36.png>
-
-<pre>
-.pullquote {
-  float: top outsid;e
-  float-defer-column: last;
-  float-defer-line: 2;
-  float-offset: -2em;
-}
-
-</div>
-
-
-<div class=example>
-<p>Moving an element down and to the outside, so that the element is half way down, and half of the pullquote is outside the BFC:
-
-
-<pre>
-.pullquote {
-  width: 120%; /* relative to column width */
-  float: top outside;  /* position page float at the top... */
-  float-defer-column: last; /* ... of the last column */
-  float-defer-line: 50%; /* move page float down */
-  float-offset: -50%; /* push page float into margin */
-}
-</pre>
-
-<img src=37.png>
-
-</div>
 
 <h3>Clearing page floats</h3>
 
@@ -1440,6 +1398,55 @@ float: top left
 </pre>
 </div>
 
+<div class=example>
+<p>Move an element down and toward the outside:
+
+<img src=36.png>
+
+<pre>
+.pullquote {
+  float: top outside;
+  float-defer-column: last;
+  float-defer-line: 2;
+  float-offset: -2em;
+}
+
+</div>
+
+
+<div class=example>
+<p>Moving an element down and to the outside, so that the element is half way down, and half of the pullquote is outside the BFC:
+
+
+<pre>
+.pullquote {
+  width: 120%; /* relative to column width */
+  float: top outside;  /* position page float at the top... */
+  float-defer-column: last; /* ... of the last column */
+  float-defer-line: 50%; /* move page float down */
+  float-offset: -50%; /* push page float into margin */
+}
+</pre>
+
+<img src=37.png>
+
+</div>
+
+<div class=example>
+
+<p>In this example, the image is set to span two columns, but it does not use all available space. 
+therefore intrude into the neighboring column. At the bottom of the
+middle column is a long word that is clipped in the middle of the
+column gap.
+
+<pre>
+img { float: top left; column-span: 2; width: 65% }
+   /* or */
+img { float: top left; column-span: 1.70; width: 100% }
+</pre>
+
+<img alt="sample rendering" src=39.png>
+</div>
 
 
 <h3>Page float policy</h3>
@@ -1566,23 +1573,6 @@ figure {
 
 </dl>
 
-<div class=example>
-
-<p>In this example, the image is set to span two columns, but it does not use all available space. 
-therefore intrude into the neighboring column. At the bottom of the
-middle column is a long word that is clipped in the middle of the
-column gap.
-
-<pre>
-img { float: top; column-span: 2; width: 65%; wrap-side: all }
-   /* or */
-img { float: top; column-span: 1.70; width: 100%; wrap-side: line }
-</pre>
-
-
-<img alt="sample rendering" src=39.png>
-
-</div>
 
 <div class=example>
 <pre>
