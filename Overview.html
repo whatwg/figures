@@ -809,7 +809,7 @@ These properties are evaluated before the 'clear' property.
       <td><dfn id="float-defer-column-0">float-defer-column</dfn>
     <tr>
       <td><em>Value:</em>
-      <td>none | &lt;integer&gt; | last
+      <td>none | &lt;integer&gt; | last | inside | outside
     <tr>
       <td><em>Initial:</em>
       <td>none
@@ -844,6 +844,14 @@ These properties are evaluated before the 'clear' property.
 <dt>last
 
 <dd>The last column on the natural page becomes the defer column. <!--If the page float cannot be shown on its natural page, this keyword still has effect (unlike integer values).-->
+
+<dt>inside
+
+<dd>The next inside column becomes the defer column. 
+
+<dt>outside
+
+<dd>The next outside column becomes the defer column. 
 
 </dl>
 
@@ -1065,6 +1073,21 @@ figure { float-defer-page: -1 }
 
 <img src="38.png">
 </div>
+
+<div class="example">
+<p>Move an element down and toward the outside:
+
+<img src="36.png">
+
+<pre>.pullquote {
+  float: top outsid;e
+  float-defer-column: last;
+  float-defer-line: 2;
+  float-offset: -2em;
+}
+
+</pre></div>
+
 
 <div class="example">
 <p>Moving an element down and to the outside, so that the element is half way down, and half of the pullquote is outside the BFC:
@@ -1409,7 +1432,7 @@ called combo floats.
       <td><dfn id="float-policy">float-policy</dfn>
     <tr>
       <td><em>Value:</em>
-      <td>normal | not-last
+      <td>normal | not-last | in-order
     <tr>
       <td><em>Initial:</em>
       <td>normal
@@ -1434,10 +1457,13 @@ called combo floats.
 
 <dl>
 <dt>normal
-<dd>nothing special
+<dd>no extra constraints are added
 <dt>not-last
-<dd>treat element as if 'display: none' had been set if its resultant column appears after all other content in the normal flow of the multicol element.
+<dd>treat page float as if 'display: none' had been set if its resultant column appears after all other content in the normal flow of the multicol element.
+<dt>in-order
+<dd>page float must be displayed after all previous page floats in the source order
 </dl>
+
 
 <div example="" class="">
 
@@ -1449,8 +1475,20 @@ called combo floats.
    float-defer-column: 2;
    float-policy: not-last;
 }
-
 </pre></div>
+
+<div example="" class="">
+<p>Indicate that all figures must be shown in order.
+
+<pre>figure { 
+   float-policy: in-order;
+}
+</pre>
+</div>
+
+
+
+
 
 
 <h2 id="wrapping-around-page-floats-and-other-elements"><span class="secno">5 </span>Wrapping around page floats (and other elements)</h2>
