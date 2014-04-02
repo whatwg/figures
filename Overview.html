@@ -79,29 +79,29 @@ h2 { clear: both }
  <li><a href="#page-floats"><span class="secno">2 </span>Page floats</a>
   <ol>
    <li><a href="#floating-to-the-top-bottom:-float"><span class="secno">2.1 </span>Floating to the top/bottom: 'float'</a></li>
-   <li><a href="#snapping-to-nearest-edge"><span class="secno">2.2 </span>Snapping to nearest edge</a></li>
-   <li><a href="#spanning-columns:-column-span"><span class="secno">2.3 </span>Spanning columns: 'column-span'</a></li>
-   <li><a href="#setting-the-float-reference:-float-reference"><span class="secno">2.4 </span>Setting the float reference: 'float-reference'</a></li>
-   <li><a href="#deferring-floats"><span class="secno">2.5 </span>Deferring floats</a>
+   <li><a href="#snapping-to-nearest-edge:-snap"><span class="secno">2.2 </span>Snapping to nearest edge: snap()</a></li>
+   <li><a href="#setting-the-page-float-reference:-float-reference"><span class="secno">2.3 </span>Setting the page float reference: 'float-reference'</a></li>
+   <li><a href="#deferring-page-floats"><span class="secno">2.4 </span>Deferring page floats</a>
     <ol>
-     <li><a href="#float-defer-column"><span class="secno">2.5.1 </span>'float-defer-column'</a></li>
-     <li><a href="#float-defer-page"><span class="secno">2.5.2 </span>'float-defer-page'</a></li>
-     <li><a href="#float-defer-line"><span class="secno">2.5.3 </span>'float-defer-line'</a></ol></li>
-   <li><a href="#clearing-page-floats"><span class="secno">2.6 </span>Clearing page floats</a></li>
-   <li><a href="#avoiding-content-after-page-floats"><span class="secno">2.7 </span>Avoiding content after page floats</a></li>
-   <li><a href="#overconstrained-page-floats"><span class="secno">2.8 </span>Overconstrained page floats</a></ol></li>
- <li><a href="#normal-floats"><span class="secno">3 </span>Normal floats</a></li>
- <li><a href="#floating-inside-and-outside-pages"><span class="secno">4 </span>Floating inside and outside pages</a>
+     <li><a href="#float-defer-column"><span class="secno">2.4.1 </span>'float-defer-column'</a></li>
+     <li><a href="#float-defer-page"><span class="secno">2.4.2 </span>'float-defer-page'</a></li>
+     <li><a href="#float-defer-line"><span class="secno">2.4.3 </span>'float-defer-line'</a></ol></li>
+   <li><a href="#clearing-page-floats"><span class="secno">2.5 </span>Clearing page floats</a></li>
+   <li><a href="#avoiding-content-after-page-floats"><span class="secno">2.6 </span>Avoiding content after page floats</a></li>
+   <li><a href="#overconstrained-page-floats"><span class="secno">2.7 </span>Overconstrained page floats</a></ol></li>
+ <li><a href="#extending-floats"><span class="secno">3 </span>Extending floats</a>
   <ol>
-   <li><a href="#float-offset"><span class="secno">4.1 </span>float-offset</a></ol></li>
- <li><a href="#combo-floats"><span class="secno">5 </span>Combo floats</a>
+   <li><a href="#floating-inside-and-outside-pages"><span class="secno">3.1 </span>Floating inside and outside pages</a></li>
+   <li><a href="#float-offset"><span class="secno">3.2 </span>float-offset</a></li>
+   <li><a href="#spanning-columns:-column-span"><span class="secno">3.3 </span>Spanning columns: 'column-span'</a></ol></li>
+ <li><a href="#combo-floats"><span class="secno">4 </span>Combo floats</a>
   <ol>
-   <li><a href="#page-float-policy"><span class="secno">5.1 </span>Page float policy</a></ol></li>
- <li><a href="#wrapping-around-page-floats-and-other-elements"><span class="secno">6 </span>Wrapping around page floats (and other elements)</a>
+   <li><a href="#page-float-policy"><span class="secno">4.1 </span>Page float policy</a></ol></li>
+ <li><a href="#wrapping-around-page-floats-and-other-elements"><span class="secno">5 </span>Wrapping around page floats (and other elements)</a>
   <ol>
-   <li><a href="#wrap-side"><span class="secno">6.1 </span>wrap-side</a></li>
-   <li><a href="#wrap-contrast"><span class="secno">6.2 </span>wrap-contrast</a></ol></li>
- <li><a href="#pullquotes"><span class="secno">7 </span>Pullquotes</a></li>
+   <li><a href="#wrap-side"><span class="secno">5.1 </span>wrap-side</a></li>
+   <li><a href="#wrap-contrast"><span class="secno">5.2 </span>wrap-contrast</a></ol></li>
+ <li><a href="#pullquotes"><span class="secno">6 </span>Pullquotes</a></li>
  <li><a href="#references" class="no-num">References</a></li>
  <li><a href="#acknowledgments" class="no-num">Acknowledgments</a></ol>
 <!--end-toc-->
@@ -269,7 +269,7 @@ float.
 
 <p class="note">In the future, other content may be allowed to run around page floats.</p>
 
-<h3 id="snapping-to-nearest-edge"><span class="secno">2.2 </span>Snapping to nearest edge</h3>
+<h3 id="snapping-to-nearest-edge:-snap"><span class="secno">2.2 </span>Snapping to nearest edge: snap()</h3>
 
 <p>Figures that naturally end up close to a column break may look better when moved to the top or bottom of the column. To support this, the <code>snap</code> value is added to the 'float' property:
 
@@ -374,168 +374,8 @@ table { float: snap(3em 2em, bottom) }
 -->
 
 
-<h3 id="spanning-columns:-column-span"><span class="secno">2.3 </span>Spanning columns: 'column-span'</h3>
 
-<p>This specification adds number, length, and the 'auto' value to the
-'column-span' property so that elements can span several columns. The
-new definition is:
-
-<table class="propdef">
-    <tr>
-      <td><em>Name:</em>
-      <td><dfn id="column-span">column-span</dfn>
-    <tr>
-      <td><em>Value:</em>
-      <td>none | all | &lt;number&gt; | &lt;length&gt; | auto
-    <tr>
-      <td><em>Initial:</em>
-      <td>none
-    <tr>
-      <td><em>Applies to:</em>
-      <td>in-flow block-level elements
-    <tr>
-      <td><em>Inherited:</em>
-      <td>no
-    <tr>
-      <td><em>Percentages:</em>
-      <td>N/A
-    <tr>
-      <td><em>Media:</em>
-      <td>visual
-    <tr>
-      <td><em>Computed value:</em>
-      <td>Same as specified value
-</table>
-
-<p>This property describes how many columns the element spans in the nearest multicol ancestor in the same block formatting context. These values only apply to page floats.
-
-<dl>
-
-<dt>none
-<dd>the element does not span multiple columns.
-
-<dt>all
-<dd>the element spans across all columns.
-
-<dt>&lt;number&gt;
-<dd>The page float spans across the number of columns specified. If a decimal number is specified, the fraction indicates how much of the next column gap and/or the next column which is to be spanned; a fraction up to 0.5 indicates a linear fraction of the column gap, while a fraction between 0.5 and 1.0 indicate the column gap plut a linear fraction of the next column. 
-
-<dt>&lt;length&gt;
-<dd>the length value determins how many columns the page float will span, rounding upwards to an integer number of columns
-
-<dt>auto
-<dd>the intrinsic width of the page float determines how many columns it will span, rounding upwards to an integer number of columns
-
-</dl>
-
-<p>If the resulting number of columns is equal to, or larger than the number of columns in the multicol element, the number of columns spanned will be the same as if 'column-span: all' had been specified. 
-
-<p>In the line direction, the rectangle described by this property is, by default, placed at the start of the resulting column, extending in the line direction. However, the rectangle will not normally extend outside the content box of the multicol element. Instead, the rectangle extended in the opposite line direction. (Negative margins and/or 'float-offet' may possibly move the page float outside the content box.)
-
-<div class="example">
-<p>In this example, the defer column is the last column on the page. Due to the setting on 'column-span' the page float also covers another column. As it cannot extend outside the content box of the multicol element, it must extend to the left into column 2.
-
-<pre>img { 
-  float: top;
-  column-span: 2;
-  float-defer-column: last;
-}
-</pre>
-
-<p>Here is a possible rendering:
-<!--
-<pre class=lineart>
-  ┌──────────┬┬┬───────────────────────┐
-  │          │││                       │
-  │ column 1 │││      image spans      │
-  │          │││      two columns      │
-  │          │││                       │
-  │          ││├──────────┬┬┬──────────┤
-  │          │││ column 2 │││ column 3 │
-  │          │││          │││          │
-  └──────────┴┴┴──────────┴┴┴──────────┘
-</pre>
--->
-<img src="8.png">
-</div>
-
-<div class="example">
-<p>This example is a variation of the previous example, showing how the page float grows in the oppsite of the line direction.
-
-<pre>img { 
-  float: top;
-  column-span: 1.75;
-  float-defer-column: last;
-}
-</pre>
-
-<p>Here is a possible rendering:
-
-<img src="35.png">
-</div>
-
-
-
-<!--
-<div class=example>
-<p>In this example, a commonly used newspaper layout is easily described:
-<pre>
-body { columns: 3 }
-img  { float: top; column-span: 2; width: 100% }  /* image spans two columns */
-p.one { float: top; column-span: 2 }              /* lead paragraph spans two columns */
-</pre>
-
-<pre class=lineart>
-┌──────────────────────┐┌──────────┐
-│                      ││          │
-│         img          ││    4     │	          
-│                      ││          │   
-└──────────────────────┘│          │
-┌──────────────────────┐│          │
-│        p.one         ││          │   
-└──────────────────────┘│          │
-┌──────────┐┌──────────┐│          │
-│     2    ││    3     ││          │   
-└──────────┘└──────────┘└──────────┘
-</pre>
-</div>
--->
-
-<div class="example">
-
-<p>Float figure to top of its column, spanning all columns:
-
-<pre>.figure { float: top; column-span: all }
-</pre>
-
-<img src="15.png" alt="sample redering">
-
-</div>
-
-
-<div class="example">
-<pre>figure { 
-  float: top;
-  float-defer-column: last;
-  column-span: 1.25;
-}
-</pre>
-
-<img src="30.png">
-</div>
-
-<div class="example">
-<pre>figure { 
-  float: top;
-  float-defer-column: last;
-  column-span: 1.5;
-}
-</pre>
-<img src="31.png">
-</div>
-
-
-<h3 id="setting-the-float-reference:-float-reference"><span class="secno">2.4 </span>Setting the float reference: 'float-reference'</h3>
+<h3 id="setting-the-page-float-reference:-float-reference"><span class="secno">2.3 </span>Setting the page float reference: 'float-reference'</h3>
 
 <p>Normally, page floats are moved to the top or bottom of a column, and the column is the contaning block of the page float, called a <dfn id="float-reference">float reference</dfn>. In some cases it is necessary to change the float reference to be an element, the page area, or the bleed box. This is possible with the 'float-reference' property.
 
@@ -726,14 +566,14 @@ aside.top-ad img {
 <pre></pre></pre></div>
 
 
-<h3 id="deferring-floats"><span class="secno">2.5 </span>Deferring floats</h3>
+<h3 id="deferring-page-floats"><span class="secno">2.4 </span>Deferring page floats</h3>
 
 <p>A page float can be deferred to a following column or page with two
 new properties described in this section. After applying these
 properties, the page float's <em>defer column</em> is identified.
 These properties are evaluated before the 'clear' property.
 
-<h4 id="float-defer-column"><span class="secno">2.5.1 </span>'float-defer-column'</h4>
+<h4 id="float-defer-column"><span class="secno">2.4.1 </span>'float-defer-column'</h4>
 
 <table class="propdef">
     <tr>
@@ -780,7 +620,7 @@ These properties are evaluated before the 'clear' property.
 </dl>
 
 
-<h4 id="float-defer-page"><span class="secno">2.5.2 </span>'float-defer-page'</h4>
+<h4 id="float-defer-page"><span class="secno">2.4.2 </span>'float-defer-page'</h4>
 
 <table class="propdef">
     <tr>
@@ -947,7 +787,7 @@ figure { float-defer-page: -1 }
 </div>
 
 
-<h4 id="float-defer-line"><span class="secno">2.5.3 </span>'float-defer-line'</h4>
+<h4 id="float-defer-line"><span class="secno">2.4.3 </span>'float-defer-line'</h4>
 
 
 <table class="propdef">
@@ -988,7 +828,7 @@ figure { float-defer-page: -1 }
 </div>
 
 
-<h3 id="clearing-page-floats"><span class="secno">2.6 </span>Clearing page floats</h3>
+<h3 id="clearing-page-floats"><span class="secno">2.5 </span>Clearing page floats</h3>
 
 <p>Elements may request to clear page floats with the 'clear' property:
 
@@ -1119,7 +959,7 @@ h1 { clear: column }
 
 -->
 
-<h3 id="avoiding-content-after-page-floats"><span class="secno">2.7 </span>Avoiding content after page floats</h3>
+<h3 id="avoiding-content-after-page-floats"><span class="secno">2.6 </span>Avoiding content after page floats</h3>
 
 <p>Page floats can request that subsequent content is avoided by
 setting margin values in the block direction to 'auto'.
@@ -1212,7 +1052,7 @@ setting margin values in the block direction to 'auto'.
 
 
 
-<h3 id="overconstrained-page-floats"><span class="secno">2.8 </span>Overconstrained page floats</h3>
+<h3 id="overconstrained-page-floats"><span class="secno">2.7 </span>Overconstrained page floats</h3>
 
 <p>The properties described above allow rich designs to be described.
 However, in many cases page floats must be moved to another column or
@@ -1288,9 +1128,9 @@ specified. UAs are free to find the best resulting column and page.
 </div>
 -->
 
-<h2 id="normal-floats"><span class="secno">3 </span>Normal floats</h2>
+<h2 id="extending-floats"><span class="secno">3 </span>Extending floats</h2>
 
-<h2 id="floating-inside-and-outside-pages"><span class="secno">4 </span>Floating inside and outside pages</h2>
+<h3 id="floating-inside-and-outside-pages"><span class="secno">3.1 </span>Floating inside and outside pages</h3>
 
 <p>To allow content to flow to the inside and outside of a page, two new keywords are added to the 'float' property:
 
@@ -1317,7 +1157,7 @@ specified. UAs are free to find the best resulting column and page.
 
 
 
-<h3 id="float-offset"><span class="secno">4.1 </span>float-offset</h3>
+<h3 id="float-offset"><span class="secno">3.2 </span>float-offset</h3>
 
 <div class="example">
 <pre>float: outside;
@@ -1326,8 +1166,170 @@ float-offset: -3em;
 </div>
 
 
+<h3 id="spanning-columns:-column-span"><span class="secno">3.3 </span>Spanning columns: 'column-span'</h3>
 
-<h2 id="combo-floats"><span class="secno">5 </span>Combo floats</h2>
+<p>This specification adds number, length, and the 'auto' value to the
+'column-span' property so that elements can span several columns. The
+new definition is:
+
+<table class="propdef">
+    <tr>
+      <td><em>Name:</em>
+      <td><dfn id="column-span">column-span</dfn>
+    <tr>
+      <td><em>Value:</em>
+      <td>none | all | &lt;number&gt; | &lt;length&gt; | auto
+    <tr>
+      <td><em>Initial:</em>
+      <td>none
+    <tr>
+      <td><em>Applies to:</em>
+      <td>in-flow block-level elements
+    <tr>
+      <td><em>Inherited:</em>
+      <td>no
+    <tr>
+      <td><em>Percentages:</em>
+      <td>N/A
+    <tr>
+      <td><em>Media:</em>
+      <td>visual
+    <tr>
+      <td><em>Computed value:</em>
+      <td>Same as specified value
+</table>
+
+<p>This property describes how many columns the element spans in the nearest multicol ancestor in the same block formatting context. These values only apply to page floats.
+
+<dl>
+
+<dt>none
+<dd>the element does not span multiple columns.
+
+<dt>all
+<dd>the element spans across all columns.
+
+<dt>&lt;number&gt;
+<dd>The page float spans across the number of columns specified. If a decimal number is specified, the fraction indicates how much of the next column gap and/or the next column which is to be spanned; a fraction up to 0.5 indicates a linear fraction of the column gap, while a fraction between 0.5 and 1.0 indicate the column gap plut a linear fraction of the next column. 
+
+<dt>&lt;length&gt;
+<dd>the length value determins how many columns the page float will span, rounding upwards to an integer number of columns
+
+<dt>auto
+<dd>the intrinsic width of the page float determines how many columns it will span, rounding upwards to an integer number of columns
+
+</dl>
+
+<p>If the resulting number of columns is equal to, or larger than the number of columns in the multicol element, the number of columns spanned will be the same as if 'column-span: all' had been specified. 
+
+<p>In the line direction, the rectangle described by this property is, by default, placed at the start of the resulting column, extending in the line direction. However, the rectangle will not normally extend outside the content box of the multicol element. Instead, the rectangle extended in the opposite line direction. (Negative margins and/or 'float-offet' may possibly move the page float outside the content box.)
+
+<div class="example">
+<p>In this example, the defer column is the last column on the page. Due to the setting on 'column-span' the page float also covers another column. As it cannot extend outside the content box of the multicol element, it must extend to the left into column 2.
+
+<pre>img { 
+  float: top;
+  column-span: 2;
+  float-defer-column: last;
+}
+</pre>
+
+<p>Here is a possible rendering:
+<!--
+<pre class=lineart>
+  ┌──────────┬┬┬───────────────────────┐
+  │          │││                       │
+  │ column 1 │││      image spans      │
+  │          │││      two columns      │
+  │          │││                       │
+  │          ││├──────────┬┬┬──────────┤
+  │          │││ column 2 │││ column 3 │
+  │          │││          │││          │
+  └──────────┴┴┴──────────┴┴┴──────────┘
+</pre>
+-->
+<img src="8.png">
+</div>
+
+<div class="example">
+<p>This example is a variation of the previous example, showing how the page float grows in the oppsite of the line direction.
+
+<pre>img { 
+  float: top;
+  column-span: 1.75;
+  float-defer-column: last;
+}
+</pre>
+
+<p>Here is a possible rendering:
+
+<img src="35.png">
+</div>
+
+
+
+<!--
+<div class=example>
+<p>In this example, a commonly used newspaper layout is easily described:
+<pre>
+body { columns: 3 }
+img  { float: top; column-span: 2; width: 100% }  /* image spans two columns */
+p.one { float: top; column-span: 2 }              /* lead paragraph spans two columns */
+</pre>
+
+<pre class=lineart>
+┌──────────────────────┐┌──────────┐
+│                      ││          │
+│         img          ││    4     │	          
+│                      ││          │   
+└──────────────────────┘│          │
+┌──────────────────────┐│          │
+│        p.one         ││          │   
+└──────────────────────┘│          │
+┌──────────┐┌──────────┐│          │
+│     2    ││    3     ││          │   
+└──────────┘└──────────┘└──────────┘
+</pre>
+</div>
+-->
+
+<div class="example">
+
+<p>Float figure to top of its column, spanning all columns:
+
+<pre>.figure { float: top; column-span: all }
+</pre>
+
+<img src="15.png" alt="sample redering">
+
+</div>
+
+
+<div class="example">
+<pre>figure { 
+  float: top;
+  float-defer-column: last;
+  column-span: 1.25;
+}
+</pre>
+
+<img src="30.png">
+</div>
+
+<div class="example">
+<pre>figure { 
+  float: top;
+  float-defer-column: last;
+  column-span: 1.5;
+}
+</pre>
+<img src="31.png">
+</div>
+
+
+
+
+<h2 id="combo-floats"><span class="secno">4 </span>Combo floats</h2>
 
 <p>Page floats are floats that primarily move in the block direction,
 while normal float primarily move in the line direction. By setting
@@ -1343,7 +1345,7 @@ called combo floats.
 
 
 
-<h3 id="page-float-policy"><span class="secno">5.1 </span>Page float policy</h3>
+<h3 id="page-float-policy"><span class="secno">4.1 </span>Page float policy</h3>
 
 <table class="propdef">
     <tr>
@@ -1396,9 +1398,9 @@ called combo floats.
 </pre></div>
 
 
-<h2 id="wrapping-around-page-floats-and-other-elements"><span class="secno">6 </span>Wrapping around page floats (and other elements)</h2>
+<h2 id="wrapping-around-page-floats-and-other-elements"><span class="secno">5 </span>Wrapping around page floats (and other elements)</h2>
 
-<h3 id="wrap-side"><span class="secno">6.1 </span>wrap-side</h3>
+<h3 id="wrap-side"><span class="secno">5.1 </span>wrap-side</h3>
 
 <table class="propdef">
     <tr>
@@ -1482,7 +1484,7 @@ img { float: top; column-span: 1.70; width: 100%; wrap-side: line }
 </div>
 
 
-<h3 id="wrap-contrast"><span class="secno">6.2 </span>wrap-contrast</h3>
+<h3 id="wrap-contrast"><span class="secno">5.2 </span>wrap-contrast</h3>
 
 <table class="propdef">
     <tr>
@@ -1544,7 +1546,7 @@ figure {
 </div>
 
 
-<h2 id="pullquotes"><span class="secno">7 </span>Pullquotes</h2>
+<h2 id="pullquotes"><span class="secno">6 </span>Pullquotes</h2>
 
 <p>This section sketches various techniques for achieving pull quotes and other content that 
 
