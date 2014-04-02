@@ -1051,15 +1051,6 @@ figure { float-defer-page: -1 }
       <td>specified value
 </table>
 
-<div class="example">
-<pre>.pullquote { 
-  float: top outside;
-  float-defer-column: last; 
-  float-defer-line: 50%;
-  float-offset: -50%;
-}
-</pre>
-</div>
 
 <div class="example">
 <p>Move a pullquote to the top, bar two lines.
@@ -1073,37 +1064,7 @@ figure { float-defer-page: -1 }
 <img src="38.png">
 </div>
 
-<div class="example">
-<p>Move an element down and toward the outside:
 
-<img src="36.png">
-
-<pre>.pullquote {
-  float: top outsid;e
-  float-defer-column: last;
-  float-defer-line: 2;
-  float-offset: -2em;
-}
-
-</pre></div>
-
-
-<div class="example">
-<p>Moving an element down and to the outside, so that the element is half way down, and half of the pullquote is outside the BFC:
-
-
-<pre>.pullquote {
-  width: 120%; /* relative to column width */
-  float: top outside;  /* position page float at the top... */
-  float-defer-column: last; /* ... of the last column */
-  float-defer-line: 50%; /* move page float down */
-  float-offset: -50%; /* push page float into margin */
-}
-</pre>
-
-<img src="37.png">
-
-</div>
 
 <h3 id="clearing-page-floats"><span class="secno">3.5 </span>Clearing page floats</h3>
 
@@ -1420,6 +1381,52 @@ called combo floats.
 </pre>
 </div>
 
+<div class="example">
+<p>Move an element down and toward the outside:
+
+<img src="36.png">
+
+<pre>.pullquote {
+  float: top outside;
+  float-defer-column: last;
+  float-defer-line: 2;
+  float-offset: -2em;
+}
+
+</pre></div>
+
+
+<div class="example">
+<p>Moving an element down and to the outside, so that the element is half way down, and half of the pullquote is outside the BFC:
+
+
+<pre>.pullquote {
+  width: 120%; /* relative to column width */
+  float: top outside;  /* position page float at the top... */
+  float-defer-column: last; /* ... of the last column */
+  float-defer-line: 50%; /* move page float down */
+  float-offset: -50%; /* push page float into margin */
+}
+</pre>
+
+<img src="37.png">
+
+</div>
+
+<div class="example">
+
+<p>In this example, the image is set to span two columns, but it does not use all available space. 
+therefore intrude into the neighboring column. At the bottom of the
+middle column is a long word that is clipped in the middle of the
+column gap.
+
+<pre>img { float: top left; column-span: 2; width: 65% }
+   /* or */
+img { float: top left; column-span: 1.70; width: 100% }
+</pre>
+
+<img src="39.png" alt="sample rendering">
+</div>
 
 
 <h3 id="page-float-policy"><span class="secno">4.1 </span>Page float policy</h3>
@@ -1544,22 +1551,6 @@ called combo floats.
 
 
 
-<div class="example">
-
-<p>In this example, the image is set to span two columns, but it does not use all available space. 
-therefore intrude into the neighboring column. At the bottom of the
-middle column is a long word that is clipped in the middle of the
-column gap.
-
-<pre>img { float: top; column-span: 2; width: 65%; wrap-side: all }
-   /* or */
-img { float: top; column-span: 1.70; width: 100%; wrap-side: line }
-</pre>
-
-
-<img src="39.png" alt="sample rendering">
-
-</div>
 
 <div class="example">
 <pre>p:first-letter { float: left; font-size: 3em; wrap-side: 1 line }
