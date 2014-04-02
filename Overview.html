@@ -93,10 +93,9 @@ h2 { clear: both }
      <li><a href="#float-defer-line"><span class="secno">3.4.3 </span>'float-defer-line'</a></ol></li>
    <li><a href="#clearing-page-floats"><span class="secno">3.5 </span>Clearing page floats</a></li>
    <li><a href="#avoiding-content-after-page-floats"><span class="secno">3.6 </span>Avoiding content after page floats</a></li>
-   <li><a href="#overconstrained-page-floats"><span class="secno">3.7 </span>Overconstrained page floats</a></ol></li>
- <li><a href="#combo-floats"><span class="secno">4 </span>Combo floats</a>
-  <ol>
-   <li><a href="#float-policy"><span class="secno">4.1 </span>'float-policy'</a></ol></li>
+   <li><a href="#float-policy"><span class="secno">3.7 </span>'float-policy'</a></li>
+   <li><a href="#overconstrained-page-floats"><span class="secno">3.8 </span>Overconstrained page floats</a></ol></li>
+ <li><a href="#combo-floats"><span class="secno">4 </span>Combo floats</a></li>
  <li><a href="#wrapping-around-page-floats-and-other-elements"><span class="secno">5 </span>Wrapping around page floats (and other elements)</a>
   <ol>
    <li><a href="#wrap-side"><span class="secno">5.1 </span>wrap-side</a></li>
@@ -1288,9 +1287,71 @@ setting margin values in the block direction to 'auto'.
 
 -->
 
+<h3 id="float-policy"><span class="secno">3.7 </span>'float-policy'</h3>
+
+<table class="propdef">
+    <tr>
+
+      <td><em>Name:</em>
+      <td><dfn id="float-policy-0">float-policy</dfn>
+    <tr>
+      <td><em>Value:</em>
+      <td>normal | not-last | in-order
+    <tr>
+      <td><em>Initial:</em>
+      <td>normal
+    <tr>
+      <td><em>Applies to:</em>
+      <td>page floats
+    <tr>
+      <td><em>Inherited:</em>
+      <td>no
+    <tr>
+      <td><em>Percentages:</em>
+      <td>N/A
+    <tr>
+      <td><em>Media:</em>
+      <td>visual
+    <tr>
+      <td><em>Computed value:</em>
+      <td>specified value
+</table>
+
+<p>Values are:
+
+<dl>
+<dt>normal
+<dd>no extra constraints are added
+<dt>not-last
+<dd>treat page float as if 'display: none' had been set if its resultant column appears after all other content in the normal flow of the multicol element.
+<dt>in-order
+<dd>page float must be displayed after all previous page floats in the source order
+</dl>
 
 
-<h3 id="overconstrained-page-floats"><span class="secno">3.7 </span>Overconstrained page floats</h3>
+<div class="example">
+
+<p>Only show pullquotes that appear with other content; we don't want a stack of pullquotes at the end of an article.
+
+<pre>.pullquote { 
+   float: top;
+   clear: page;
+   float-defer-column: 2;
+   float-policy: not-last;
+}
+</pre></div>
+
+<div example="" class="">
+<p>Indicate that all figures must be shown in order.
+
+<pre>figure { 
+   float-policy: in-order;
+}
+</pre>
+</div>
+
+
+<h3 id="overconstrained-page-floats"><span class="secno">3.8 </span>Overconstrained page floats</h3>
 
 <p>The properties described above allow rich designs to be described.
 However, in many cases page floats must be moved to another column or
@@ -1425,72 +1486,6 @@ column gap.
 
 <img src="39.png" alt="sample rendering">
 </div>
-
-
-<h3 id="float-policy"><span class="secno">4.1 </span>'float-policy'</h3>
-
-<table class="propdef">
-    <tr>
-
-      <td><em>Name:</em>
-      <td><dfn id="float-policy-0">float-policy</dfn>
-    <tr>
-      <td><em>Value:</em>
-      <td>normal | not-last | in-order
-    <tr>
-      <td><em>Initial:</em>
-      <td>normal
-    <tr>
-      <td><em>Applies to:</em>
-      <td>page floats
-    <tr>
-      <td><em>Inherited:</em>
-      <td>no
-    <tr>
-      <td><em>Percentages:</em>
-      <td>N/A
-    <tr>
-      <td><em>Media:</em>
-      <td>visual
-    <tr>
-      <td><em>Computed value:</em>
-      <td>specified value
-</table>
-
-<p>Values are:
-
-<dl>
-<dt>normal
-<dd>no extra constraints are added
-<dt>not-last
-<dd>treat page float as if 'display: none' had been set if its resultant column appears after all other content in the normal flow of the multicol element.
-<dt>in-order
-<dd>page float must be displayed after all previous page floats in the source order
-</dl>
-
-
-<div class="example">
-
-<p>Only show pullquotes that appear with other content; we don't want a stack of pullquotes at the end of an article.
-
-<pre>.pullquote { 
-   float: top;
-   clear: page;
-   float-defer-column: 2;
-   float-policy: not-last;
-}
-</pre></div>
-
-<div example="" class="">
-<p>Indicate that all figures must be shown in order.
-
-<pre>figure { 
-   float-policy: in-order;
-}
-</pre>
-</div>
-
-
 
 
 
