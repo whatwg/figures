@@ -250,7 +250,7 @@ img {
   └──────────┴┴┴──────────┴┴┴──────────┘
 </pre>
 -->
-<img src=8.png>
+<p><img src=8.png>
 </div>
 
 <div class=example>
@@ -266,7 +266,7 @@ img {
 
 <p>Here is a possible rendering:
 
-<img src="35.png">
+<p><img src="35.png">
 </div>
 
 
@@ -304,7 +304,7 @@ p.one { float: top; column-span: 2 }              /* lead paragraph spans two co
 .figure { float: top; column-span: all }
 </pre>
 
-<img alt="sample redering" src=15.png>
+<p><img alt="sample redering" src=15.png>
 
 </div>
 
@@ -318,7 +318,7 @@ figure {
 }
 </pre>
 
-<img src=30.png>
+<p><img src=30.png>
 </div>
 
 <div class=example>
@@ -329,7 +329,7 @@ figure {
   column-span: 1.5;
 }
 </pre>
-<img src=31.png>
+<p><img src=31.png>
 </div>
 
 
@@ -449,7 +449,7 @@ property to create <em>page floats</em>.
 <pre>
 figure { float: top }
 </pre>
-<img alt="sample rendering" src=7.png>
+<p><img alt="sample rendering" src=7.png>
 </div>
 
 <p>The column is, by default, the containing block of the page float.
@@ -465,7 +465,7 @@ float.
 <pre>
 figure { float: top; width: 50% }
 </pre>
-<img alt="sample rendering" src=7b.png>
+<p><img alt="sample rendering" src=7b.png>
 </div>
 
 <p>The margin of the <dfn>page float extreme edge</dfn> (i.e., the edge of the page float that ends up adjoining the column edge) is always set to zero, so that page floats align with content in other columns. 
@@ -496,7 +496,7 @@ figure { float: top; width: 50% }
 <div class=example>
 <p>In this example, a figure naturally appears close to a column break. There is not enough space for the figure in the first column, and it is therefore placed in the second column, leaving white space at the bottom of the first column.</p>
 
-<img alt="sample rendering" src=23.png>
+<p><img alt="sample rendering" src=23.png>
 
 <p>To avoid the white space, the image can be floated to the nearest edge (in the block direction):</p>
 
@@ -506,14 +506,14 @@ figure { float: top; width: 50% }
 
 <p>In this example, the figure is already at the nearest edge, so it does not move. However, page floats allow subsequent content to be displayed before the page float and the white space can therefore be filled:</p>
 
-<img alt="sample rendering" src=7.png>
+<p><img alt="sample rendering" src=7.png>
 </div>
 
 <div class=example>
 
 <p>In this example, two figures naturally appear in the text flow:</p>
 
-<img alt="sample rendering" src=20.png>
+<p><img alt="sample rendering" src=20.png>
 
 <p>A typographer would typically try to avoid single lines of text above/below figures, which can be achieved with:
 
@@ -529,7 +529,7 @@ div.figure { float: snap(1) }
 
 <p>In this example, two figures naturally appear in the text flow:</p>
 
-<img alt="sample rendering" src=20.png>
+<p><img alt="sample rendering" src=20.png>
 
 <p>To make both figures snap to the nearest edges, this code can be applied:
 
@@ -539,7 +539,7 @@ div.figure { float: snap(3em) }
 
 <p>The resultant rendering is:</p>
 
-<img alt="sample rendering" src=22.png>
+<p><img alt="sample rendering" src=22.png>
 
 </div>
 
@@ -548,7 +548,7 @@ div.figure { float: snap(3em) }
 
 <p>In this example, two figures naturally appear in the text flow:</p>
 
-<img alt="sample rendering" src=20.png>
+<p><img alt="sample rendering" src=20.png>
 
 <p>To make both figures snap to the nearest edges, this code can be applied:
 
@@ -558,7 +558,7 @@ div.figure { float: snap(3, bottom) }
 
 <p>The resultant rendering is:</p>
 
-<img alt="sample rendering" src=17.png>
+<p><img alt="sample rendering" src=17.png>
 
 </div>
 
@@ -913,7 +913,7 @@ figure { float-defer-column: 1 }
 <pre>
 figure { float: top; float-defer-column: -1 }
 </pre>
-<img alt="sample rendering" src=7.png>
+<p><img alt="sample rendering" src=7.png>
 </div>
 
 <div class=example>
@@ -921,7 +921,7 @@ figure { float: top; float-defer-column: -1 }
 <pre>
 figure { float: top; float-defer-column: last }
 </pre>
-<img alt="sample rendering" src=6.png>
+<p><img alt="sample rendering" src=6.png>
 </div>
 
 
@@ -930,7 +930,7 @@ figure { float: top; float-defer-column: last }
 <pre>
 figure { float: top; column-span: 2; float-defer-column: last }
 </pre>
-<img alt="sample rendering" src=8.png>
+<p><img alt="sample rendering" src=8.png>
 </div>
 
 
@@ -948,7 +948,7 @@ figure {
 
 <p>The next page may look like this:
 
-<img alt="sample rendering" src=18.png>
+<p><img alt="sample rendering" src=18.png>
 
 </div>
 
@@ -963,7 +963,7 @@ figure {
 }
 </pre>
 
-<img alt="sample rendering" src=18.png>
+<p><img alt="sample rendering" src=18.png>
 
 <p>Given that there are four columns, and that the figure is referenced at the beginning of its multicol element, the same layout could be achieved with this code:
 
@@ -1006,7 +1006,7 @@ figure { float-defer-page: -1 }
 .figure { float-defer-column: last }
 </pre>
 
-<img alt="sample rendering" src=6.png>
+<p><img alt="sample rendering" src=6.png>
 </div>
 
 <div class=example>
@@ -1061,7 +1061,7 @@ figure { float-defer-page: -1 }
 }
 </pre>
 
-<img src=38.png>
+<p><img src=38.png>
 </div>
 
 
@@ -1107,7 +1107,7 @@ figure { float: bottom; clear: none }
 &lt;figure>&lt;/figure>
 &lt;figure>&lt;/figure>
 </pre>
-<img src="16.png">
+<p><img src="16.png">
 
 <p>The first figure will appear at the bottom of the column, the second will appear above the first.
 </div>
@@ -1120,7 +1120,7 @@ figure { float: bottom; clear: column }
 &lt;figure>...&lt;/figure>
 &lt;figure>...&lt;/figure>
 </pre>
-<img src="17.png">
+<p><img src="17.png">
 </div>
 
 <div class=example>
@@ -1132,7 +1132,7 @@ figure { float: top-bottom; clear: column }
 &lt;figure>...&lt;/figure>
 &lt;figure>...&lt;/figure>
 </pre>
-<img src="32.png">
+<p><img src="32.png">
 
 <p>The placement of the second float is due to the 'top-bottom' indicating that the bottom as an acceptable position, and due to it being the first page float in the bottom position. 
 </div>
@@ -1149,7 +1149,7 @@ figure { float: top-bottom; clear: column }
 &lt;figure>...&lt;/figure>
 &lt;figure>...&lt;/figure>
 </pre>
-<img src="33.png">
+<p><img src="33.png">
 
 </div>
 
@@ -1162,7 +1162,7 @@ figure { float: bottom; clear: column }
 &lt;figure>...&lt;/figure>
 &lt;figure>...&lt;/figure>
 </pre>
-<img src="17.png">
+<p><img src="17.png">
 </div>
 
 
@@ -1216,7 +1216,7 @@ setting margin values in the block direction to 'auto'.
   }
 </pre>
 
-<img alt="sample rendering" src=40.png>
+<p><img alt="sample rendering" src=40.png>
 
 </div>
 
@@ -1464,7 +1464,7 @@ figure { float: top left }
 <div class=example>
 <p>Move an element down and toward the outside:
 
-<img src=36.png>
+<p><img src=36.png>
 
 <pre>
 .pullquote {
@@ -1490,7 +1490,7 @@ figure { float: top left }
 }
 </pre>
 
-<img src=37.png>
+<p><img src=37.png>
 
 </div>
 
@@ -1505,7 +1505,7 @@ column gap.
 img { float: top left; column-span: 1.70; width: 100% }
 </pre>
 
-<img alt="sample rendering" src=39.png>
+<p><img alt="sample rendering" src=39.png>
 </div>
 
 
