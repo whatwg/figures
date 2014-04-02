@@ -79,8 +79,8 @@ h2 { clear: both }
  <li><a href="#extending-floats"><span class="secno">2 </span>Extending floats</a>
   <ol>
    <li><a href="#floating-inside-and-outside-pages"><span class="secno">2.1 </span>Floating inside and outside pages</a></li>
-   <li><a href="#float-offset"><span class="secno">2.2 </span>float-offset</a></li>
-   <li><a href="#spanning-columns:-column-span"><span class="secno">2.3 </span>Spanning columns: 'column-span'</a></ol></li>
+   <li><a href="#pushing-floats-around:-float-offset"><span class="secno">2.2 </span>Pushing floats around: 'float-offset'</a></li>
+   <li><a href="#spanning-columns"><span class="secno">2.3 </span>Spanning columns</a></ol></li>
  <li><a href="#page-floats"><span class="secno">3 </span>Page floats</a>
   <ol>
    <li><a href="#floating-to-the-top-bottom:-float"><span class="secno">3.1 </span>Floating to the top/bottom: 'float'</a></li>
@@ -162,7 +162,35 @@ out of memory, or to work around platform-specific limitations.
 
 
 
-<h3 id="float-offset"><span class="secno">2.2 </span>float-offset</h3>
+<h3 id="pushing-floats-around:-float-offset"><span class="secno">2.2 </span>Pushing floats around: 'float-offset'</h3>
+
+<table class="propdef">
+    <tr>
+      <td><em>Name:</em>
+      <td><dfn id="float-offset">float-offset</dfn>
+    <tr>
+      <td><em>Value:</em>
+      <td>none | &lt;number&gt; | &lt;percentage&gt; | auto
+    <tr>
+      <td><em>Initial:</em>
+      <td>none
+    <tr>
+      <td><em>Applies to:</em>
+      <td>floats
+    <tr>
+      <td><em>Inherited:</em>
+      <td>no
+    <tr>
+      <td><em>Percentages:</em>
+      <td>relative to width of float
+    <tr>
+      <td><em>Media:</em>
+      <td>visual
+    <tr>
+      <td><em>Computed value:</em>
+      <td>Same as specified value
+</table>
+
 
 <div class="example">
 <pre>float: outside;
@@ -171,7 +199,7 @@ float-offset: -3em;
 </div>
 
 
-<h3 id="spanning-columns:-column-span"><span class="secno">2.3 </span>Spanning columns: 'column-span'</h3>
+<h3 id="spanning-columns"><span class="secno">2.3 </span>Spanning columns</h3>
 
 <p>This specification adds number, length, and the 'auto' value to the
 'column-span' property so that elements can span several columns. The
