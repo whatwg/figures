@@ -101,7 +101,6 @@ h2 { clear: both }
   <ol>
    <li><a href="#wrap-side"><span class="secno">5.1 </span>wrap-side</a></li>
    <li><a href="#wrap-contrast"><span class="secno">5.2 </span>wrap-contrast</a></ol></li>
- <li><a href="#pullquotes"><span class="secno">6 </span>Pullquotes</a></li>
  <li><a href="#references" class="no-num">References</a></li>
  <li><a href="#acknowledgments" class="no-num">Acknowledgments</a></ol>
 <!--end-toc-->
@@ -1638,17 +1637,18 @@ figure {
 <p><img src="landscape-4col.png" style="width: 90%; border: thin solid black">
 </div>
 
-
-<h2 id="pullquotes"><span class="secno">6 </span>Pullquotes</h2>
+<!--
+<h2>Pullquotes</h2>
 
 <p>This section sketches various techniques for achieving pull quotes and other content that 
 
-<div class="example">
+<div class=example>
 <p>Moving an element down.
 
-<img src="38.png">
+<img src=38.png>
 
-<pre>.pullquote {
+<pre>
+.pullquote {
   float: top;
   float-defer-column: last;
   float-defer-line: 2;
@@ -1668,60 +1668,14 @@ figure {
 </pre>
 </div>
 
-<!--
 
-.pullquote {
-  float: top;
-  float-defer-column: last;
-  float-offset-y: 2;
-}
-.pullquote {
-  float: top;
-  float-defer-column: last;
-  top: 2;
-}
-.pullquote {
-  float: top;
-  float-defer-column: last;
-  left: 3em;
-  top: 2;
-  wrap-side: line-start;
-}
-.pullquote {
-  float: top;
-  float-defer-column: last;
-  float-offset-x: 3em;
-  float-offset-y: 2;
-  wrap-side: line-start;
-}
-
-
-.pullquote {
-  float: top;
-  float-defer-column: last;
-  float-defer-line: 2;
-  float-outside: 3em; /* floats towards the outside of the multicol element */
-  wrap-side: left;
-}
-.pullquote {
-  width: 120%; /* relative to column width */
-  float: top;
-  float-defer-column: last;
-  float-offset-y: 2;
-  float-offset-x: 50%;
-  wrap-side: line-start;
-}
-
-
--->
-
-
-<div class="example">
+<div class=example>
 <p>Moving an element down and toward the outside:
 
-<img src="36.png">
+<img src=36.png>
 
-<pre>.pullquote {
+<pre>
+.pullquote {
   float: top outside;
   float-defer-column: last;
   float-defer-line: 2;
@@ -1753,12 +1707,13 @@ figure {
 </pre>
 </div>
 
-<div class="example">
+<div class=example>
 <p>Moving an element down and to the outside, so that the element is half way down, and half of the pullquote is outside the BFC:
 
-<img src="37.png">
+<img src=37.png>
 
-<pre>.pullquote {
+<pre>
+.pullquote {
   width: 120%; /* relative to column width */
   float: top;
   float-defer-column: last;
@@ -1795,6 +1750,7 @@ figure {
 </pre>
 </div>
 
+-->
 
 
 <h2 class="no-num" id="references">References</h2>
