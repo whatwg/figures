@@ -242,7 +242,7 @@ figure { float: top; width: 50% }
 
 <p class=note>In the future, other content may be allowed to run around page floats.</p>
 
-<h3>Snapping to nearest edge</h3>
+<h3>Snapping to nearest edge: snap()</h3>
 
 <p>Figures that naturally end up close to a column break may look better when moved to the top or bottom of the column. To support this, the <code>snap</code> value is added to the 'float' property:
 
@@ -351,173 +351,8 @@ table { float: snap(3em 2em, bottom) }
 -->
 
 
-<h3>Spanning columns: 'column-span'</h3>
 
-<p>This specification adds number, length, and the 'auto' value to the
-'column-span' property so that elements can span several columns. The
-new definition is:
-
-<table class=propdef>
-    <tr>
-      <td><em>Name:</em>
-      <td><dfn>column-span</dfn>
-    <tr>
-      <td><em>Value:</em>
-      <td>none | all | &lt;number> | &lt;length> | auto
-    <tr>
-      <td><em>Initial:</em>
-      <td>none
-    <tr>
-      <td><em>Applies to:</em>
-      <td>in-flow block-level elements
-    <tr>
-      <td><em>Inherited:</em>
-      <td>no
-    <tr>
-      <td><em>Percentages:</em>
-      <td>N/A
-    <tr>
-      <td><em>Media:</em>
-      <td>visual
-    <tr>
-      <td><em>Computed&nbsp;value:</em>
-      <td>Same as specified value
-</table>
-
-<p>This property describes how many columns the element spans in the nearest multicol ancestor in the same block formatting context. These values only apply to page floats.
-
-<dl>
-
-<dt>none
-<dd>the element does not span multiple columns.
-
-<dt>all
-<dd>the element spans across all columns.
-
-<dt>&lt;number>
-<dd>The page float spans across the number of columns specified. If a decimal number is specified, the fraction indicates how much of the next column gap and/or the next column which is to be spanned; a fraction up to 0.5 indicates a linear fraction of the column gap, while a fraction between 0.5 and 1.0 indicate the column gap plut a linear fraction of the next column. 
-
-<dt>&lt;length>
-<dd>the length value determins how many columns the page float will span, rounding upwards to an integer number of columns
-
-<dt>auto
-<dd>the intrinsic width of the page float determines how many columns it will span, rounding upwards to an integer number of columns
-
-</dl>
-
-<p>If the resulting number of columns is equal to, or larger than the number of columns in the multicol element, the number of columns spanned will be the same as if 'column-span: all' had been specified. 
-
-<p>In the line direction, the rectangle described by this property is, by default, placed at the start of the resulting column, extending in the line direction. However, the rectangle will not normally extend outside the content box of the multicol element. Instead, the rectangle extended in the opposite line direction. (Negative margins and/or 'float-offet' may possibly move the page float outside the content box.)
-
-<div class=example>
-<p>In this example, the defer column is the last column on the page. Due to the setting on 'column-span' the page float also covers another column. As it cannot extend outside the content box of the multicol element, it must extend to the left into column 2.
-
-<pre>
-img { 
-  float: top;
-  column-span: 2;
-  float-defer-column: last;
-}
-</pre>
-
-<p>Here is a possible rendering:
-<!--
-<pre class=lineart>
-  ┌──────────┬┬┬───────────────────────┐
-  │          │││                       │
-  │ column 1 │││      image spans      │
-  │          │││      two columns      │
-  │          │││                       │
-  │          ││├──────────┬┬┬──────────┤
-  │          │││ column 2 │││ column 3 │
-  │          │││          │││          │
-  └──────────┴┴┴──────────┴┴┴──────────┘
-</pre>
--->
-<img src=8.png>
-</div>
-
-<div class=example>
-<p>This example is a variation of the previous example, showing how the page float grows in the oppsite of the line direction.
-
-<pre>
-img { 
-  float: top;
-  column-span: 1.75;
-  float-defer-column: last;
-}
-</pre>
-
-<p>Here is a possible rendering:
-
-<img src="35.png">
-</div>
-
-
-
-<!--
-<div class=example>
-<p>In this example, a commonly used newspaper layout is easily described:
-<pre>
-body { columns: 3 }
-img  { float: top; column-span: 2; width: 100% }  /* image spans two columns */
-p.one { float: top; column-span: 2 }              /* lead paragraph spans two columns */
-</pre>
-
-<pre class=lineart>
-┌──────────────────────┐┌──────────┐
-│                      ││          │
-│         img          ││    4     │	          
-│                      ││          │   
-└──────────────────────┘│          │
-┌──────────────────────┐│          │
-│        p.one         ││          │   
-└──────────────────────┘│          │
-┌──────────┐┌──────────┐│          │
-│     2    ││    3     ││          │   
-└──────────┘└──────────┘└──────────┘
-</pre>
-</div>
--->
-
-<div class=example>
-
-<p>Float figure to top of its column, spanning all columns:
-
-<pre>
-.figure { float: top; column-span: all }
-</pre>
-
-<img alt="sample redering" src=15.png>
-
-</div>
-
-
-<div class=example>
-<pre>
-figure { 
-  float: top;
-  float-defer-column: last;
-  column-span: 1.25;
-}
-</pre>
-
-<img src=30.png>
-</div>
-
-<div class=example>
-<pre>
-figure { 
-  float: top;
-  float-defer-column: last;
-  column-span: 1.5;
-}
-</pre>
-<img src=31.png>
-</div>
-
-
-<h3>Setting the float reference: 'float-reference'</h3>
+<h3>Setting the page float reference: 'float-reference'</h3>
 
 <p>Normally, page floats are moved to the top or bottom of a column, and the column is the contaning block of the page float, called a <dfn>float reference</dfn>. In some cases it is necessary to change the float reference to be an element, the page area, or the bleed box. This is possible with the 'float-reference' property.
 
@@ -716,7 +551,7 @@ aside.top-ad img {
 </div>
 
 
-<h3>Deferring floats</h3>
+<h3>Deferring page floats</h3>
 
 <p>A page float can be deferred to a following column or page with two
 new properties described in this section. After applying these
@@ -1301,9 +1136,9 @@ p { float: top; float-defer-page: last }
 </div>
 -->
 
-<h2>Normal floats</h2>
+<h2>Extending floats</h2>
 
-<h2>Floating inside and outside pages</h2>
+<h3>Floating inside and outside pages</h3>
 
 <p>To allow content to flow to the inside and outside of a page, two new keywords are added to the 'float' property:
 
@@ -1339,6 +1174,173 @@ float: outside;
 float-offset: -3em;
 </pre>
 </div>
+
+
+<h3>Spanning columns: 'column-span'</h3>
+
+<p>This specification adds number, length, and the 'auto' value to the
+'column-span' property so that elements can span several columns. The
+new definition is:
+
+<table class=propdef>
+    <tr>
+      <td><em>Name:</em>
+      <td><dfn>column-span</dfn>
+    <tr>
+      <td><em>Value:</em>
+      <td>none | all | &lt;number> | &lt;length> | auto
+    <tr>
+      <td><em>Initial:</em>
+      <td>none
+    <tr>
+      <td><em>Applies to:</em>
+      <td>in-flow block-level elements
+    <tr>
+      <td><em>Inherited:</em>
+      <td>no
+    <tr>
+      <td><em>Percentages:</em>
+      <td>N/A
+    <tr>
+      <td><em>Media:</em>
+      <td>visual
+    <tr>
+      <td><em>Computed&nbsp;value:</em>
+      <td>Same as specified value
+</table>
+
+<p>This property describes how many columns the element spans in the nearest multicol ancestor in the same block formatting context. These values only apply to page floats.
+
+<dl>
+
+<dt>none
+<dd>the element does not span multiple columns.
+
+<dt>all
+<dd>the element spans across all columns.
+
+<dt>&lt;number>
+<dd>The page float spans across the number of columns specified. If a decimal number is specified, the fraction indicates how much of the next column gap and/or the next column which is to be spanned; a fraction up to 0.5 indicates a linear fraction of the column gap, while a fraction between 0.5 and 1.0 indicate the column gap plut a linear fraction of the next column. 
+
+<dt>&lt;length>
+<dd>the length value determins how many columns the page float will span, rounding upwards to an integer number of columns
+
+<dt>auto
+<dd>the intrinsic width of the page float determines how many columns it will span, rounding upwards to an integer number of columns
+
+</dl>
+
+<p>If the resulting number of columns is equal to, or larger than the number of columns in the multicol element, the number of columns spanned will be the same as if 'column-span: all' had been specified. 
+
+<p>In the line direction, the rectangle described by this property is, by default, placed at the start of the resulting column, extending in the line direction. However, the rectangle will not normally extend outside the content box of the multicol element. Instead, the rectangle extended in the opposite line direction. (Negative margins and/or 'float-offet' may possibly move the page float outside the content box.)
+
+<div class=example>
+<p>In this example, the defer column is the last column on the page. Due to the setting on 'column-span' the page float also covers another column. As it cannot extend outside the content box of the multicol element, it must extend to the left into column 2.
+
+<pre>
+img { 
+  float: top;
+  column-span: 2;
+  float-defer-column: last;
+}
+</pre>
+
+<p>Here is a possible rendering:
+<!--
+<pre class=lineart>
+  ┌──────────┬┬┬───────────────────────┐
+  │          │││                       │
+  │ column 1 │││      image spans      │
+  │          │││      two columns      │
+  │          │││                       │
+  │          ││├──────────┬┬┬──────────┤
+  │          │││ column 2 │││ column 3 │
+  │          │││          │││          │
+  └──────────┴┴┴──────────┴┴┴──────────┘
+</pre>
+-->
+<img src=8.png>
+</div>
+
+<div class=example>
+<p>This example is a variation of the previous example, showing how the page float grows in the oppsite of the line direction.
+
+<pre>
+img { 
+  float: top;
+  column-span: 1.75;
+  float-defer-column: last;
+}
+</pre>
+
+<p>Here is a possible rendering:
+
+<img src="35.png">
+</div>
+
+
+
+<!--
+<div class=example>
+<p>In this example, a commonly used newspaper layout is easily described:
+<pre>
+body { columns: 3 }
+img  { float: top; column-span: 2; width: 100% }  /* image spans two columns */
+p.one { float: top; column-span: 2 }              /* lead paragraph spans two columns */
+</pre>
+
+<pre class=lineart>
+┌──────────────────────┐┌──────────┐
+│                      ││          │
+│         img          ││    4     │	          
+│                      ││          │   
+└──────────────────────┘│          │
+┌──────────────────────┐│          │
+│        p.one         ││          │   
+└──────────────────────┘│          │
+┌──────────┐┌──────────┐│          │
+│     2    ││    3     ││          │   
+└──────────┘└──────────┘└──────────┘
+</pre>
+</div>
+-->
+
+<div class=example>
+
+<p>Float figure to top of its column, spanning all columns:
+
+<pre>
+.figure { float: top; column-span: all }
+</pre>
+
+<img alt="sample redering" src=15.png>
+
+</div>
+
+
+<div class=example>
+<pre>
+figure { 
+  float: top;
+  float-defer-column: last;
+  column-span: 1.25;
+}
+</pre>
+
+<img src=30.png>
+</div>
+
+<div class=example>
+<pre>
+figure { 
+  float: top;
+  float-defer-column: last;
+  column-span: 1.5;
+}
+</pre>
+<img src=31.png>
+</div>
+
 
 
 
