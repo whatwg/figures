@@ -1291,7 +1291,7 @@ setting margin values in the block direction to 'auto'.
       <td><dfn id="float-policy-0">float-policy</dfn>
     <tr>
       <td><em>Value:</em>
-      <td>normal | [ not-last || in-order ]
+      <td>normal | [ zap-last || in-order ]
     <tr>
       <td><em>Initial:</em>
       <td>normal
@@ -1320,13 +1320,11 @@ setting margin values in the block direction to 'auto'.
 <dd>no extra constraints are added
 
 <dt>zap-last
-<dd>treat page float as if 'display: none' had been set if the element appears after all other content in the normal flow
+<dd>treat page float as if 'display: none' had been set if it would appear after all other content in the normal flow
 
 <dt>in-order
 <dd>page float must be shown be displayed after all previous page floats in the source order
 
-<dt>in-order
-<dd>page float must be shown be displayed after all previous page floats in the source order
 
 <dt>forward
 <dd>page float must only move forward relative to its anchoring point
