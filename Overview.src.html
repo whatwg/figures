@@ -1332,8 +1332,8 @@ setting margin values in the block direction to 'auto'.
 <dt>normal
 <dd>no extra constraints are added
 
-<dt>not-last
-<dd>treat page float as if 'display: none' had been set if its resultant column appears after all other content in the normal flow of the multicol element.
+<dt>zap-last
+<dd>treat page float as if 'display: none' had been set if the element appears after all other content in the normal flow
 
 <dt>in-order
 <dd>page float must be shown be displayed after all previous page floats in the source order
@@ -1349,14 +1349,14 @@ setting margin values in the block direction to 'auto'.
 
 <div class=example>
 
-<p>Only show pullquotes that appear with other content; we don't want a stack of pullquotes at the end of an article.
+<p>Show one (and only one) pull-quote per page, in the second column. If there are more pull-quotes than pages, the remainders are not shown; we don't want a stack of pullquotes at the end of an article.
 
 <pre>
 .pullquote { 
    float: top;
    clear: page;
    float-defer-column: 2;
-   float-policy: not-last;
+   float-policy: zap-last;
 }
 </div>
 
