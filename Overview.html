@@ -35,7 +35,7 @@ h2 { clear: both }
   <p><a href="http://www.whatwg.org/" class="logo"><img width="100" alt="WHATWG" height="100" src="http://resources.whatwg.org/logo.svg"></a></p>
 	<h1>CSS Figures</h1>
 	
-	<h2 class="no-num no-toc" id="living-standard-last-updated-9-may-2014">Living Standard — Last Updated 9 May 2014</h2>
+	<h2 class="no-num no-toc" id="living-standard-last-updated-12-may-2014">Living Standard — Last Updated 12 May 2014</h2>
 	
 	<dl>
 		<dt>This version:
@@ -56,7 +56,7 @@ h2 { clear: both }
 
 	</dl>
 	
-<p class="copyright"><a href="http://creativecommons.org/publicdomain/zero/1.0/" rel="license"><img src="http://i.creativecommons.org/p/zero/1.0/80x15.png" alt="CC0"></a>To the extent possible under law, the editor has waived all copyright and related or neighboring rights to this work. In addition, as of 9 May 2014, the editor has made this specification available under the
+<p class="copyright"><a href="http://creativecommons.org/publicdomain/zero/1.0/" rel="license"><img src="http://i.creativecommons.org/p/zero/1.0/80x15.png" alt="CC0"></a>To the extent possible under law, the editor has waived all copyright and related or neighboring rights to this work. In addition, as of 12 May 2014, the editor has made this specification available under the
 <a href="http://www.openwebfoundation.org/legal/the-owf-1-0-agreements/owfa-1-0" rel="license">Open Web Foundation Agreement Version 1.0</a>, which is available at <!--begin-link--><a href="http://www.openwebfoundation.org/legal/the-owf-1-0-agreements/owfa-1-0">http://www.openwebfoundation.org/legal/the-owf-1-0-agreements/owfa-1-0</a><!--end-link-->.
 
 </div>
@@ -1447,12 +1447,12 @@ called <dfn id="x2d-floats-0">2D floats</dfn>.
 </div>
 
 <div class="example">
-<p>Move an element down and toward the outside:
+<p>Move an element to the last column, two lines from the top, pushing the float slighly to the right:
 
 <p><img src="36.png">
 
 <pre>.pullquote {
-  float: top outside;
+  float: top right;
   float-defer-column: last;
   float-defer-line: 2;
   float-offset: -2em;
@@ -1461,13 +1461,12 @@ called <dfn id="x2d-floats-0">2D floats</dfn>.
 
 
 <div class="example">
-<p>Moving an element down and to the outside, so that the element is half way down, and half of the pullquote is outside the BFC:
-
+<p>Position pullquotes so that that they appear in the outside column, extending into the outside margin. 
 
 <pre>.pullquote {
   width: 120%; /* relative to column width */
   float: top outside;  /* position page float at the top... */
-  float-defer-column: last; /* ... of the last column */
+  float-defer-column: outside /* ... of the last column */
   float-defer-line: 50%; /* move page float down */
   float-offset: -50%; /* push page float into margin */
 }
