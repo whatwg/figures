@@ -1,8 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd"><html lang="en"><head>
-<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta content="text/html; charset=utf-8" http-equiv="content-type">
 <title>CSS Figures</title>
-<link href="http://www.whatwg.org/style/specification" type="text/css" rel="stylesheet">
-<link href="http://www.whatwg.org/style/specification" type="text/css" rel="stylesheet">
+<link href="http://www.whatwg.org/style/specification" rel="stylesheet" type="text/css">
+<link href="http://www.whatwg.org/style/specification" rel="stylesheet" type="text/css">
 
 <style>
 .head h1 { padding: 1em 0 }
@@ -32,10 +32,10 @@ h2 { clear: both }
 <body class="draft">
 
 <div class="head">
-  <p><a href="http://www.whatwg.org/" class="logo"><img width="100" alt="WHATWG" height="100" src="http://resources.whatwg.org/logo.svg"></a></p>
+  <p><a class="logo" href="http://www.whatwg.org/"><img alt="WHATWG" height="100" width="100" src="http://resources.whatwg.org/logo.svg"></a></p>
 	<h1>CSS Figures</h1>
 	
-	<h2 class="no-num no-toc" id="living-standard-last-updated-12-may-2014">Living Standard — Last Updated 12 May 2014</h2>
+	<h2 class="no-num no-toc" id="living-standard-last-updated-6-june-2014">Living Standard — Last Updated 6 June 2014</h2>
 	
 	<dl>
 		<dt>This version:
@@ -56,7 +56,7 @@ h2 { clear: both }
 
 	</dl>
 	
-<p class="copyright"><a href="http://creativecommons.org/publicdomain/zero/1.0/" rel="license"><img src="http://i.creativecommons.org/p/zero/1.0/80x15.png" alt="CC0"></a>To the extent possible under law, the editor has waived all copyright and related or neighboring rights to this work. In addition, as of 12 May 2014, the editor has made this specification available under the
+<p class="copyright"><a href="http://creativecommons.org/publicdomain/zero/1.0/" rel="license"><img alt="CC0" src="http://i.creativecommons.org/p/zero/1.0/80x15.png"></a>To the extent possible under law, the editor has waived all copyright and related or neighboring rights to this work. In addition, as of 6 June 2014, the editor has made this specification available under the
 <a href="http://www.openwebfoundation.org/legal/the-owf-1-0-agreements/owfa-1-0" rel="license">Open Web Foundation Agreement Version 1.0</a>, which is available at <!--begin-link--><a href="http://www.openwebfoundation.org/legal/the-owf-1-0-agreements/owfa-1-0">http://www.openwebfoundation.org/legal/the-owf-1-0-agreements/owfa-1-0</a><!--end-link-->.
 
 </div>
@@ -74,7 +74,7 @@ h2 { clear: both }
 
 <!--begin-toc-->
 <ol class="toc">
- <li><a href="#goals" class="no-num">Goals</a></li>
+ <li><a class="no-num" href="#goals">Goals</a></li>
  <li><a href="#conformance"><span class="secno">1 </span>Conformance</a></li>
  <li><a href="#extending-floats"><span class="secno">2 </span>Extending floats</a>
   <ol>
@@ -100,8 +100,8 @@ h2 { clear: both }
   <ol>
    <li><a href="#wrap-side"><span class="secno">5.1 </span>wrap-side</a></li>
    <li><a href="#wrap-contrast"><span class="secno">5.2 </span>wrap-contrast</a></ol></li>
- <li><a href="#references" class="no-num">References</a></li>
- <li><a href="#acknowledgments" class="no-num">Acknowledgments</a></ol>
+ <li><a class="no-num" href="#references">References</a></li>
+ <li><a class="no-num" href="#acknowledgments">Acknowledgments</a></ol>
 <!--end-toc-->
 
 
@@ -326,7 +326,7 @@ p.one { float: top; column-span: 2 }              /* lead paragraph spans two co
 <pre>.figure { float: top; column-span: all }
 </pre>
 
-<p><img src="15.png" alt="sample redering">
+<p><img alt="sample redering" src="15.png">
 
 </div>
 
@@ -468,7 +468,7 @@ property to create <em>page floats</em>.
 
 <pre>figure { float: top }
 </pre>
-<p><img src="7.png" alt="sample rendering">
+<p><img alt="sample rendering" src="7.png">
 </div>
 
 <p>The column is, by default, the containing block of the page float.
@@ -483,7 +483,7 @@ float.
 
 <pre>figure { float: top; width: 50% }
 </pre>
-<p><img src="7b.png" alt="sample rendering">
+<p><img alt="sample rendering" src="7b.png">
 </div>
 
 <p>The margin of the <dfn id="page-float-extreme-edge">page float extreme edge</dfn> (i.e., the edge of the page float that ends up adjoining the column edge) is always set to zero, so that page floats align with content in other columns. 
@@ -514,7 +514,7 @@ float.
 <div class="example">
 <p>In this example, a figure naturally appears close to a column break. There is not enough space for the figure in the first column, and it is therefore placed in the second column, leaving white space at the bottom of the first column.</p>
 
-<p><img src="23.png" alt="sample rendering">
+<p><img alt="sample rendering" src="23.png">
 
 <p>To avoid the white space, the image can be floated to the nearest edge (in the block direction):</p>
 
@@ -523,14 +523,14 @@ float.
 
 <p>In this example, the figure is already at the nearest edge, so it does not move. However, page floats allow subsequent content to be displayed before the page float and the white space can therefore be filled:</p>
 
-<p><img src="7.png" alt="sample rendering">
+<p><img alt="sample rendering" src="7.png">
 </div>
 
 <div class="example">
 
 <p>In this example, two figures naturally appear in the text flow:</p>
 
-<p><img src="20.png" alt="sample rendering">
+<p><img alt="sample rendering" src="20.png">
 
 <p>A typographer would typically try to avoid single lines of text above/below figures, which can be achieved with:
 
@@ -545,7 +545,7 @@ float.
 
 <p>In this example, two figures naturally appear in the text flow:</p>
 
-<p><img src="20.png" alt="sample rendering">
+<p><img alt="sample rendering" src="20.png">
 
 <p>To make both figures snap to the nearest edges, this code can be applied:
 
@@ -554,7 +554,7 @@ float.
 
 <p>The resultant rendering is:</p>
 
-<p><img src="22.png" alt="sample rendering">
+<p><img alt="sample rendering" src="22.png">
 
 </div>
 
@@ -563,7 +563,7 @@ float.
 
 <p>In this example, two figures naturally appear in the text flow:</p>
 
-<p><img src="20.png" alt="sample rendering">
+<p><img alt="sample rendering" src="20.png">
 
 <p>To make both figures snap to the nearest edges, this code can be applied:
 
@@ -572,7 +572,7 @@ float.
 
 <p>The resultant rendering is:</p>
 
-<p><img src="17.png" alt="sample rendering">
+<p><img alt="sample rendering" src="17.png">
 
 </div>
 
@@ -917,14 +917,14 @@ figure { float-defer-column: 1 }
 
 <pre>figure { float: top; float-defer-column: -1 }
 </pre>
-<p><img src="7.png" alt="sample rendering">
+<p><img alt="sample rendering" src="7.png">
 </div>
 
 <div class="example">
 <p>Float figure to top of the last column of the multicol element on the current page:
 <pre>figure { float: top; float-defer-column: last }
 </pre>
-<p><img src="6.png" alt="sample rendering">
+<p><img alt="sample rendering" src="6.png">
 </div>
 
 
@@ -932,7 +932,7 @@ figure { float-defer-column: 1 }
 <p>In combination with 'column-span', the figure is floated to the top corner of the multicol element on that page:
 <pre>figure { float: top; column-span: 2; float-defer-column: last }
 </pre>
-<p><img src="8.png" alt="sample rendering">
+<p><img alt="sample rendering" src="8.png">
 </div>
 
 
@@ -949,7 +949,7 @@ figure { float-defer-column: 1 }
 
 <p>The next page may look like this:
 
-<p><img src="18.png" alt="sample rendering">
+<p><img alt="sample rendering" src="18.png">
 
 </div>
 
@@ -963,7 +963,7 @@ figure { float-defer-column: 1 }
 }
 </pre>
 
-<p><img src="18.png" alt="sample rendering">
+<p><img alt="sample rendering" src="18.png">
 
 <p>Given that there are four columns, and that the figure is referenced at the beginning of its multicol element, the same layout could be achieved with this code:
 
@@ -1002,7 +1002,7 @@ figure { float-defer-page: -1 }
 .figure { float-defer-column: last }
 </pre>
 
-<p><img src="6.png" alt="sample rendering">
+<p><img alt="sample rendering" src="6.png">
 </div>
 
 <div class="example">
@@ -1036,7 +1036,7 @@ figure { float-defer-page: -1 }
       <td>no
     <tr>
       <td><em>Percentages:</em>
-      <td>relative to height of column
+      <td>see prose
     <tr>
       <td><em>Media:</em>
       <td>visual
@@ -1056,6 +1056,33 @@ figure { float-defer-page: -1 }
 </pre>
 
 <p><img src="38.png">
+</div>
+
+<p>Percentage values are relative to the height of the column, but is rounded to the integer number of lines that best expresses the intent. A percentage value indicates the preferred placement of midpoint of the float, 
+
+<div class="example">
+<p>This code positions the float in the middle of the column:
+
+<pre>.pullquote {
+  float: top;
+  float-defer-line: 50%;
+}
+</pre>
+</div>
+
+
+<div class="example">
+<p>These are identical:
+
+<pre>.pullquote {
+  float: top;
+  float-defer-line: 100%;
+}
+
+.pullquote {
+  float: bottom;
+}
+</pre>
 </div>
 
 
@@ -1203,7 +1230,7 @@ setting margin values in the block direction to 'auto'.
   }
 </pre>
 
-<p><img src="40.png" alt="sample rendering">
+<p><img alt="sample rendering" src="40.png">
 
 </div>
 
@@ -1486,7 +1513,7 @@ column gap.
 <pre>img { float: top left; column-span: 1.70; width: 100% }
 </pre>
 
-<p><img src="39.png" alt="sample rendering">
+<p><img alt="sample rendering" src="39.png">
 </div>
 
 
@@ -1624,7 +1651,7 @@ figure {
 }
 </pre>
 
-<p><img src="landscape-4col.png" style="width: 90%; border: thin solid black">
+<p><img style="width: 90%; border: thin solid black" src="landscape-4col.png">
 </div>
 
 <!--
