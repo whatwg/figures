@@ -1041,7 +1041,7 @@ figure { float-defer-page: -1 }
       <td>no
     <tr>
       <td><em>Percentages:</em>
-      <td>relative to height of column
+      <td>see prose
     <tr>
       <td><em>Media:</em>
       <td>visual
@@ -1062,6 +1062,35 @@ figure { float-defer-page: -1 }
 </pre>
 
 <p><img src=38.png>
+</div>
+
+<p>Percentage values are relative to the height of the column, but is rounded to the integer number of lines that best expresses the intent. A percentage value indicates the preferred placement of midpoint of the float, 
+
+<div class=example>
+<p>This code positions the float in the middle of the column:
+
+<pre>
+.pullquote {
+  float: top;
+  float-defer-line: 50%;
+}
+</pre>
+</div>
+
+
+<div class=example>
+<p>These are identical:
+
+<pre>
+.pullquote {
+  float: top;
+  float-defer-line: 100%;
+}
+
+.pullquote {
+  float: bottom;
+}
+</pre>
 </div>
 
 
