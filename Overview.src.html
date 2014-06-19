@@ -212,20 +212,20 @@ have been added:
 <p>When one of these keywords are set, a page float is created. 
 
 <div class=example>
-<p>In this example, the figure is floated to the top of its column:
+<p>Float the figure to the top of its natural column:
 
 <pre>
 figure { float: top }
 </pre>
+
 <p><img alt="sample rendering" src=7.png>
+
 </div>
 
 <p>The column is, by default, the containing block of the page float.
 When the width is auto, the page float will fill the width of the
 column. When the width is constrained, content will be laid out in the
-inline direction. No other content is allowed to run around the page
-float.
-
+line direction. 
 
 <div class=example>
 <p>In this example, the width of the figure is constrained and its width computed relative to the column width.
@@ -234,11 +234,12 @@ float.
 figure { float: top; width: 50% }
 </pre>
 <p><img alt="sample rendering" src=7b.png>
+
 </div>
 
+<!--
 <p>The margin of the <dfn>page float extreme edge</dfn> (i.e., the edge of the page float that ends up adjoining the column edge) is always set to zero, so that page floats align with content in other columns. 
-
-<p class=note>In the future, other content may be allowed to run around page floats.</p>
+-->
 
 <h3>Floating to nearest edge: snap()</h3>
 
@@ -1305,8 +1306,6 @@ number, length, and the 'auto' value.
 <p>If the resulting number of columns is larger than the number of columns in the multicol element (not counting overflow columns), the number of columns spanned will be the same as the number of columns in the multicol element. 
 
 <p>In the line direction, the rectangle described by this property is, by default, placed at the start of the resulting column, extending in the line direction. However, the rectangle will not normally extend outside the content box of the multicol element. Instead, the rectangle is extended in the opposite direction of the line direction. (Negative margins and/or 'float-offet' may possibly move the page float outside the content box.)
-
-<p>The 
 
 <div class=example>
 <p>In this example, the defer column is the last column on the page. Due to the setting on 'column-span' the page float also covers another column. As it cannot extend outside the content box of the multicol element, it must extend to the left into column 2.
