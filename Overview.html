@@ -35,7 +35,7 @@ h2 { clear: both }
   <p><a class="logo" href="http://www.whatwg.org/"><img alt="WHATWG" height="100" width="100" src="http://resources.whatwg.org/logo.svg"></a></p>
 	<h1>CSS Figures</h1>
 	
-	<h2 class="no-num no-toc" id="living-standard-last-updated-6-june-2014">Living Standard — Last Updated 6 June 2014</h2>
+	<h2 class="no-num no-toc" id="living-standard-last-updated-19-june-2014">Living Standard — Last Updated 19 June 2014</h2>
 	
 	<dl>
 		<dt>This version:
@@ -56,18 +56,18 @@ h2 { clear: both }
 
 	</dl>
 	
-<p class="copyright"><a href="http://creativecommons.org/publicdomain/zero/1.0/" rel="license"><img alt="CC0" src="http://i.creativecommons.org/p/zero/1.0/80x15.png"></a>To the extent possible under law, the editor has waived all copyright and related or neighboring rights to this work. In addition, as of 6 June 2014, the editor has made this specification available under the
+<p class="copyright"><a href="http://creativecommons.org/publicdomain/zero/1.0/" rel="license"><img alt="CC0" src="http://i.creativecommons.org/p/zero/1.0/80x15.png"></a>To the extent possible under law, the editor has waived all copyright and related or neighboring rights to this work. In addition, as of 19 June 2014, the editor has made this specification available under the
 <a href="http://www.openwebfoundation.org/legal/the-owf-1-0-agreements/owfa-1-0" rel="license">Open Web Foundation Agreement Version 1.0</a>, which is available at <!--begin-link--><a href="http://www.openwebfoundation.org/legal/the-owf-1-0-agreements/owfa-1-0">http://www.openwebfoundation.org/legal/the-owf-1-0-agreements/owfa-1-0</a><!--end-link-->.
 
 </div>
 
 <h2 class="no-num no-toc" id="abstract">Abstract</h2>
 
-<p>This specification describes how common figures ‐ as in tables, photographs, or drawings with captions ‐ can be formatted with CSS in ways traditionally used in printing. Using functionality from this specification, figures can be floated wrt. columns and pages, and they can be made to span columns. One can also specify that text should wrap around text and images. 
+<p>This specification describes how figures commonly seen in print ‐ e.g. tables, photographs with captions, or pullquotes ‐ can be formatted with CSS. By turning elements into <em>page floats</em>, figures can be floated wrt. columns and pages, and they can be made to span columns or parts of columns. Page floats live in paged environments, whether on paper or on screen. The page size will vary from one device to another and the features described in this specification has been designed to support responsive design. This specification also describes how text can wrap around text and images. 
 
 <h2 class="no-num no-toc" id="status">Status</h2>
 
-<p>This specification is in the process of establishing itself in WHATWG. As such, the term "Living Standard" indicates a goal, rather than reality. However, many features described in this specification have already been implemented, as documented <a href="http://people.opera.com/howcome/2013/tests/figures/coverage.html">here</a>
+<p>This specification builds on, and extends features described in CSS Multicol <a href="#refsCSSMULTICOL">[CSSMULTICOL]</a> and CSS Overflow. Many of the features described have already been implemented, as described in the <a href="http://www.wiumlie.no/2014/tests/figures/coverage.html">coverage document</a>. Based on implementation experience, some of the features have been revised and the CSS syntax has changed compared to earlier drafts.  <!--http://www.w3.org/TR/2011/WD-css3-gcpm-20111129/#page-floats-->
 
 <h2 class="no-num no-toc" id="table-of-contents">Table of Contents</h2>
 
@@ -80,7 +80,8 @@ h2 { clear: both }
   <ol>
    <li><a href="#floating-inside-and-outside-pages"><span class="secno">2.1 </span>Floating inside and outside pages</a></li>
    <li><a href="#pushing-floats-around:-float-offset"><span class="secno">2.2 </span>Pushing floats around: 'float-offset'</a></li>
-   <li><a href="#spanning-columns"><span class="secno">2.3 </span>Spanning columns</a></ol></li>
+   <li><a href="#spanning-columns"><span class="secno">2.3 </span>Spanning columns</a></li>
+   <li><a href="#relationship-between-column-span-and-width"><span class="secno">2.4 </span>Relationship between 'column-span' and 'width'</a></ol></li>
  <li><a href="#page-floats"><span class="secno">3 </span>Page floats</a>
   <ol>
    <li><a href="#floating-to-the-top-bottom:-float"><span class="secno">3.1 </span>Floating to the top/bottom: 'float'</a></li>
@@ -210,7 +211,7 @@ new definition is:
       <td>none
     <tr>
       <td><em>Applies to:</em>
-      <td>in-flow block-level elements
+      <td>in-flow block-level elements (but see prose)
     <tr>
       <td><em>Inherited:</em>
       <td>no
@@ -225,30 +226,32 @@ new definition is:
       <td>Same as specified value
 </table>
 
-<p>This property describes how many columns the element spans in the nearest multicol ancestor in the same block formatting context. These values only apply to page floats.
+<p>This property describes how many columns the element spans in the nearest multicol ancestor in the same block formatting context. 
 
 <dl>
 
 <dt>none
-<dd>the element does not span multiple columns.
+<dd>the element does not span multiple columns
 
 <dt>all
-<dd>the element spans across all columns.
+<dd>The element spans across all columns, as per <a href="#refsCSSMULTICOL">[CSSMULTICOL]</a>. This value results in previous content being balanced across all columns before the spanning element; no other value has the same effect. 
 
 <dt>&lt;number&gt;
-<dd>The page float spans across the number of columns specified. If a decimal number is specified, the fraction indicates how much of the next column gap and/or the next column which is to be spanned; a fraction up to 0.5 indicates a linear fraction of the column gap, while a fraction between 0.5 and 1.0 indicate the column gap plut a linear fraction of the next column. 
+<dd>The page float spans across the number of columns specified. If a decimal number is specified, the fraction indicates how much of the next column gap and/or the next column which is to be spanned; a fraction up to 0.5 indicates a linear fraction of the column gap, while a fraction between 0.5 and 1.0 indicate the column gap plus a linear fraction of the next column. This value only has effect on page floats.
 
 <dt>&lt;length&gt;
-<dd>the length value determins how many columns the page float will span, rounding upwards to an integer number of columns
+<dd>The length value determines how many columns the page float will span, rounding upwards to an integer number of columns. This value only has effect on page floats.
 
 <dt>auto
-<dd>the intrinsic width of the page float determines how many columns it will span, rounding upwards to an integer number of columns
+<dd>The intrinsic width of the page float determines how many columns it will span, rounding upwards to an integer number of columns. This value only has effect on page floats.
 
 </dl>
 
 <p>If the resulting number of columns is equal to, or larger than the number of columns in the multicol element, the number of columns spanned will be the same as if 'column-span: all' had been specified. 
 
-<p>In the line direction, the rectangle described by this property is, by default, placed at the start of the resulting column, extending in the line direction. However, the rectangle will not normally extend outside the content box of the multicol element. Instead, the rectangle extended in the opposite line direction. (Negative margins and/or 'float-offet' may possibly move the page float outside the content box.)
+<p>In the line direction, the rectangle described by this property is, by default, placed at the start of the resulting column, extending in the line direction. However, the rectangle will not normally extend outside the content box of the multicol element. Instead, the rectangle is extended in the opposite direction of the line direction. (Negative margins and/or 'float-offet' may possibly move the page float outside the content box.)
+
+<p>The 
 
 <div class="example">
 <p>In this example, the defer column is the last column on the page. Due to the setting on 'column-span' the page float also covers another column. As it cannot extend outside the content box of the multicol element, it must extend to the left into column 2.
@@ -256,6 +259,7 @@ new definition is:
 <pre>img { 
   float: top;
   column-span: 2;
+  width: 100%
   float-defer-column: last;
 }
 </pre>
@@ -351,6 +355,9 @@ p.one { float: top; column-span: 2 }              /* lead paragraph spans two co
 </pre>
 <p><img src="31.png">
 </div>
+
+<h3 id="relationship-between-column-span-and-width"><span class="secno">2.4 </span>Relationship between 'column-span' and 'width'</h3>
+
 
 
 
@@ -634,7 +641,7 @@ table { float: snap(3em 2em, bottom) }
 <dd>the <em>resulting column</em> is the float reference
 
 <dt>element
-<dd>the float reference is the youngest acestor element that creates a block formatting context
+<dd>the float reference is the youngest ancestor element that creates a block formatting context
 
 <dt>page 
 <dd>the page area of the <em>resulting page</em> is the float reference
@@ -710,7 +717,7 @@ table { float: snap(3em 2em, bottom) }
 </div>
 
 <div class="example">
-<p>In this example, the <code>article</code> element acts as the float reference:
+<p>This example results in a rendering which is similar to the previous example, but the style sheet is different:
 
 <pre>footer { float: bottom; float-reference: element }
 article { columns: 3 }
@@ -1772,7 +1779,10 @@ figure {
 
 <h2 class="no-num" id="references">References</h2>
 
-<div id="anolis-references"><dl><dt id="refsRFC2119">[RFC2119]
+<div id="anolis-references"><dl><dt id="refsCSSMULTICOL">[CSSMULTICOL]
+<dd><cite><a href="http://dev.w3.org/csswg/css-multicol/">CSS Multi-column Layout Module</a></cite>, Håkon Wium Lie. W3C.
+
+<dt id="refsRFC2119">[RFC2119]
 <dd><cite><a href="http://tools.ietf.org/html/rfc2119">Key words for use in RFCs to Indicate Requirement Levels</a></cite>, Scott Bradner. IETF.
 
 </dl></div>
