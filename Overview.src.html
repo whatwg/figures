@@ -12,10 +12,13 @@
 .head h1 { padding: 1em 0 }
 span.minor { letter-spacing: 0; color: black; font-size: 0.8em; font-weight: normal }
 
+/*
 div.example {
   border-left: 0.3em solid black;
   margin: 0;
 }
+*/
+
 .code-example {
   text-align: right;
   float: left;
@@ -67,11 +70,11 @@ h2 { clear: both }
 
 <h2 class="no-num no-toc">Abstract</h2>
 
-<p>This specification describes how common figures &dash; as in tables, photographs, or drawings with captions &dash; can be formatted with CSS in ways traditionally used in printing. Using functionality from this specification, figures can be floated wrt. columns and pages, and they can be made to span columns. One can also specify that text should wrap around text and images. 
+<p>This specification describes how figures commonly seen in print &ndash; e.g. tables, photographs with captions, or pullquotes &ndash; can be formatted with CSS. By turning elements into <em>page floats</em>, figures can be floated wrt. columns and pages, and they can be made to span columns. As such, the specification reinforce columns and pages as basic building blocks of typography. Page floats live in paged environments, whether on paper or on screen. Authors do not know the size of the reader's device and care has been taken to make features to responsive by design. This specification also describes how text can wrap around text and images. 
 
 <h2 class="no-num no-toc">Status</h2>
 
-<p>This specification is in the process of establishing itself in WHATWG. As such, the term "Living Standard" indicates a goal, rather than reality. However, many features described in this specification have already been implemented, as documented <a href="http://people.opera.com/howcome/2013/tests/figures/coverage.html">here</a>
+<p>This specification builds on, and extends features described in CSS Multi-column Layout <span data-anolis-ref>CSSMULTICOL</span> and CSS Overflow <span data-anolis-ref>CSSOVERFLOW</span>. Many of the features described have already been implemented, as described in the <a href="http://www.wiumlie.no/2014/tests/figures/coverage.html">implementation coverage document</a>. Based on implementation experience, some of the features have been revised and the CSS syntax has changed compared to earlier drafts. As such, the specfication is quite mature. <!--http://www.w3.org/TR/2011/WD-css3-gcpm-20111129/#page-floats-->
 
 <h2 class="no-num no-toc">Table of Contents</h2>
 
@@ -103,235 +106,6 @@ equivalent.
 implementation-specific limits on otherwise unconstrained inputs,
 e.g. to prevent denial of service attacks, to guard against running
 out of memory, or to work around platform-specific limitations.
-
-<h2>Extending floats</h2>
-
-<h3>Floating inside and outside pages</h3>
-
-<p>To allow content to flow to the inside and outside of a page, two new keywords are added to the 'float' property:
-
-<dl>
-
-<dt>inside
-<dd>On a right page, this value is synonymous with 'left'. On a left page, this value is synonymous with 'right'.
-
-<dt>outside
-<dd>On a left page, this value is synonymous with 'left', On a right page, this value is synonymous with 'right'.
-
-</dl>
-
-
-<div class=example>
-<pre>
-.figure { float: outside }
-</pre>
-</div>
-
-
-
-<h3>Pushing floats around: 'float-offset'</h3>
-
-<table class=propdef>
-    <tr>
-      <td><em>Name:</em>
-      <td><dfn>float-offset</dfn>
-    <tr>
-      <td><em>Value:</em>
-      <td>none | &lt;number> | &lt;percentage> | auto
-    <tr>
-      <td><em>Initial:</em>
-      <td>none
-    <tr>
-      <td><em>Applies to:</em>
-      <td>floats
-    <tr>
-      <td><em>Inherited:</em>
-      <td>no
-    <tr>
-      <td><em>Percentages:</em>
-      <td>relative to width of float
-    <tr>
-      <td><em>Media:</em>
-      <td>visual
-    <tr>
-      <td><em>Computed&nbsp;value:</em>
-      <td>Same as specified value
-</table>
-
-
-<div class=example>
-<pre>
-float: outside;
-float-offset: -3em;
-</pre>
-</div>
-
-
-<h3>Spanning columns</h3>
-
-<p>This specification adds number, length, and the 'auto' value to the
-'column-span' property so that elements can span several columns. The
-new definition is:
-
-<table class=propdef>
-    <tr>
-      <td><em>Name:</em>
-      <td><dfn>column-span</dfn>
-    <tr>
-      <td><em>Value:</em>
-      <td>none | all | &lt;number> | &lt;length> | auto
-    <tr>
-      <td><em>Initial:</em>
-      <td>none
-    <tr>
-      <td><em>Applies to:</em>
-      <td>in-flow block-level elements
-    <tr>
-      <td><em>Inherited:</em>
-      <td>no
-    <tr>
-      <td><em>Percentages:</em>
-      <td>N/A
-    <tr>
-      <td><em>Media:</em>
-      <td>visual
-    <tr>
-      <td><em>Computed&nbsp;value:</em>
-      <td>Same as specified value
-</table>
-
-<p>This property describes how many columns the element spans in the nearest multicol ancestor in the same block formatting context. These values only apply to page floats.
-
-<dl>
-
-<dt>none
-<dd>the element does not span multiple columns.
-
-<dt>all
-<dd>the element spans across all columns.
-
-<dt>&lt;number>
-<dd>The page float spans across the number of columns specified. If a decimal number is specified, the fraction indicates how much of the next column gap and/or the next column which is to be spanned; a fraction up to 0.5 indicates a linear fraction of the column gap, while a fraction between 0.5 and 1.0 indicate the column gap plut a linear fraction of the next column. 
-
-<dt>&lt;length>
-<dd>the length value determins how many columns the page float will span, rounding upwards to an integer number of columns
-
-<dt>auto
-<dd>the intrinsic width of the page float determines how many columns it will span, rounding upwards to an integer number of columns
-
-</dl>
-
-<p>If the resulting number of columns is equal to, or larger than the number of columns in the multicol element, the number of columns spanned will be the same as if 'column-span: all' had been specified. 
-
-<p>In the line direction, the rectangle described by this property is, by default, placed at the start of the resulting column, extending in the line direction. However, the rectangle will not normally extend outside the content box of the multicol element. Instead, the rectangle extended in the opposite line direction. (Negative margins and/or 'float-offet' may possibly move the page float outside the content box.)
-
-<div class=example>
-<p>In this example, the defer column is the last column on the page. Due to the setting on 'column-span' the page float also covers another column. As it cannot extend outside the content box of the multicol element, it must extend to the left into column 2.
-
-<pre>
-img { 
-  float: top;
-  column-span: 2;
-  float-defer-column: last;
-}
-</pre>
-
-<p>Here is a possible rendering:
-<!--
-<pre class=lineart>
-  ┌──────────┬┬┬───────────────────────┐
-  │          │││                       │
-  │ column 1 │││      image spans      │
-  │          │││      two columns      │
-  │          │││                       │
-  │          ││├──────────┬┬┬──────────┤
-  │          │││ column 2 │││ column 3 │
-  │          │││          │││          │
-  └──────────┴┴┴──────────┴┴┴──────────┘
-</pre>
--->
-<p><img src=8.png>
-</div>
-
-<div class=example>
-<p>This example is a variation of the previous example, showing how the page float grows in the oppsite of the line direction.
-
-<pre>
-img { 
-  float: top;
-  column-span: 1.75;
-  float-defer-column: last;
-}
-</pre>
-
-<p>Here is a possible rendering:
-
-<p><img src="35.png">
-</div>
-
-
-
-<!--
-<div class=example>
-<p>In this example, a commonly used newspaper layout is easily described:
-<pre>
-body { columns: 3 }
-img  { float: top; column-span: 2; width: 100% }  /* image spans two columns */
-p.one { float: top; column-span: 2 }              /* lead paragraph spans two columns */
-</pre>
-
-<pre class=lineart>
-┌──────────────────────┐┌──────────┐
-│                      ││          │
-│         img          ││    4     │	          
-│                      ││          │   
-└──────────────────────┘│          │
-┌──────────────────────┐│          │
-│        p.one         ││          │   
-└──────────────────────┘│          │
-┌──────────┐┌──────────┐│          │
-│     2    ││    3     ││          │   
-└──────────┘└──────────┘└──────────┘
-</pre>
-</div>
--->
-
-<div class=example>
-
-<p>Float figure to top of its column, spanning all columns:
-
-<pre>
-.figure { float: top; column-span: all }
-</pre>
-
-<p><img alt="sample redering" src=15.png>
-
-</div>
-
-
-<div class=example>
-<pre>
-figure { 
-  float: top;
-  float-defer-column: last;
-  column-span: 1.25;
-}
-</pre>
-
-<p><img src=30.png>
-</div>
-
-<div class=example>
-<pre>
-figure { 
-  float: top;
-  float-defer-column: last;
-  column-span: 1.5;
-}
-</pre>
-<p><img src=31.png>
-</div>
-
 
 
 
@@ -620,7 +394,7 @@ table { float: snap(3em 2em, bottom) }
 <dd>the <em>resulting column</em> is the float reference
 
 <dt>element
-<dd>the float reference is the youngest acestor element that creates a block formatting context
+<dd>the float reference is the youngest ancestor element that creates a block formatting context
 
 <dt>page 
 <dd>the page area of the <em>resulting page</em> is the float reference
@@ -700,7 +474,7 @@ footer { float: bottom; float-reference: column; column-span: all }
 </div>
 
 <div class=example>
-<p>In this example, the <code>article</code> element acts as the float reference:
+<p>This example results in a rendering which is similar to the previous example, but the style sheet is different:
 
 <pre>
 footer { float: bottom; float-reference: element }
@@ -1476,6 +1250,237 @@ p { float: top; float-defer-page: last }
 
 </div>
 -->
+
+<h3>Pushing floats around: 'float-offset'</h3>
+
+<table class=propdef>
+    <tr>
+      <td><em>Name:</em>
+      <td><dfn>float-offset</dfn>
+    <tr>
+      <td><em>Value:</em>
+      <td>none | &lt;number> | &lt;percentage> | auto
+    <tr>
+      <td><em>Initial:</em>
+      <td>none
+    <tr>
+      <td><em>Applies to:</em>
+      <td>floats
+    <tr>
+      <td><em>Inherited:</em>
+      <td>no
+    <tr>
+      <td><em>Percentages:</em>
+      <td>relative to width of float
+    <tr>
+      <td><em>Media:</em>
+      <td>visual
+    <tr>
+      <td><em>Computed&nbsp;value:</em>
+      <td>Same as specified value
+</table>
+
+
+<div class=example>
+<pre>
+float: outside;
+float-offset: -3em;
+</pre>
+</div>
+
+
+
+<h2>Floating inside and outside pages</h2>
+
+<p>To allow content to flow to the inside and outside of a page, two new keywords are added to the 'float' property:
+
+<dl>
+
+<dt>inside
+<dd>On a right page, this value is synonymous with 'left'. On a left page, this value is synonymous with 'right'.
+
+<dt>outside
+<dd>On a left page, this value is synonymous with 'left', On a right page, this value is synonymous with 'right'.
+
+</dl>
+
+
+<div class=example>
+<pre>
+.figure { float: outside }
+</pre>
+</div>
+
+
+
+
+<h2>Spanning columns</h2>
+
+<p>This specification extends the 'column-span' property <span data-anolis-ref>CSSMULTICOL</span> with new values: number, length, and the 'auto' value.
+
+<table class=propdef>
+    <tr>
+      <td><em>Name:</em>
+      <td><dfn>column-span</dfn>
+    <tr>
+      <td><em>Value:</em>
+      <td>none | all | &lt;number> | &lt;length> | auto
+    <tr>
+      <td><em>Initial:</em>
+      <td>none
+    <tr>
+      <td><em>Applies to:</em>
+      <td>in-flow block-level elements (but see prose)
+    <tr>
+      <td><em>Inherited:</em>
+      <td>no
+    <tr>
+      <td><em>Percentages:</em>
+      <td>N/A
+    <tr>
+      <td><em>Media:</em>
+      <td>visual
+    <tr>
+      <td><em>Computed&nbsp;value:</em>
+      <td>Same as specified value
+</table>
+
+<p>This property describes how many columns the element spans in the nearest multicol ancestor in the same block formatting context. 
+
+<dl>
+
+<dt>none
+<dd>the element does not span multiple columns
+
+<dt>all
+<dd>The element spans across all columns, as per <span data-anolis-ref>CSSMULTICOL</span>. This value results in previous content being balanced across all columns before the spanning element; no other value has the this effect. 
+
+<dt>&lt;number>
+<dd>The page float spans across the number of columns specified. If a decimal number is specified, the fraction indicates how much of the next column gap and/or the next column which is to be spanned; a fraction up to 0.5 indicates a linear fraction of the column gap, while a fraction between 0.5 and 1.0 indicate the column gap plus a linear fraction of the next column. This value only has effect on page floats.
+
+<dt>&lt;length>
+<dd>The length value determines how many columns the page float will span, rounding upwards to an integer number of columns. This value only has effect on page floats.
+
+<dt>auto
+<dd>The intrinsic width of the page float determines how many columns it will span, rounding upwards to an integer number of columns. This value only has effect on page floats.
+
+</dl>
+
+<p>If the resulting number of columns is larger than the number of columns in the multicol element (not counting overflow columns), the number of columns spanned will be the same as the number of columns in the multicol element. 
+
+<p>In the line direction, the rectangle described by this property is, by default, placed at the start of the resulting column, extending in the line direction. However, the rectangle will not normally extend outside the content box of the multicol element. Instead, the rectangle is extended in the opposite direction of the line direction. (Negative margins and/or 'float-offet' may possibly move the page float outside the content box.)
+
+<p>The 
+
+<div class=example>
+<p>In this example, the defer column is the last column on the page. Due to the setting on 'column-span' the page float also covers another column. As it cannot extend outside the content box of the multicol element, it must extend to the left into column 2.
+
+<pre>
+img { 
+  float: top;
+  column-span: 2;
+  width: 100%
+  float-defer-column: last;
+}
+</pre>
+
+<p>Here is a possible rendering:
+<!--
+<pre class=lineart>
+  ┌──────────┬┬┬───────────────────────┐
+  │          │││                       │
+  │ column 1 │││      image spans      │
+  │          │││      two columns      │
+  │          │││                       │
+  │          ││├──────────┬┬┬──────────┤
+  │          │││ column 2 │││ column 3 │
+  │          │││          │││          │
+  └──────────┴┴┴──────────┴┴┴──────────┘
+</pre>
+-->
+<p><img src=8.png>
+</div>
+
+<div class=example>
+<p>This example is a variation of the previous example, showing how the page float grows in the oppsite of the line direction.
+
+<pre>
+img { 
+  float: top;
+  column-span: 1.75;
+  float-defer-column: last;
+}
+</pre>
+
+<p>Here is a possible rendering:
+
+<p><img src="35.png">
+</div>
+
+
+
+<!--
+<div class=example>
+<p>In this example, a commonly used newspaper layout is easily described:
+<pre>
+body { columns: 3 }
+img  { float: top; column-span: 2; width: 100% }  /* image spans two columns */
+p.one { float: top; column-span: 2 }              /* lead paragraph spans two columns */
+</pre>
+
+<pre class=lineart>
+┌──────────────────────┐┌──────────┐
+│                      ││          │
+│         img          ││    4     │	          
+│                      ││          │   
+└──────────────────────┘│          │
+┌──────────────────────┐│          │
+│        p.one         ││          │   
+└──────────────────────┘│          │
+┌──────────┐┌──────────┐│          │
+│     2    ││    3     ││          │   
+└──────────┘└──────────┘└──────────┘
+</pre>
+</div>
+-->
+
+<div class=example>
+
+<p>Float figure to top of its column, spanning all columns:
+
+<pre>
+.figure { float: top; column-span: all }
+</pre>
+
+<p><img alt="sample redering" src=15.png>
+
+</div>
+
+
+<div class=example>
+<pre>
+figure { 
+  float: top;
+  float-defer-column: last;
+  column-span: 1.25;
+}
+</pre>
+
+<p><img src=30.png>
+</div>
+
+<div class=example>
+<pre>
+figure { 
+  float: top;
+  float-defer-column: last;
+  column-span: 1.5;
+}
+</pre>
+<p><img src=31.png>
+</div>
+
+<!--<h3>Relationship between 'column-span' and 'width'</h3>-->
 
 
 <h2>2D floats</h2>
