@@ -113,8 +113,8 @@ out of memory, or to work around platform-specific limitations.
 
 <p>In page-based layouts, images and figures are often displayed at
 the top or bottom of pages, spanning several columns. This
-specification extends the CSS float model with <em>page floats</em>,
-which are floats that primarily move in the block direction, as
+specification extends the CSS float model with <dfn>page floats</dfn>,
+which are floats that move in the block direction, as
 opposed to normal CSS float that primarily move in the inline
 direcdtion. The 'float' property is used to specify that the page
 float should move to the top, bottom or to the nearest edge of the
@@ -124,23 +124,15 @@ column.
 i.e., the column where the element would naturally start. All visible
 elements have at least one column. Elements that are split over
 several pages will have several columns, and multicol elements can
-have several columns on the same page. Columns exist in both paged and
-continous media, and page floats can therefore also be used in
-scrolled enviroments.
+have several columns on the same page. 
 
 <!--
-<p>Each page float has a <em>natural column</em>, which is the column
-where the start of the element would have been if it was not floated.
-Also, each page float has a <em>natural page</em>, which is the page
-where the element would have started if the was not a float. Unless
-constrained by lack of space or settings on other float-* properties, page
-floats should appear in their natural column on the natural page.
+Columns exist in both paged and
+continous media, and page floats can therefore also be used in
+scrolled enviroments.
+-->
 
-<!--As such, <em>column float</em> may be a more accurate term, but column   than page floats. However, most columns will be contained by the page area, and this sp for page floats may be <em>column
-floats</em> as all of them are constrained by the column box. However,
-in most cases, page floats seems like a better term.-->
-
-<p>The page float's conataining block can be extended by the
+<p>The page float's containing block can be extended by the
 'column-span' property. A typical use case is to make the page float
 span two columns, but parts of columns or column gaps can also be
 specified.
@@ -183,23 +175,25 @@ property to create <em>page floats</em>.
 -->
 
 
-<h3>Floating to the top/bottom: 'float'</h3>
+<h3>Floating to the top/bottom</h3>
 
-<p>These new keywords on 'float' have been added:
+<p>Floating to top or bottom of columns is a basic feature of
+multi-column layout. To support this, some new keywords on 'float'
+have been added:
 
 <dl>
 
 <dt>top
-<dd>The page float is moved to the top of its column, i.e., to the beginning (in the block direction) of its <em>defer column</em>. If other page floats have already taken the top position, the float is stacked below or moved to the top of another column (see <a href=#clearing-page-floats>Clearing Page floats</a> below).
+<dd>The page float is moved to the top of its column, i.e., to the beginning (in the block direction) of its <em>defer column</em> (see <a href="#deferring-page-floats">Deferring page floats</a> below). If other page floats have already taken the top position, the float is stacked below or moved to the top of another column (see <a href=#clearing-page-floats>Clearing Page floats</a> below).
 
 <dt>block-start
-<dd>alias for 'top' (<span class=issue>should 'before' also be an alias?</span>)
+<dd>alias for 'top'
 
 <dt>bottom
-<dd>The page float is moved to the bottom of its column, i.e., to the end (in the block direction) of its <em>defer column</em>. If other page floats have already taken the bottom position, the float is stacked above or moved to the bottom of another column (see <a href=#clearing-page-floats>Clearing Page floats</a> below).
+<dd>The page float is moved to the bottom of its column, i.e., to the end (in the block direction) of its <em>defer column</em>. If other page floats have already taken the bottom position, the float is stacked above or moved to the bottom of another column.
 
 <dt>block-end
-<dd>alias for 'bottom' (<span class=issue>should 'after' also be an alias?</span>)
+<dd>alias for 'bottom'
 
 <dt>top-bottom
 <dd>The page float is moved to the top of its column, i.e., to the beginning (in the block direction) of its <em>defer column</em>. If that position is not possible (due to 'column: clear' being set, or due to lack of space), other possibilities are tried in order: the bottom of its column, the top of the next column, the bottom of the next column, etc.
@@ -559,7 +553,7 @@ aside.top-ad img {
 
 <p>A page float can be deferred to a following column or page with two
 new properties described in this section. After applying these
-properties, the page float's <em>defer column</em> is identified.
+properties, the page float's <dfn>defer column</dfn> is identified.
 These properties are evaluated before the 'clear' property.
 
 <h4>'float-defer-column'</h4>
@@ -1255,7 +1249,10 @@ p { float: top; float-defer-page: last }
 
 <h2>Spanning columns</h2>
 
-<p>This specification extends the 'column-span' property <span data-anolis-ref>CSSMULTICOL</span> with new values: number, length, and the 'auto' value.
+<p>The page float's containing block can be extended by the
+'column-span' property. This specification extends the 'column-span'
+property <span data-anolis-ref>CSSMULTICOL</span> with new values:
+number, length, and the 'auto' value.
 
 <table class=propdef>
     <tr>
@@ -1284,7 +1281,7 @@ p { float: top; float-defer-page: last }
       <td>Same as specified value
 </table>
 
-<p>This property describes how many columns the element spans in the nearest multicol ancestor in the same block formatting context. 
+<p>This property describes how the element spans across columns of the nearest multicol ancestor. 
 
 <dl>
 
