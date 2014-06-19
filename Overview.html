@@ -97,13 +97,14 @@ h2 { clear: both }
    <li><a href="#float-policy"><span class="secno">2.7 </span>'float-policy'</a></li>
    <li><a href="#overconstrained-page-floats"><span class="secno">2.8 </span>Overconstrained page floats</a></ol></li>
  <li><a href="#spanning-columns"><span class="secno">3 </span>Spanning columns</a></li>
- <li><a href="#offsetting-floats:-float-offset"><span class="secno">4 </span>Offsetting floats: 'float-offset'</a></li>
- <li><a href="#two-dimensional-floats"><span class="secno">5 </span>Two-dimensional floats</a></li>
- <li><a href="#floating-inside-and-outside-pages"><span class="secno">6 </span>Floating inside and outside pages</a></li>
- <li><a href="#wrapping-around-page-floats-and-other-elements"><span class="secno">7 </span>Wrapping around page floats (and other elements)</a>
+ <li><a href="#two-dimensional-floats"><span class="secno">4 </span>Two-dimensional floats</a>
   <ol>
-   <li><a href="#wrap-side"><span class="secno">7.1 </span>wrap-side</a></li>
-   <li><a href="#wrap-contrast"><span class="secno">7.2 </span>wrap-contrast</a></ol></li>
+   <li><a href="#offsetting-floats:-float-offset"><span class="secno">4.1 </span>Offsetting floats: 'float-offset'</a></ol></li>
+ <li><a href="#floating-inside-and-outside-pages"><span class="secno">5 </span>Floating inside and outside pages</a></li>
+ <li><a href="#wrapping-around-page-floats-and-other-elements"><span class="secno">6 </span>Wrapping around page floats (and other elements)</a>
+  <ol>
+   <li><a href="#wrap-side"><span class="secno">6.1 </span>wrap-side</a></li>
+   <li><a href="#wrap-contrast"><span class="secno">6.2 </span>wrap-contrast</a></ol></li>
  <li><a class="no-num" href="#references">References</a></li>
  <li><a class="no-num" href="#acknowledgments">Acknowledgments</a></ol>
 <!--end-toc-->
@@ -1387,45 +1388,9 @@ p.one { float: top; column-span: 2 }              /* lead paragraph spans two co
 <!--<h3>Relationship between 'column-span' and 'width'</h3>-->
 
 
-<h2 id="offsetting-floats:-float-offset"><span class="secno">4 </span>Offsetting floats: 'float-offset'</h2>
-
-<table class="propdef">
-    <tr>
-      <td><em>Name:</em>
-      <td><dfn id="float-offset">float-offset</dfn>
-    <tr>
-      <td><em>Value:</em>
-      <td>none | &lt;number&gt; | &lt;percentage&gt; | auto
-    <tr>
-      <td><em>Initial:</em>
-      <td>none
-    <tr>
-      <td><em>Applies to:</em>
-      <td>floats
-    <tr>
-      <td><em>Inherited:</em>
-      <td>no
-    <tr>
-      <td><em>Percentages:</em>
-      <td>relative to width of float
-    <tr>
-      <td><em>Media:</em>
-      <td>visual
-    <tr>
-      <td><em>Computed value:</em>
-      <td>Same as specified value
-</table>
 
 
-<div class="example">
-<pre>float: outside;
-float-offset: -3em;
-</pre>
-</div>
-
-
-
-<h2 id="two-dimensional-floats"><span class="secno">5 </span>Two-dimensional floats</h2>
+<h2 id="two-dimensional-floats"><span class="secno">4 </span>Two-dimensional floats</h2>
 
 <p>Page floats are floats that primarily move in the block direction,
 while normal floats primarily move in the line direction. By setting
@@ -1484,8 +1449,46 @@ column gap.
 <p><img alt="sample rendering" src="39.png">
 </div>
 
+<h3 id="offsetting-floats:-float-offset"><span class="secno">4.1 </span>Offsetting floats: 'float-offset'</h3>
 
-<h2 id="floating-inside-and-outside-pages"><span class="secno">6 </span>Floating inside and outside pages</h2>
+<table class="propdef">
+    <tr>
+      <td><em>Name:</em>
+      <td><dfn id="float-offset">float-offset</dfn>
+    <tr>
+      <td><em>Value:</em>
+      <td>none | &lt;number&gt; | &lt;percentage&gt; | auto
+    <tr>
+      <td><em>Initial:</em>
+      <td>none
+    <tr>
+      <td><em>Applies to:</em>
+      <td>floats
+    <tr>
+      <td><em>Inherited:</em>
+      <td>no
+    <tr>
+      <td><em>Percentages:</em>
+      <td>relative to width of float
+    <tr>
+      <td><em>Media:</em>
+      <td>visual
+    <tr>
+      <td><em>Computed value:</em>
+      <td>Same as specified value
+</table>
+
+
+<div class="example">
+<pre>float: outside;
+float-offset: -3em;
+</pre>
+</div>
+
+
+
+
+<h2 id="floating-inside-and-outside-pages"><span class="secno">5 </span>Floating inside and outside pages</h2>
 
 <p>To allow content to flow to the inside and outside of a page, two new keywords are added to the 'float' property:
 
@@ -1508,10 +1511,10 @@ column gap.
 
 
 
-<h2 id="wrapping-around-page-floats-and-other-elements"><span class="secno">7 </span>Wrapping around page floats (and other elements)</h2>
+<h2 id="wrapping-around-page-floats-and-other-elements"><span class="secno">6 </span>Wrapping around page floats (and other elements)</h2>
 
 
-<h3 id="wrap-side"><span class="secno">7.1 </span>wrap-side</h3>
+<h3 id="wrap-side"><span class="secno">6.1 </span>wrap-side</h3>
 
 
 <table class="propdef">
@@ -1582,7 +1585,7 @@ column gap.
 </div>
 
 
-<h3 id="wrap-contrast"><span class="secno">7.2 </span>wrap-contrast</h3>
+<h3 id="wrap-contrast"><span class="secno">6.2 </span>wrap-contrast</h3>
 
 <table class="propdef">
     <tr>
