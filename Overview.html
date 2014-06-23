@@ -30,6 +30,7 @@ a.unclear, a.almost { color: orange }
 pre.lineart { line-height: 1 }
 .example img { display: block }
 h2 { clear: both }
+p.geese img { border: thin solid black }
 </style>
 
 <body class="draft">
@@ -38,7 +39,7 @@ h2 { clear: both }
   <p><a class="logo" href="http://www.whatwg.org/"><img alt="WHATWG" height="100" width="100" src="http://resources.whatwg.org/logo.svg"></a></p>
 	<h1>CSS Figures</h1>
 	
-	<h2 class="no-num no-toc" id="living-standard-last-updated-19-june-2014">Living Standard — Last Updated 19 June 2014</h2>
+	<h2 class="no-num no-toc" id="living-standard-last-updated-23-june-2014">Living Standard — Last Updated 23 June 2014</h2>
 	
 	<dl>
 		<dt>This version:
@@ -59,14 +60,14 @@ h2 { clear: both }
 
 	</dl>
 	
-<p class="copyright"><a href="http://creativecommons.org/publicdomain/zero/1.0/" rel="license"><img alt="CC0" src="http://i.creativecommons.org/p/zero/1.0/80x15.png"></a>To the extent possible under law, the editor has waived all copyright and related or neighboring rights to this work. In addition, as of 19 June 2014, the editor has made this specification available under the
+<p class="copyright"><a href="http://creativecommons.org/publicdomain/zero/1.0/" rel="license"><img alt="CC0" src="http://i.creativecommons.org/p/zero/1.0/80x15.png"></a>To the extent possible under law, the editor has waived all copyright and related or neighboring rights to this work. In addition, as of 23 June 2014, the editor has made this specification available under the
 <a href="http://www.openwebfoundation.org/legal/the-owf-1-0-agreements/owfa-1-0" rel="license">Open Web Foundation Agreement Version 1.0</a>, which is available at <!--begin-link--><a href="http://www.openwebfoundation.org/legal/the-owf-1-0-agreements/owfa-1-0">http://www.openwebfoundation.org/legal/the-owf-1-0-agreements/owfa-1-0</a><!--end-link-->.
 
 </div>
 
 <h2 class="no-num no-toc" id="abstract">Abstract</h2>
 
-<p>This specification describes how figures commonly seen in print – e.g. tables, photographs with captions, or pullquotes – can be formatted with CSS. By turning elements into <em>page floats</em>, figures can be floated wrt. columns and pages, and they can be made to span columns. As such, the specification reinforces the concept of columns and pages being basic building blocks of CSS typography, thereby avoiding scripting for common layouts. Page floats live in paged environments, both on print and on screens. Authors do not know the size of the reader's device and care has been taken to make features to responsive by design. This specification also describes how text can wrap around text and images. 
+<p>This specification describes how figures commonly seen in print – e.g. tables, photographs with captions, and pullquotes – can be formatted with CSS. By turning elements into <em>page floats</em>, figures can be floated wrt. columns and pages, and they can span columns. As such, the specification reinforces the concept of columns and pages being basic building blocks of CSS typography, thereby avoiding scripting for common layouts. Page floats live in paged environments, both on print and on screens. Authors do not know the size of the reader's device and care has been taken to make features responsive so that the same style sheet can work on mobile phones, tablets, PCs and on paper. This specification also describes how text can wrap around text and images. 
 
 <h2 class="no-num no-toc" id="status">Status</h2>
 
@@ -112,7 +113,14 @@ h2 { clear: both }
 
 <h2 class="no-num" id="goals">Goals</h2>
 
-<p>The main goal of this specification is to enable authors to create publications — on paper, on screens, and in files — that present figures in common ways. Examples of figures include photographs with captions, wide tables that span several columns, and pullquotes that extend into the margins of books.
+<p>The main goal of this specification is to enable authors to create publications — on paper and on screen — that present figures in common ways. Examples of figures include photographs with captions, wide tables that span several columns, and pullquotes that extend into the margins. Further, the goal is for the CSS code to be compact, reusable, and not dependent on dummy structural elements. Media queries can be used in combination with CSS Figures, but the goal is for the CSS code to apply no narrow as well as wide designs. Below are screenshots of a sample document shown on various devices. 
+
+<p class="geese">
+<img src="geese-ss-portrait.jpg">
+<img src="geese-ss-landscape.jpg">
+<img src="geese-ss-narrow.jpg">
+
+<p>Note how the heading and the wide image span two columns (as long as there is room), and that the byline is floated to the second column (as long as there is more than one column):
 
 <h2 id="conformance"><span class="secno">1 </span>Conformance</h2>
 
