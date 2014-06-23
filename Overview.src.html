@@ -34,6 +34,7 @@ a.unclear, a.almost { color: orange }
 pre.lineart { line-height: 1 }
 .example img { display: block }
 h2 { clear: both }
+p.geese img { border: thin solid black }
 </style>
 
 <body class="draft">
@@ -70,7 +71,7 @@ h2 { clear: both }
 
 <h2 class="no-num no-toc">Abstract</h2>
 
-<p>This specification describes how figures commonly seen in print &ndash; e.g. tables, photographs with captions, or pullquotes &ndash; can be formatted with CSS. By turning elements into <em>page floats</em>, figures can be floated wrt. columns and pages, and they can be made to span columns. As such, the specification reinforces the concept of columns and pages being basic building blocks of CSS typography, thereby avoiding scripting for common layouts. Page floats live in paged environments, both on print and on screens. Authors do not know the size of the reader's device and care has been taken to make features to responsive by design. This specification also describes how text can wrap around text and images. 
+<p>This specification describes how figures commonly seen in print &ndash; e.g. tables, photographs with captions, and pullquotes &ndash; can be formatted with CSS. By turning elements into <em>page floats</em>, figures can be floated wrt. columns and pages, and they can span columns. As such, the specification reinforces the concept of columns and pages being basic building blocks of CSS typography, thereby avoiding scripting for common layouts. Page floats live in paged environments, both on print and on screens. Authors do not know the size of the reader's device and care has been taken to make features responsive so that the same style sheet can work on mobile phones, tablets, PCs and on paper. This specification also describes how text can wrap around text and images. 
 
 <h2 class="no-num no-toc">Status</h2>
 
@@ -86,7 +87,14 @@ h2 { clear: both }
 
 <h2 class="no-num">Goals</h2>
 
-<p>The main goal of this specification is to enable authors to create publications &mdash; on paper, on screens, and in files &mdash; that present figures in common ways. Examples of figures include photographs with captions, wide tables that span several columns, and pullquotes that extend into the margins of books.
+<p>The main goal of this specification is to enable authors to create publications &mdash; on paper and on screen &mdash; that present figures in common ways. Examples of figures include photographs with captions, wide tables that span several columns, and pullquotes that extend into the margins. Further, the goal is for the CSS code to be compact, reusable, and not dependent on dummy structural elements. Media queries can be used in combination with CSS Figures, but the goal is for the CSS code to apply no narrow as well as wide designs. Below are screenshots of a sample document shown on various devices. 
+
+<p class=geese>
+<img src=geese-ss-portrait.jpg>
+<img src=geese-ss-landscape.jpg>
+<img src=geese-ss-narrow.jpg>
+
+<p>Note how the heading and the wide image span two columns (as long as there is room), and that the byline is floated to the second column (as long as there is more than one column):
 
 <h2>Conformance</h2>
 
@@ -1083,7 +1091,7 @@ setting margin values in the block direction to 'auto'.
 
 -->
 
-<h3>'float-policy'</h3>
+<h3>Page float preferences: 'float-policy'</h3>
 
 <table class=propdef>
     <tr>
