@@ -30,7 +30,7 @@ a.unclear, a.almost { color: orange }
 pre.lineart { line-height: 1 }
 .example img { display: block }
 h2 { clear: both }
-figure { display: inline-block }
+figure { display: inline-block; margin: 0 }
 figure img { border: thin solid black }
 
 </style>
@@ -115,7 +115,7 @@ figure img { border: thin solid black }
 
 <h2 class="no-num" id="goals">Goals</h2>
 
-<p>The main goal of this specification is to enable authors to create publications with commonly used figures in paged environments, both on screen and on paper. Examples of figures include photographs with captions, wide tables that span several columns, and pullquotes that extend into the margins. Further, the goal is for the CSS code to be compact, reusable, and not dependent on dummy structural elements. Media queries can be used in combination with CSS Figures, but the goal is for the same CSS code to apply to a wide range of devices. Below are screenshots of a sample document shown on various devices. 
+<p>The main goal of this specification is to enable authors to create publications with commonly used figures in paged environments, both on screen and on paper. Examples of figures include photographs with captions, wide tables that span several columns, and pullquotes that extend into the margins. Further, the goal is for the CSS code to be compact, reusable, and not dependent on dummy structural elements. Media queries can be used in combination with CSS Figures, but the goal is for the same CSS code to apply to a wide range of devices. Below are screenshots of a sample document shown on various devices:
 
 <p class="geese">
 </p><figure><img src="geese-ss-landscape.jpg"><p>Figure 1</figure>
@@ -158,11 +158,23 @@ direcdtion. The 'float' property is used to specify that the page
 float should move to the top, bottom or to the nearest edge of the
 column.
 
-<p>By default, page floats are contained by their <dfn id="natural-column">natural column</dfn>,
-i.e., the column where the element would naturally start. All visible
+<p>All page float have a <dfn id="natural-column">natural column</dfn>, i.e., the column where the element would naturally start. This specification defines several ways by which the element can escape their natural column. 
+
+<ul>
+
+<li>Page floats can be deferred to a later column, possibly on a later page, by using the 'float-defer-column' and 'float-defer-page' properties. These properties identify a page float's <dfn id="defer-column">defer column</dfn> on a <dfn id="defer-page">defer
+page</dfn>.
+
+<li>Like for normal floats, page floats can be moved due to seetings on the 'clear' property; this speicification adds values so that an element can indicated preference for being the firat page float at a give position. 
+
+<li>Page floats can be told to escape their natural column by using the 'float-reference' property to set the containing block to be an element, the page area, or the bleed box.
+
+</ul>
+
+<!--All visible
 elements have at least one column. Elements that are split over
 several pages will have several columns, and multicol elements can
-have several columns on the same page. 
+have several columns on the same page. -->
 
 <!--
 Columns exist in both paged and
@@ -170,23 +182,6 @@ continous media, and page floats can therefore also be used in
 scrolled enviroments.
 -->
 
-<p>The page float's containing block can be extended by the
-'column-span' property. A typical use case is to make the page float
-span two columns, but parts of columns or column gaps can also be
-specified.
-
-<p>Page floats can be told to escape their natural column by
-using the 'float-reference' property to set the containing block to
-be an element, the page area, or the bleed box.
-
-<p>Another way to escape the natural column is to defer placement to a
-later column, perhaps on a lager page, by using the
-'float-defer-column' and 'float-defer-page' properties. These
-properties identify a page float's <dfn id="defer-column">defer column</dfn> on a <dfn id="defer-page">defer
-page</dfn>.
-
-<p>Like for normal floats, elements can be set to clear page floats
-through 'clear: column'.
 
 <p>These properties allow rich designs to be described. However, there
 may be implementation-specific limits for figure placement (such that
@@ -1172,7 +1167,7 @@ specified. UAs are free to find the best resulting column and page.
 <li>honor 'column-span: &lt;integer&gt;'
 <li>honor 'float-defer-page'
 <li>honor 'float-defer-column'
-<li>honor 'clear: column'
+<li>honor 'clear: column/page'
 <li>honor 'float: top/bottom/top-bottom/bottom-top/clear'
 <li>display all content (as described by other CSS properties)
 <li>keep the number of pages to a minimum
@@ -1236,7 +1231,9 @@ specified. UAs are free to find the best resulting column and page.
 <h2 id="spanning-columns"><span class="secno">3 </span>Spanning columns</h2>
 
 <p>The page float's containing block can be extended by the
-'column-span' property. This specification extends the 'column-span'
+'column-span' property. A typical use case is to make the page float
+span two columns, but parts of columns or column gaps can also be
+specified. This specification extends the 'column-span'
 property <a href="#refsCSSMULTICOL">[CSSMULTICOL]</a> with new values:
 number, length, and the 'auto' value.
 
