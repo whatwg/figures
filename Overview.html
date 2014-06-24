@@ -39,7 +39,7 @@ p.geese img { border: thin solid black }
   <p><a class="logo" href="http://www.whatwg.org/"><img alt="WHATWG" height="100" width="100" src="http://resources.whatwg.org/logo.svg"></a></p>
 	<h1>CSS Figures</h1>
 	
-	<h2 class="no-num no-toc" id="living-standard-last-updated-23-june-2014">Living Standard — Last Updated 23 June 2014</h2>
+	<h2 class="no-num no-toc" id="living-standard-last-updated-24-june-2014">Living Standard — Last Updated 24 June 2014</h2>
 	
 	<dl>
 		<dt>This version:
@@ -60,18 +60,18 @@ p.geese img { border: thin solid black }
 
 	</dl>
 	
-<p class="copyright"><a href="http://creativecommons.org/publicdomain/zero/1.0/" rel="license"><img alt="CC0" src="http://i.creativecommons.org/p/zero/1.0/80x15.png"></a>To the extent possible under law, the editor has waived all copyright and related or neighboring rights to this work. In addition, as of 23 June 2014, the editor has made this specification available under the
+<p class="copyright"><a href="http://creativecommons.org/publicdomain/zero/1.0/" rel="license"><img alt="CC0" src="http://i.creativecommons.org/p/zero/1.0/80x15.png"></a>To the extent possible under law, the editor has waived all copyright and related or neighboring rights to this work. In addition, as of 24 June 2014, the editor has made this specification available under the
 <a href="http://www.openwebfoundation.org/legal/the-owf-1-0-agreements/owfa-1-0" rel="license">Open Web Foundation Agreement Version 1.0</a>, which is available at <!--begin-link--><a href="http://www.openwebfoundation.org/legal/the-owf-1-0-agreements/owfa-1-0">http://www.openwebfoundation.org/legal/the-owf-1-0-agreements/owfa-1-0</a><!--end-link-->.
 
 </div>
 
 <h2 class="no-num no-toc" id="abstract">Abstract</h2>
 
-<p>This specification describes how figures commonly seen in print – e.g. tables, photographs with captions, and pullquotes – can be formatted with CSS. By turning elements into <em>page floats</em>, figures can be floated wrt. columns and pages, and they can span columns. As such, the specification reinforces the concept of columns and pages being basic building blocks of CSS typography, thereby avoiding scripting for common layouts. Page floats live in paged environments, both on print and on screens. Authors do not know the size of the reader's device and care has been taken to make features responsive so that the same style sheet can work on mobile phones, tablets, PCs and on paper. This specification also describes how text can wrap around text and images. 
+<p>This specification describes how figures commonly seen in print – e.g. tables, photographs with captions, and pullquotes – can be formatted with CSS. By turning elements into <em>page floats</em>, figures can be floated wrt. columns and pages, and they can span columns. As such, the specification reinforces the concept of columns and pages being basic building blocks of CSS typography, thereby avoiding scripting for common layouts. Page floats live in paged environments, both on print and on screens. Authors do not know the size of the reader's device and care has therefore been taken to make features responsive; the same style sheet can work on mobile phones, tablets, PCs and on paper. This specification also describes how text can wrap around text and images. 
 
 <h2 class="no-num no-toc" id="status">Status</h2>
 
-<p>This specification builds on, and extends features described in CSS Multi-column Layout <a href="#refsCSSMULTICOL">[CSSMULTICOL]</a> and CSS Overflow <a href="#refsCSSOVERFLOW">[CSSOVERFLOW]</a>. Many of the features described have already been implemented, as described in the <a href="http://www.wiumlie.no/2014/tests/figures/coverage.html">implementation coverage document</a>. Based on implementation experience, some of the features have been revised and the CSS syntax has changed compared to earlier drafts. As such, the features described in this specification are mature, but thei descriptions need more work.
+<p>This specification builds on, and extends, features described in CSS Multi-column Layout <a href="#refsCSSMULTICOL">[CSSMULTICOL]</a> and CSS Overflow <a href="#refsCSSOVERFLOW">[CSSOVERFLOW]</a>. Many of the features described have already been implemented, as described in the <a href="http://www.wiumlie.no/2014/tests/figures/coverage.html">implementation coverage document</a>. Based on implementation experience, some of the features have been revised and the CSS syntax has changed compared to earlier drafts. As such, the features described in this specification are mature, but their descriptions need more work.
 
 
  <!--http://www.w3.org/TR/2011/WD-css3-gcpm-20111129/#page-floats-->
@@ -113,14 +113,14 @@ p.geese img { border: thin solid black }
 
 <h2 class="no-num" id="goals">Goals</h2>
 
-<p>The main goal of this specification is to enable authors to create publications — on paper and on screen — that present figures in common ways. Examples of figures include photographs with captions, wide tables that span several columns, and pullquotes that extend into the margins. Further, the goal is for the CSS code to be compact, reusable, and not dependent on dummy structural elements. Media queries can be used in combination with CSS Figures, but the goal is for the CSS code to apply no narrow as well as wide designs. Below are screenshots of a sample document shown on various devices. 
+<p>The main goal of this specification is to enable authors to create publications with commonly used figures in paged environments, both on screen and on paper. Examples of figures include photographs with captions, wide tables that span several columns, and pullquotes that extend into the margins. Further, the goal is for the CSS code to be compact, reusable, and not dependent on dummy structural elements. Media queries can be used in combination with CSS Figures, but the goal is for the same CSS code to apply to a wide range of devices. Below are screenshots of a sample document shown on various devices. 
 
 <p class="geese">
-<img src="geese-ss-portrait.jpg">
-<img src="geese-ss-landscape.jpg">
-<img src="geese-ss-narrow.jpg">
+</p><figure><img src="geese-ss-landscape.jpg"><p>Figure 1</figure>
+<figure><img src="geese-ss-portrait.jpg"><p>Figure 2</figure>
+<figure><img src="geese-ss-narrow.jpg"><p>Figure 3</figure>
 
-<p>Note how the heading and the wide image span two columns (as long as there is room), and that the byline is floated to the second column (as long as there is more than one column):
+<p>Notice how the heading and the wide image span two columns in figure 1 and figure 2. Also, the byline is deferred to the second column where there is more than one column. The images are floated to the top and bottom of the page; when there is not room for more than one image, one is omved to the next page.
 
 <h2 id="conformance"><span class="secno">1 </span>Conformance</h2>
 
