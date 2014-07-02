@@ -41,7 +41,7 @@ figure img { border: thin solid black }
   <p><a class="logo" href="http://www.whatwg.org/"><img alt="WHATWG" height="100" width="100" src="http://resources.whatwg.org/logo.svg"></a></p>
 	<h1>CSS Figures</h1>
 	
-	<h2 class="no-num no-toc" id="living-standard-last-updated-24-june-2014">Living Standard — Last Updated 24 June 2014</h2>
+	<h2 class="no-num no-toc" id="living-standard-last-updated-2-july-2014">Living Standard — Last Updated 2 July 2014</h2>
 	
 	<dl>
 		<dt>This version:
@@ -62,7 +62,7 @@ figure img { border: thin solid black }
 
 	</dl>
 	
-<p class="copyright"><a href="http://creativecommons.org/publicdomain/zero/1.0/" rel="license"><img alt="CC0" src="http://i.creativecommons.org/p/zero/1.0/80x15.png"></a>To the extent possible under law, the editor has waived all copyright and related or neighboring rights to this work. In addition, as of 24 June 2014, the editor has made this specification available under the
+<p class="copyright"><a href="http://creativecommons.org/publicdomain/zero/1.0/" rel="license"><img alt="CC0" src="http://i.creativecommons.org/p/zero/1.0/80x15.png"></a>To the extent possible under law, the editor has waived all copyright and related or neighboring rights to this work. In addition, as of 2 July 2014, the editor has made this specification available under the
 <a href="http://www.openwebfoundation.org/legal/the-owf-1-0-agreements/owfa-1-0" rel="license">Open Web Foundation Agreement Version 1.0</a>, which is available at <!--begin-link--><a href="http://www.openwebfoundation.org/legal/the-owf-1-0-agreements/owfa-1-0">http://www.openwebfoundation.org/legal/the-owf-1-0-agreements/owfa-1-0</a><!--end-link-->.
 
 </div>
@@ -92,8 +92,8 @@ figure img { border: thin solid black }
    <li><a href="#setting-the-page-float-reference:-float-reference"><span class="secno">2.3 </span>Setting the page float reference: 'float-reference'</a></li>
    <li><a href="#deferring-page-floats"><span class="secno">2.4 </span>Deferring page floats</a>
     <ol>
-     <li><a href="#float-defer-column"><span class="secno">2.4.1 </span>'float-defer-column'</a></li>
-     <li><a href="#float-defer-page"><span class="secno">2.4.2 </span>'float-defer-page'</a></li>
+     <li><a href="#float-defer-page"><span class="secno">2.4.1 </span>'float-defer-page'</a></li>
+     <li><a href="#float-defer-column"><span class="secno">2.4.2 </span>'float-defer-column'</a></li>
      <li><a href="#float-defer-line"><span class="secno">2.4.3 </span>'float-defer-line'</a></ol></li>
    <li><a href="#clearing-page-floats"><span class="secno">2.5 </span>Clearing page floats</a></li>
    <li><a href="#avoiding-content-after-page-floats"><span class="secno">2.6 </span>Avoiding content after page floats</a></li>
@@ -559,67 +559,9 @@ aside.top-ad img {
 
 <h3 id="deferring-page-floats"><span class="secno">2.4 </span>Deferring page floats</h3>
 
-<p>A page float can be deferred to a following column or page with two
-new properties described in this section. After applying these
-properties, the page float's <em>defer column</em> is identified.
-These properties are evaluated before the 'clear' property.
+<p>A page float can be deferred to a following column, page, or line with three new properties described in this section. These propertie allows content to be declared earlier in the markup to request to be shown on a subsequent pages, in a certain column, or at a certain place in a column. For example, advertisements and pull-quotes may be declared at the beginning of an article and shown interspersed with the content. The properties are applied in order. First, the UA applies 'float-defer-page' to find the <em>defer page</em>. Second, the 'float-defer-column' is applied to find the <em>defer column</em> on that page. Third, the 'float-defer-line' is applied to find the <em>defer line</em>. These properties are evaluated before the 'clear' property.
 
-<h4 id="float-defer-column"><span class="secno">2.4.1 </span>'float-defer-column'</h4>
-
-<table class="propdef">
-    <tr>
-      <td><em>Name:</em>
-      <td><dfn id="float-defer-column-0">float-defer-column</dfn>
-    <tr>
-      <td><em>Value:</em>
-      <td>none | &lt;integer&gt; | last | inside | outside
-    <tr>
-      <td><em>Initial:</em>
-      <td>none
-    <tr>
-      <td><em>Applies to:</em>
-      <td>page floats
-    <tr>
-      <td><em>Inherited:</em>
-      <td>no
-    <tr>
-      <td><em>Percentages:</em>
-      <td>N/A
-    <tr>
-      <td><em>Media:</em>
-      <td>visual
-    <tr>
-      <td><em>Computed value:</em>
-      <td>specified value
-</table>
-
-<p>This property specifies the number of columns that the page float should be deferred. 
-
-<dl>
-<dt>none
-
-<dd>the page float should not be deferred by this property
-
-<dt>&lt;integer&gt;
-
-<dd>A positive integer indicates that the page float is deferred by the specified number of columns. If the number results in column that does not exist, the last column should be attempted. A negative integer indicates that the page float is deferred by counting from the last column; -1 means the last column, -2 means the next-to-last column, etc. If the specified negative integer would result the defer column being a previous column, the value is ignored. Also, zero is ignored. <!--Integer values only have effect when the page float is shown on its natural page; on other pages the defer column will be the first column on the page.-->
-
-<dt>last
-
-<dd>The last column on the natural page becomes the defer column. <!--If the page float cannot be shown on its natural page, this keyword still has effect (unlike integer values).-->
-
-<dt>inside
-
-<dd>The next inside column becomes the defer column. 
-
-<dt>outside
-
-<dd>The next outside column becomes the defer column. 
-
-</dl>
-
-
-<h4 id="float-defer-page"><span class="secno">2.4.2 </span>'float-defer-page'</h4>
+<h4 id="float-defer-page"><span class="secno">2.4.1 </span>'float-defer-page'</h4>
 
 <table class="propdef">
     <tr>
@@ -786,6 +728,63 @@ figure { float-defer-page: -1 }
 </div>
 
 
+
+<h4 id="float-defer-column"><span class="secno">2.4.2 </span>'float-defer-column'</h4>
+
+<table class="propdef">
+    <tr>
+      <td><em>Name:</em>
+      <td><dfn id="float-defer-column-0">float-defer-column</dfn>
+    <tr>
+      <td><em>Value:</em>
+      <td>none | &lt;integer&gt; | last | inside | outside
+    <tr>
+      <td><em>Initial:</em>
+      <td>none
+    <tr>
+      <td><em>Applies to:</em>
+      <td>page floats
+    <tr>
+      <td><em>Inherited:</em>
+      <td>no
+    <tr>
+      <td><em>Percentages:</em>
+      <td>N/A
+    <tr>
+      <td><em>Media:</em>
+      <td>visual
+    <tr>
+      <td><em>Computed value:</em>
+      <td>specified value
+</table>
+
+<p>This property specifies the number of columns that the page float should be deferred. Values are:
+
+<dl>
+<dt>none
+
+<dd>the page float should not be deferred by this property
+
+<dt>&lt;integer&gt;
+
+<dd>A positive integer indicates that the page float is deferred by the specified number of columns. If the number results in column that does not exist, the last column should be attempted. A negative integer indicates that the page float is deferred by counting from the last column; -1 means the last column, -2 means the next-to-last column, etc. If the specified negative integer would result the defer column being a previous column, the value is ignored. Also, zero is ignored. <!--Integer values only have effect when the page float is shown on its natural page; on other pages the defer column will be the first column on the page.-->
+
+<dt>last
+
+<dd>The last column on the natural page becomes the defer column. <!--If the page float cannot be shown on its natural page, this keyword still has effect (unlike integer values).-->
+
+<dt>inside
+
+<dd>The next inside column becomes the defer column. 
+
+<dt>outside
+
+<dd>The next outside column becomes the defer column. 
+
+</dl>
+
+
+
 <h4 id="float-defer-line"><span class="secno">2.4.3 </span>'float-defer-line'</h4>
 
 <table class="propdef">
@@ -815,6 +814,23 @@ figure { float-defer-page: -1 }
       <td>specified value
 </table>
 
+<p>This property specifies the number of lines a page float should be deferred. Values are:
+
+<dl>
+<dt>none
+
+<dd>the page float should not be deferred by this property
+
+<dt>&lt;integer&gt;
+
+<dd>A positive integer indicates that the page float is deferred by the specified number of lines counting from the start of the column. A negative integer indicates that the page float is deferred by the specified number of lines counting from the bottom of the column. 
+
+<dt>&lt;percentage&gt;
+
+<dd>Percentage values are relative to the height of the column, but is rounded to the integer number of lines that best expresses the intent. A percentage value indicates the preferred placement of midpoint of the float, 
+
+</dl>
+
 
 <div class="example">
 <p>Move a pullquote to the top, bar two lines.
@@ -828,7 +844,6 @@ figure { float-defer-page: -1 }
 <p><img src="38.png">
 </div>
 
-<p>Percentage values are relative to the height of the column, but is rounded to the integer number of lines that best expresses the intent. A percentage value indicates the preferred placement of midpoint of the float, 
 
 <div class="example">
 <p>This code positions the float in the middle of the column:
