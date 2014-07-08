@@ -41,7 +41,7 @@ figure img { border: thin solid black }
   <p><a class="logo" href="http://www.whatwg.org/"><img alt="WHATWG" height="100" width="100" src="http://resources.whatwg.org/logo.svg"></a></p>
 	<h1>CSS Figures</h1>
 	
-	<h2 class="no-num no-toc" id="living-standard-last-updated-2-july-2014">Living Standard — Last Updated 2 July 2014</h2>
+	<h2 class="no-num no-toc" id="living-standard-last-updated-8-july-2014">Living Standard — Last Updated 8 July 2014</h2>
 	
 	<dl>
 		<dt>This version:
@@ -62,7 +62,7 @@ figure img { border: thin solid black }
 
 	</dl>
 	
-<p class="copyright"><a href="http://creativecommons.org/publicdomain/zero/1.0/" rel="license"><img alt="CC0" src="http://i.creativecommons.org/p/zero/1.0/80x15.png"></a>To the extent possible under law, the editor has waived all copyright and related or neighboring rights to this work. In addition, as of 2 July 2014, the editor has made this specification available under the
+<p class="copyright"><a href="http://creativecommons.org/publicdomain/zero/1.0/" rel="license"><img alt="CC0" src="http://i.creativecommons.org/p/zero/1.0/80x15.png"></a>To the extent possible under law, the editor has waived all copyright and related or neighboring rights to this work. In addition, as of 8 July 2014, the editor has made this specification available under the
 <a href="http://www.openwebfoundation.org/legal/the-owf-1-0-agreements/owfa-1-0" rel="license">Open Web Foundation Agreement Version 1.0</a>, which is available at <!--begin-link--><a href="http://www.openwebfoundation.org/legal/the-owf-1-0-agreements/owfa-1-0">http://www.openwebfoundation.org/legal/the-owf-1-0-agreements/owfa-1-0</a><!--end-link-->.
 
 </div>
@@ -115,14 +115,14 @@ figure img { border: thin solid black }
 
 <h2 class="no-num" id="goals">Goals</h2>
 
-<p>The main goal of this specification is to enable authors to create publications with commonly used figures in paged environments, both on screen and on paper. Examples of figures include photographs with captions, wide tables that span several columns, and pullquotes that extend into the margins. Further, the goal is for the CSS code to be compact, reusable, and not dependent on dummy structural elements. Media queries can be used in combination with CSS Figures, but the goal is for the same CSS code to apply to a wide range of devices. Below are screenshots of a sample document shown on various devices:
+<p>The main goal of this specification is to enable authors to create publications with common figures in paged environments, both on screen and on paper. Examples of figures include photographs with captions, tables that span several columns, and pullquotes that are positioned halfway down the last column. Further, the goal is for the CSS code to be compact, reusable, and not depend on dummy structural elements. Media queries can be used in combination with CSS Figures, but the goal is for the same CSS code to apply to the widest possible range of devices. Below are screenshots of a sample document shown on various devices:
 
 <p class="geese">
 </p><figure><img src="geese-ss-landscape.jpg"><p>Figure 1</figure>
 <figure><img src="geese-ss-portrait.jpg"><p>Figure 2</figure>
 <figure><img src="geese-ss-narrow.jpg"><p>Figure 3</figure>
 
-<p>Notice how the heading and the wide image span two columns in figure 1 and figure 2. Also, the byline is deferred to the second column where there is more than one column. The images are floated to the top and bottom of the page; when there is not room for more than one image, one is omved to the next page.
+<p>Notice how the heading and the wide image span two columns in figure 1 and figure 2. Also, the byline is deferred to the second column when there is more than one column. The images are floated to the top and bottom of the page; when there is not room for more than one image, the other is moved to the next page.
 
 <h2 id="conformance"><span class="secno">1 </span>Conformance</h2>
 
