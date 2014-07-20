@@ -89,12 +89,12 @@ figure img { border: thin solid black }
 
 <h2 class="no-num">Goals</h2>
 
-<p>The main goal of this specification is to enable authors to create publications with common figures in paged environments, both on screen and on paper. Examples of figures include photographs with captions, tables that span several columns, and pullquotes that are positioned halfway down the last column. Further, the goal is for the CSS code to be compact, reusable, and not depend on dummy structural elements. Media queries can be used in combination with CSS Figures, but the goal is for the same CSS code to apply to the widest possible range of devices. Below are screenshots of a sample document shown on various devices:
+<p>The main goal of this specification is to enable authors to create publications with common figures in paged environments, both on screen and on paper. Examples of figures include photographs with captions floated to the top of the page, tables that span several columns, and pullquotes that are positioned halfway down the last column. Further, the goal is for the CSS code to be compact, human readable &amp; writable, reusable, and not depend on dummy structural elements. Media queries can be used in combination with CSS Figures, but the goal is for the same CSS code to apply to the widest possible range of devices. Below are screenshots of a sample document shown on various devices:
 
 <p class=geese>
-<figure><img src=geese-ss-landscape.jpg><p>Figure 1</figure>
-<figure><img src=geese-ss-portrait.jpg><p>Figure 2</figure>
-<figure><img src=geese-ss-narrow.jpg><p>Figure 3</figure>
+<figure><img src=geese-ss-landscape.jpg><figcaption>Figure 1</figcaption></figure>
+<figure><img src=geese-ss-portrait.jpg><figcaption>Figure 2</figcaption></figure>
+<figure><img src=geese-ss-narrow.jpg><figcaption>Figure 3</figure>
 
 <p>Notice how the heading and the wide image span two columns in figure 1 and figure 2. Also, the byline is deferred to the second column when there is more than one column. The images are floated to the top and bottom of the page; when there is not room for more than one image, the other is moved to the next page.
 
@@ -190,6 +190,7 @@ have been added:
 <dl>
 
 <dt>top
+
 <dd>The page float is moved to the top of its column, i.e., to the beginning (in the block direction) of its <em>defer column</em> (see <a href="#deferring-page-floats">Deferring page floats</a> below). If other page floats have already taken the top position, the float is stacked below or moved to the top of another column (see <a href=#clearing-page-floats>Clearing Page floats</a> below).
 
 <dt>block-start
@@ -214,6 +215,7 @@ have been added:
 <dd>alias for 'bottom-top'
 
 </dl>
+
 
 <p>When one of these keywords are set, a page float is created. 
 
@@ -281,7 +283,7 @@ figure { float: top; width: 50% }
 .figure { float: snap }
 </pre>
 
-<p>In this example, the figure is already at the nearest edge, so it does not move. However, page floats allow subsequent content to be displayed before the page float and the white space can therefore be filled:</p>
+<p>When the code is applied, subsequent content is allowed to be displayed before the page float the white space can therefore be filled:
 
 <p><img alt="sample rendering" src=7.png>
 </div>
@@ -798,7 +800,7 @@ figure { float-defer-page: -1 }
       <td>none
     <tr>
       <td><em>Applies to:</em>
-      <td>page floats
+      <td>top-floating page floats
     <tr>
       <td><em>Inherited:</em>
       <td>no
@@ -810,10 +812,12 @@ figure { float-defer-page: -1 }
       <td>visual
     <tr>
       <td><em>Computed&nbsp;value:</em>
-      <td>specified value
+      <td>positive integer
 </table>
 
-<p>This property specifies the number of lines a page float should be deferred. Values are:
+<p>This property specifies the number of lines a page float should be deferred. 
+
+<p>Values are:
 
 <dl>
 <dt>none
@@ -822,13 +826,15 @@ figure { float-defer-page: -1 }
 
 <dt>&lt;integer>
 
-<dd>A positive integer indicates that the page float is deferred by the specified number of lines counting from the start of the column. A negative integer indicates that the page float is deferred by the specified number of lines counting from the bottom of the column. 
+<dd>A positive integer indicates that the page float is deferred by the specified number of lines counting from the start of the column, so that the specified number of lines can be displayed before the page float. A negative integer indicates that the page float is deferred by the specified number of lines counting from the bottom of the column, so that the specified number of lines can be displayed after the page float. 
 
 <dt>&lt;percentage>
 
-<dd>Percentage values are relative to the height of the column, but is rounded to the integer number of lines that best expresses the intent. A percentage value indicates the preferred placement of midpoint of the float, 
+<dd>Percentage values express that the page float is deferred a certain number of lines relative to the height of the column. Negative percentages or percentager above 100% are ignored. Percentage values also take size of the page float into account; a value of '50%' will defer the page float so that it has the same number of lines above it and below it (assuming uniform text throughout the column).
 
 </dl>
+
+<p>Both integer and percentage values are computed to a positive integer value which represents the number of lines from the top of the column which is to be deferred. Line metrics are based on the first available font of the multicol element. Other page floats or spanners are not taken into account when computing lines. 
 
 
 <div class=example>
