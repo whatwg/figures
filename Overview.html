@@ -1524,10 +1524,15 @@ column gap.
       <td>Same as specified value
 </table>
 
+<p>This property move a flot along the line axis. Positive length values move the float in the opposite direction of where it has been floated by the 'float' property, negative values move the float in the same direction it has floated by the 'float' property.
 
 <div class="example">
-<pre>float: outside;
-float-offset: -3em;
+<p>In this example, figures are floated towards the outside of the page by the 'float' property. The negative value on the'float-offset' property floats figures further towards the outside:
+
+<pre>figure {
+  float: outside;
+  float-offset: -3em;
+}
 </pre>
 </div>
 
