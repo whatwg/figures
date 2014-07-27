@@ -1550,11 +1550,16 @@ img { float: top left; column-span: 1.70; width: 100% }
       <td>Same as specified value
 </table>
 
+<p>This property move a flot along the line axis. Positive length values move the float in the opposite direction of where it has been floated by the 'float' property, negative values move the float in the same direction it has floated by the 'float' property.
 
 <div class=example>
+<p>In this example, figures are floated towards the outside of the page by the 'float' property. The negative value on the'float-offset' property floats figures further towards the outside:
+
 <pre>
-float: outside;
-float-offset: -3em;
+figure {
+  float: outside;
+  float-offset: -3em;
+}
 </pre>
 </div>
 
