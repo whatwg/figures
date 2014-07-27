@@ -1450,6 +1450,11 @@ Syntax: [ top | bottom | top-bottom | bottom-top | snap() ] || [ left | right | 
 (Also, alises for the above keywords are legal)
 </pre>
 
+
+
+
+
+
 <div class=example>
 <pre>
 figure { float: top left }
@@ -1467,6 +1472,20 @@ figure { float: top left }
   float-defer-column: last;
   float-defer-line: 2;
   float-offset: -2em;
+}
+</div>
+
+
+<div class=example>
+<p>Place an element between two columns, two lines from the top:
+
+<p><img src=11.png>
+
+<pre>
+figure {
+  float: top left;
+  float-defer-line: 2;
+  float-offset: 50%;
 }
 </div>
 
