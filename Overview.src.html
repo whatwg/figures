@@ -265,7 +265,7 @@ figure { float: top; width: 50% }
 
 <dt>snap
 
-<dd>same as <code>snap(2, near)</code>
+<dd>same as <code>snap(2em, near)</code>
 
 </dl>
 
@@ -297,7 +297,7 @@ figure { float: top; width: 50% }
 <p>A typographer would typically try to avoid single lines of text above/below figures, which can be achieved with:
 
 <pre>
-div.figure { float: snap(1) }
+div.figure { float: snap(1em) }
 </pre>
 
 <p>The length value specifies the reach of the snap function; in this example the second figure is affected, but not the first.
@@ -332,7 +332,7 @@ div.figure { float: snap(3em) }
 <p>To make both figures snap to the nearest edges, this code can be applied:
 
 <pre>
-div.figure { float: snap(3, bottom) }
+div.figure { float: snap(3em, bottom) }
 </pre>
 
 <p>The resultant rendering is:</p>
