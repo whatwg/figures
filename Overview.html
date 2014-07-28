@@ -289,7 +289,7 @@ line direction.
 
 <dt>snap
 
-<dd>same as <code>snap(2, near)</code>
+<dd>same as <code>snap(2em, near)</code>
 
 </dl>
 
@@ -319,7 +319,7 @@ line direction.
 
 <p>A typographer would typically try to avoid single lines of text above/below figures, which can be achieved with:
 
-<pre>div.figure { float: snap(1) }
+<pre>div.figure { float: snap(1em) }
 </pre>
 
 <p>The length value specifies the reach of the snap function; in this example the second figure is affected, but not the first.
@@ -352,7 +352,7 @@ line direction.
 
 <p>To make both figures snap to the nearest edges, this code can be applied:
 
-<pre>div.figure { float: snap(3, bottom) }
+<pre>div.figure { float: snap(3em, bottom) }
 </pre>
 
 <p>The resultant rendering is:</p>
