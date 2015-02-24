@@ -104,10 +104,11 @@ figure img { border: thin solid black }
   <ol>
    <li><a href="#offsetting-floats:-float-offset"><span class="secno">4.1 </span>Offsetting floats: 'float-offset'</a></ol></li>
  <li><a href="#floating-inside-and-outside-pages"><span class="secno">5 </span>Floating inside and outside pages</a></li>
- <li><a href="#wrapping-around-page-floats-and-other-elements"><span class="secno">6 </span>Wrapping around page floats (and other elements)</a>
+ <li><a href="#aligning-text-inside-and-outside-pages"><span class="secno">6 </span>Aligning text inside and outside pages</a></li>
+ <li><a href="#wrapping-around-page-floats-and-other-elements"><span class="secno">7 </span>Wrapping around page floats (and other elements)</a>
   <ol>
-   <li><a href="#wrap-side"><span class="secno">6.1 </span>wrap-side</a></li>
-   <li><a href="#wrap-contrast"><span class="secno">6.2 </span>wrap-contrast</a></ol></li>
+   <li><a href="#wrap-side"><span class="secno">7.1 </span>wrap-side</a></li>
+   <li><a href="#wrap-contrast"><span class="secno">7.2 </span>wrap-contrast</a></ol></li>
  <li><a class="no-num" href="#references">References</a></li>
  <li><a class="no-num" href="#acknowledgments">Acknowledgments</a></ol>
 <!--end-toc-->
@@ -1560,31 +1561,64 @@ column gap.
 <p><img src="37.png">
 </div>
 
-<!--
+<div class="example">
+<p>Position pullquotes so that that they appear in the outside column, extending into the outside margin. 
 
-<h3>margin-inside and margin-outside</h3>
+<div class="example">
+<p>Float &lt;aside&gt; elements into the page margin:
 
-<p>To allow 
-
-<div class=example>
-
-<pre>
-@page { margin: 2cm }
+<pre>@page { margin: 2cm }
 @page :left  { margin-left: 6cm }
 @page :right  { margin-right: 6cm }
 
-aside { float: outside; margin-outside: -4cm }
+aside { 
+  float: outside; 
+  float-offset: -4cm; 
+  width: 3cm;
+}
+
+       Page 1              Page 2
+       ............  ............
+┌─────┐......1.....  ............
+│ s1  │............  ............
+└─────┘............  ............
+       ............  ............
+       ............  ....2.......┌─────┐
+       ............  ............│ s2  │
+       ............  ............└─────┘
+       ............  ............
 </pre>
 </div>
--->
+
+<h2 id="aligning-text-inside-and-outside-pages"><span class="secno">6 </span>Aligning text inside and outside pages</h2>
+
+<div class="example">
+<pre>aside {
+  float: outside; 
+  float-offset: -4cm; 
+  width: 3cm;
+  text-align: inside;
+}
 
 
+         Page 1              Page 2
+         ............  ............
+┌───────┐......1.....  ............
+│   text│............  ............
+└───────┘............  ............
+         ............  ............
+         ............  ....2.......┌───────┐
+         ............  ............│text   │
+         ............  ............└───────┘
+         ............  ............
+</pre>
+</div>
 
 
-<h2 id="wrapping-around-page-floats-and-other-elements"><span class="secno">6 </span>Wrapping around page floats (and other elements)</h2>
+<h2 id="wrapping-around-page-floats-and-other-elements"><span class="secno">7 </span>Wrapping around page floats (and other elements)</h2>
 
 
-<h3 id="wrap-side"><span class="secno">6.1 </span>wrap-side</h3>
+<h3 id="wrap-side"><span class="secno">7.1 </span>wrap-side</h3>
 
 
 <table class="propdef">
@@ -1655,7 +1689,7 @@ aside { float: outside; margin-outside: -4cm }
 </div>
 
 
-<h3 id="wrap-contrast"><span class="secno">6.2 </span>wrap-contrast</h3>
+<h3 id="wrap-contrast"><span class="secno">7.2 </span>wrap-contrast</h3>
 
 <table class="propdef">
     <tr>
@@ -1880,7 +1914,7 @@ Merrell, Philip Taylor, Brad Kemper, Peter Linss, Daniel Glazman, Tantek Çelik,
 
 
 
-</html><!--
+</div></html><!--
 <h2>Regions and Exclusions examples</h2>
 
 <div class=example>
