@@ -1562,9 +1562,6 @@ column gap.
 </div>
 
 <div class="example">
-<p>Position pullquotes so that that they appear in the outside column, extending into the outside margin. 
-
-<div class="example">
 <p>Float &lt;aside&gt; elements into the page margin:
 
 <pre>@page { margin: 2cm }
@@ -1609,6 +1606,29 @@ aside {
          ............  ............
          ............  ....2.......┌───────┐
          ............  ............│text   │
+         ............  ............└───────┘
+         ............  ............
+</pre>
+</div>
+
+
+<div class="example">
+<pre>aside {
+  float: outside; 
+  float-offset: -4cm; 
+  width: 3cm;
+  text-align: outside;
+}
+
+
+         Page 1              Page 2
+         ............  ............
+┌───────┐......1.....  ............
+│text   │............  ............
+└───────┘............  ............
+         ............  ............
+         ............  ....2.......┌───────┐
+         ............  ............│   text│
          ............  ............└───────┘
          ............  ............
 </pre>
@@ -1914,7 +1934,7 @@ Merrell, Philip Taylor, Brad Kemper, Peter Linss, Daniel Glazman, Tantek Çelik,
 
 
 
-</div></html><!--
+</html><!--
 <h2>Regions and Exclusions examples</h2>
 
 <div class=example>
