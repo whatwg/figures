@@ -1588,25 +1588,60 @@ figure {
 <p><img src=37.png>
 </div>
 
-<!--
-
-<h3>margin-inside and margin-outside</h3>
-
-<p>To allow 
+<div class=example>
+<p>Position pullquotes so that that they appear in the outside column, extending into the outside margin. 
 
 <div class=example>
+<p>Float &lt;aside&gt; elements into the page margin:
 
 <pre>
 @page { margin: 2cm }
 @page :left  { margin-left: 6cm }
 @page :right  { margin-right: 6cm }
 
-aside { float: outside; margin-outside: -4cm }
+aside { 
+  float: outside; 
+  float-offset: -4cm; 
+  width: 3cm;
+}
+
+       Page 1              Page 2
+       ............  ............
+┌─────┐......1.....  ............
+│ s1  │............  ............
+└─────┘............  ............
+       ............  ............
+       ............  ....2.......┌─────┐
+       ............  ............│ s2  │
+       ............  ............└─────┘
+       ............  ............
 </pre>
 </div>
--->
+
+<h2>Aligning text inside and outside pages</h2>
+
+<div class=example>
+<pre>
+aside {
+  float: outside; 
+  float-offset: -4cm; 
+  width: 3cm;
+  text-align: inside;
+}
 
 
+         Page 1              Page 2
+         ............  ............
+┌───────┐......1.....  ............
+│   text│............  ............
+└───────┘............  ............
+         ............  ............
+         ............  ....2.......┌───────┐
+         ............  ............│text   │
+         ............  ............└───────┘
+         ............  ............
+</pre>
+</div>
 
 
 <h2>Wrapping around page floats (and other elements)</h2>
