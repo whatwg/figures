@@ -1451,63 +1451,15 @@ Syntax: [ top | bottom | top-bottom | bottom-top | snap() ] || [ left | right | 
 </pre>
 
 
-
-
-
-
 <div class=example>
+<p>Float figure to the top right of the current element, allowing other content on its side:
+
 <pre>
-figure { float: top left }
+.figure { float: top right; width: 60% }
 </pre>
+<img alt="sample rendering" src=13.png>
 </div>
 
-<div class=example>
-<p>Move an element to the last column, two lines from the top, pushing the float slighly to the right:
-
-<p><img src=36.png>
-
-<pre>
-.pullquote {
-  float: top right;
-  float-defer-column: last;
-  float-defer-line: 2;
-  float-offset: -2em;
-}
-</div>
-
-
-<div class=example>
-<p>Place an element between two columns, two lines from the top:
-
-<p><img src=11.png>
-
-<pre>
-figure {
-  float: top left;
-  float-defer-line: 2;
-  float-offset: 50%;
-}
-</div>
-
-
-<div class=example>
-<p>Position pullquotes so that that they appear in the outside column, extending into the outside margin. 
-
-<pre>
-.pullquote {
-  width: 120%; /* relative to column width */
-  float: top outside;  /* position page float at the top... */
-  float-defer-column: outside /* ... of the last column */
-  float-defer-line: 50%; /* move page float down */
-  float-offset: -50%; /* push page float into margin */
-}
-</pre>
-
-<p><img src=37.png>
-
-
-
-</div>
 
 <div class=example>
 
@@ -1568,6 +1520,36 @@ figure {
 
 
 
+<div class=example>
+<p>Move an element to the last column, two lines from the top, pushing the float slighly to the right:
+
+<p><img src=36.png>
+
+<pre>
+.pullquote {
+  float: top right;
+  float-defer-column: last;
+  float-defer-line: 2;
+  float-offset: -2em;
+}
+</div>
+
+
+<div class=example>
+<p>Place an element between two columns, two lines from the top:
+
+<p><img src=11.png>
+
+<pre>
+figure {
+  float: top left;
+  float-defer-line: 2;
+  float-offset: 50%;
+}
+</div>
+
+
+
 <h2>Floating inside and outside pages</h2>
 
 <p>To allow content to flow to the inside and outside of a page, two new keywords are added to the 'float' property:
@@ -1588,6 +1570,41 @@ figure {
 .figure { float: outside }
 </pre>
 </div>
+
+
+<div class=example>
+<p>Position pullquotes so that that they appear in the outside column, extending into the outside margin. 
+
+<pre>
+.pullquote {
+  width: 120%; /* relative to column width */
+  float: top outside;  /* position page float at the top... */
+  float-defer-column: outside /* ... of the last column */
+  float-defer-line: 50%; /* move page float down */
+  float-offset: -50%; /* push page float into margin */
+}
+</pre>
+
+<p><img src=37.png>
+</div>
+
+<!--
+
+<h3>margin-inside and margin-outside</h3>
+
+<p>To allow 
+
+<div class=example>
+
+<pre>
+@page { margin: 2cm }
+@page :left  { margin-left: 6cm }
+@page :right  { margin-right: 6cm }
+
+aside { float: outside; margin-outside: -4cm }
+</pre>
+</div>
+-->
 
 
 
