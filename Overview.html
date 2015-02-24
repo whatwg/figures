@@ -1589,6 +1589,21 @@ aside {
 
 <h2 id="aligning-text-inside-and-outside-pages"><span class="secno">6 </span>Aligning text inside and outside pages</h2>
 
+<p>It is common for content in sidenotes to be aligned based on whether the note appears on a left or right page. To support this, two new keywords are added to the 'text-align' property:
+
+<dl>
+
+<dt>inside
+
+<dd>same as 'left' on right pages, same as 'right' on left pages
+
+<dt>outside
+
+<dd>same as 'right' on right pages, same as 'left' on left pages
+
+</dl>
+
+
 <div class="example">
 <pre>aside {
   float: outside; 
