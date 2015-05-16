@@ -1279,7 +1279,7 @@ number, length, and the 'auto' value.
       <td><dfn>column-span</dfn>
     <tr>
       <td><em>Value:</em>
-      <td>none | all | &lt;number> | &lt;length> | auto
+      <td>none | all | &lt;integer> <!-- | &lt;number> --> | &lt;length> | auto
     <tr>
       <td><em>Initial:</em>
       <td>none
@@ -1310,8 +1310,13 @@ number, length, and the 'auto' value.
 <dt>all
 <dd>The element spans across all columns, as per <span data-anolis-ref>CSSMULTICOL</span>. This value results in previous content being balanced across all columns before the spanning element; no other value has the this effect. 
 
+<!--
 <dt>&lt;number>
 <dd>The page float spans across the number of columns specified. If a decimal number is specified, the fraction indicates how much of the next column gap and/or the next column which is to be spanned; a fraction up to 0.5 indicates a linear fraction of the column gap, while a fraction between 0.5 and 1.0 indicate the column gap plus a linear fraction of the next column. This value only has effect on page floats.
+-->
+
+<dt>&lt;integer>
+<dd>The page float spans across the number of columns specified. <!--This value only has effect on page floats.-->
 
 <dt>&lt;length>
 <dd>The length value determines how many columns the page float will span, rounding upwards to an integer number of columns. This value only has effect on page floats.
@@ -1354,6 +1359,7 @@ img {
 <p><img src=8.png>
 </div>
 
+<!--
 <div class=example>
 <p>This example is a variation of the previous example, showing how the page float grows in the oppsite of the line direction.
 
@@ -1370,7 +1376,7 @@ img {
 <p><img src="35.png">
 </div>
 
-
+-->
 
 <!--
 <div class=example>
@@ -1409,7 +1415,7 @@ p.one { float: top; column-span: 2 }              /* lead paragraph spans two co
 
 </div>
 
-
+<!==
 <div class=example>
 <pre>
 figure { 
@@ -1432,6 +1438,7 @@ figure {
 </pre>
 <p><img src=31.png>
 </div>
+-->
 
 <!--<h3>Relationship between 'column-span' and 'width'</h3>-->
 
