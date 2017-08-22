@@ -1,8 +1,7 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd"><html lang="en"><head>
+<!doctype html><html lang="en"><head>
 <meta content="text/html; charset=utf-8" http-equiv="content-type">
 <title>CSS Figures</title>
-<link href="https://www.whatwg.org/style/specification" rel="stylesheet" type="text/css">
-<link href="https://www.whatwg.org/style/specification" rel="stylesheet" type="text/css">
+<link href="https://resources.whatwg.org/standard.css" rel="stylesheet" type="text/css">
 
 <style>
 .head h1 { padding: 1em 0 }
@@ -37,16 +36,16 @@ figure img { border: thin solid black }
 
 <body class="draft">
 <div class="head">
-  <p><a class="logo" href="http://www.whatwg.org/"><img alt="WHATWG" height="100" width="100" src="https://resources.whatwg.org/logo.svg"></a></p>
+  <p><a class="logo" href="https://whatwg.org/"><img alt="WHATWG" height="100" width="100" src="https://resources.whatwg.org/logo.svg"></a></p>
 	<h1>CSS Figures</h1>
-	
-	<h2 class="no-num no-toc" id="living-standard-last-updated-12-december-2016">Living Standard — Last Updated 12 December 2016</h2>
-	
+
+	<h2 class="no-num no-toc" id="living-idea-last-updated-22-august-2017">Living Idea — Last Updated 22 August 2017</h2>
+
 	<dl>
 		<dt>This version:
-		<dd><!--begin-link--><a href="http://figures.spec.whatwg.org/">http://figures.spec.whatwg.org/</a><!--end-link-->
-		
-	
+		<dd><!--begin-link--><a href="http://figures.idea.whatwg.org/">http://figures.idea.whatwg.org/</a><!--end-link-->
+
+
 		<dt>Editor:
 		<dd class="vcard">
 			<span class="fn">Håkon Wium Lie</span>,
@@ -54,21 +53,21 @@ figure img { border: thin solid black }
 			<span class="email">howcome@opera.com</span>
 
 		<dt>Participate:</dt>
-		<dd><a href="http://www.whatwg.org/mailing-list">whatwg@whatwg.org</a></dd>
-		<dd><a href="http://lists.w3.org/Archives/Public/www-style/">www-style@w3.org</a></dd>
+		<dd><a href="https://whatwg.org/mailing-list">whatwg@whatwg.org</a></dd>
+		<dd><a href="https://lists.w3.org/Archives/Public/www-style/">www-style@w3.org</a></dd>
 <dd><a href="https://www.w3.org/Bugs/Public/enter_bug.cgi?product=WHATWG&amp;component=Figures">file a bug</a> (<a href="https://www.w3.org/Bugs/Public/buglist.cgi?product=WHATWG&amp;component=Figures&amp;resolution=---">open bugs</a>)</dd>
 
 
 	</dl>
-	
-<p class="copyright"><a href="http://creativecommons.org/publicdomain/zero/1.0/" rel="license"><img alt="CC0" src="https://i.creativecommons.org/p/zero/1.0/80x15.png"></a>To the extent possible under law, the editor has waived all copyright and related or neighboring rights to this work. In addition, as of 12 December 2016, the editor has made this specification available under the
+
+<p class="copyright"><a href="https://creativecommons.org/publicdomain/zero/1.0/" rel="license"><img alt="CC0" src="https://i.creativecommons.org/p/zero/1.0/80x15.png"></a>To the extent possible under law, the editor has waived all copyright and related or neighboring rights to this work. In addition, as of 12 December 2016, the editor has made this specification available under the
 <a href="http://www.openwebfoundation.org/legal/the-owf-1-0-agreements/owfa-1-0" rel="license">Open Web Foundation Agreement Version 1.0</a>, which is available at <!--begin-link--><a href="http://www.openwebfoundation.org/legal/the-owf-1-0-agreements/owfa-1-0">http://www.openwebfoundation.org/legal/the-owf-1-0-agreements/owfa-1-0</a><!--end-link-->.
 
 </div>
 
 <h2 class="no-num no-toc" id="abstract">Abstract</h2>
 
-<p>This specification describes how figures commonly seen in print – e.g. tables, photographs with captions, and pullquotes – can be formatted with CSS. By turning elements into <em>page floats</em>, figures can be floated wrt. columns and pages, and they can span columns. As such, the specification reinforces the concept of columns and pages being basic building blocks of CSS typography, thereby avoiding scripting for common layouts. Page floats live in paged environments, both on print and on screens. Authors do not know the size of the reader's device and care has therefore been taken to make features responsive; the same style sheet can work on mobile phones, tablets, PCs and on paper. This specification also describes how text can wrap around text and images. 
+<p>This specification describes how figures commonly seen in print – e.g. tables, photographs with captions, and pullquotes – can be formatted with CSS. By turning elements into <em>page floats</em>, figures can be floated wrt. columns and pages, and they can span columns. As such, the specification reinforces the concept of columns and pages being basic building blocks of CSS typography, thereby avoiding scripting for common layouts. Page floats live in paged environments, both on print and on screens. Authors do not know the size of the reader's device and care has therefore been taken to make features responsive; the same style sheet can work on mobile phones, tablets, PCs and on paper. This specification also describes how text can wrap around text and images.
 
 <h2 class="no-num no-toc" id="status">Status</h2>
 
@@ -158,14 +157,14 @@ direcdtion. The 'float' property is used to specify that the page
 float should move to the top, bottom or to the nearest edge of the
 column.
 
-<p>All page float have a <dfn id="natural-column">natural column</dfn>, i.e., the column where the element would naturally start. This specification defines several ways by which the element can escape their natural column. 
+<p>All page float have a <dfn id="natural-column">natural column</dfn>, i.e., the column where the element would naturally start. This specification defines several ways by which the element can escape their natural column.
 
 <ul>
 
 <li>Page floats can be deferred to a later column, possibly on a later page, by using the 'float-defer-column' and 'float-defer-page' properties. These properties identify a page float's <dfn id="defer-column">defer column</dfn> on a <dfn id="defer-page">defer
 page</dfn>.
 
-<li>Like for normal floats, page floats can be moved due to seetings on the 'clear' property; this speicification adds values so that an element can indicated preference for being the firat page float at a give position. 
+<li>Like for normal floats, page floats can be moved due to seetings on the 'clear' property; this speicification adds values so that an element can indicated preference for being the firat page float at a give position.
 
 <li>Page floats can be told to escape their natural column by using the 'float-reference' property to set the containing block to be an element, the page area, or the bleed box.
 
@@ -243,7 +242,7 @@ have been added:
 </dl>
 
 
-<p>When one of these keywords are set, a page float is created. 
+<p>When one of these keywords are set, a page float is created.
 
 <div class="example">
 <p>Float the figure to the top of its natural column:
@@ -258,7 +257,7 @@ have been added:
 <p>The column is, by default, the containing block of the page float.
 When the width is auto, the page float will fill the width of the
 column. When the width is constrained, content will be laid out in the
-line direction. 
+line direction.
 
 
 <div class="example">
@@ -272,7 +271,7 @@ line direction.
 
 
 <!--
-<p>The margin of the <dfn>page float extreme edge</dfn> (i.e., the edge of the page float that ends up adjoining the column edge) is always set to zero, so that page floats align with content in other columns. 
+<p>The margin of the <dfn>page float extreme edge</dfn> (i.e., the edge of the page float that ends up adjoining the column edge) is always set to zero, so that page floats align with content in other columns.
 -->
 
 <h3 id="floating-to-nearest-edge:-snap"><span class="secno">2.2 </span>Floating to nearest edge: snap()</h3>
@@ -283,7 +282,7 @@ line direction.
 
 <dt>snap(&lt;length&gt; &lt;length&gt;? [, top | bottom | near ]?)
 
-<dd>Turns the element into a page float if it naturally appears within a certain distance from the top or bottom of the column. The optional length value(s) specifies the maxium distance from the top/bottom that an element must be within in order to become a page float. When one length value is specified, it represents distance from both the top and the bottom; when two length values are specified, they represen the distance from top and bottom, respectively. Integer values represent number of lines in the baseline grid, if set. If no baseline grid is set, integer values represent multiples of the used value of 'line-height' on the element itself. 
+<dd>Turns the element into a page float if it naturally appears within a certain distance from the top or bottom of the column. The optional length value(s) specifies the maxium distance from the top/bottom that an element must be within in order to become a page float. When one length value is specified, it represents distance from both the top and the bottom; when two length values are specified, they represen the distance from top and bottom, respectively. Integer values represent number of lines in the baseline grid, if set. If no baseline grid is set, integer values represent multiples of the used value of 'line-height' on the element itself.
 
 <p>The optional keyword value specifies where the element is floated: top, bottom, or the nearest of the two. The default value is 'near'. If 'near' is in effect and the element is within the specified distance both from the top and the bottom, bottom wins.
 
@@ -408,7 +407,7 @@ line direction.
 <dt>element
 <dd>the float reference is the youngest ancestor element that creates a block formatting context
 
-<dt>page 
+<dt>page
 <dd>the page area of the <em>resulting page</em> is the float reference
 
 <dt>bleed-box
@@ -448,7 +447,7 @@ line direction.
 </pre>
 </div>
 
-<p>Column rules are not displayed in areas described by 'column-span'. 
+<p>Column rules are not displayed in areas described by 'column-span'.
 
 <div class="example">
 <p>In this example, the footer is floated to the bottom of the column, and is set to span all columns:
@@ -466,7 +465,7 @@ line direction.
 <pre class="lineart">┌──────────────────────────────────────┐
 │ ┌──────────┬┬┬─────────┬┬┬─────────┐ │
 │ │          │││         │││         │ │
-│ │     1    │││    2    │││   3     │ │   
+│ │     1    │││    2    │││   3     │ │
 │ │          │││         │││         │ │
 │ ├──────────┴┴┴─────────┴┴┴─────────┤ │
 │ │ footer                           │ │
@@ -499,7 +498,7 @@ columns on the last page of the <code>article</code> element:
 <pre class="lineart">┌──────────────────────────────────────┐
 │ ┌──────────┐┌──────────┐┌──────────┐ │
 │ │          ││          ││          │ │
-│ │     1    ││    2     ││    3     │ │   
+│ │     1    ││    2     ││    3     │ │
 │ │          ││          ││          │ │
 │ ├──────────┴┴──────────┴┴──────────┤ │
 │ │ footer                           │ │
@@ -516,12 +515,12 @@ columns on the last page of the <code>article</code> element:
 
 <p>In this example, the full-page ad uses the bleed box as the referece. Thus, when the image width and height are set to 100%, the image will extend slightly outside the page box on all sides. Exactly how much depends on the value of the <a href="http://dev.w3.org/csswg/css-page/#bleed">bleed</a> property.
 
-<pre>aside.top-ad { 
-  float: top; 
+<pre>aside.top-ad {
+  float: top;
   float-reference: bleed-box;
   float-defer-page: 3;
 }
-aside.top-ad img { 
+aside.top-ad img {
   width: 100%; height: 100%;
   object-fit: fill;
 }
@@ -534,11 +533,11 @@ aside.top-ad img {
 
 <div class="example">
 
-<p>In this example, a figure fills the upper half of the page to its bleeding edge. 
+<p>In this example, a figure fills the upper half of the page to its bleeding edge.
 
 <p>In the rendering below, the stippled line indicates the bleed box, the green rectangle is the <code>aside</code> element which is aligned with the bleed box on the top, right and left. The black solid line is the page box.
 
-<pre><span style="color: green"> 
+<pre><span style="color: green">
  ┌──────────────────────────────────────────┐
  │                                          │
  │                                          │
@@ -549,12 +548,12 @@ aside.top-ad img {
  │                                          │
  └──────────────────────────────────────────┘</span>
  │ │                                      │ │
-   │                                      │ 
+   │                                      │
  │ │                                      │ │
-   │                                      │ 
+   │                                      │
  │ │                                      │ │
-   └──────────────────────────────────────┘ 
- └  ──  ──  ──  ──  ──  ──  ──  ──  ──  ──  ┘ 
+   └──────────────────────────────────────┘
+ └  ──  ──  ──  ──  ──  ──  ──  ──  ──  ──  ┘
 
 <pre></pre></pre></div>
 
@@ -599,16 +598,16 @@ aside.top-ad img {
 <dd>the defer page is the natural page
 
 <dt>&lt;integer&gt;
-<dd>A positive integer indicates that the page float is deferred by the specified number of pages. A negative integer indicates that the page float is deferred by counting from the last page; -1 means the last page, -2 means the next-to-last page, etc. If the specified negative integer would result the defer page being a page column, the value is ignored. Also, zero is ignored. 
+<dd>A positive integer indicates that the page float is deferred by the specified number of pages. A negative integer indicates that the page float is deferred by counting from the last page; -1 means the last page, -2 means the next-to-last page, etc. If the specified negative integer would result the defer page being a page column, the value is ignored. Also, zero is ignored.
 
 <p class="issue">Should negative values be allowed?
 
 <dt>left
-<dd>A left page is requested. If pages are not categorized as left of right, this value is ignored. In combination with an integer, this keyword has the effect that the defer page is increased by one, unless the integer value results in a left page. 
+<dd>A left page is requested. If pages are not categorized as left of right, this value is ignored. In combination with an integer, this keyword has the effect that the defer page is increased by one, unless the integer value results in a left page.
 
 <dt>right
 
-<dd>A left page is requested. If pages are not categorized as left of right, this value is ignored. In combination with an integer, this keyword has the effect that the defer page is increased by one, unless the integer value results in a right page. 
+<dd>A left page is requested. If pages are not categorized as left of right, this value is ignored. In combination with an integer, this keyword has the effect that the defer page is increased by one, unless the integer value results in a right page.
 
 <dt>last
 
@@ -653,8 +652,8 @@ figure { float-defer-column: 1 }
 <div class="example">
 <p>Float figure to the second column on the next page, spanning two columns:
 
-<pre>figure { 
-  float: top; 
+<pre>figure {
+  float: top;
   column-span: 2;
   float-defer-page: 1;
   float-defer-column: 1;
@@ -670,8 +669,8 @@ figure { float-defer-column: 1 }
 <div class="example">
 <p>Float figure to the top right, leaving the last column unchanged:
 
-<pre>figure { 
-  float: top; 
+<pre>figure {
+  float: top;
   column-span: 2;
   float-defer-column: -1;
 }
@@ -681,8 +680,8 @@ figure { float-defer-column: 1 }
 
 <p>Given that there are four columns, and that the figure is referenced at the beginning of its multicol element, the same layout could be achieved with this code:
 
-<pre>figure { 
-  float: top; 
+<pre>figure {
+  float: top;
   column-span: 2;
   float-defer-column: 1;
 }
@@ -777,11 +776,11 @@ figure { float-defer-page: -1 }
 
 <dt>inside
 
-<dd>The next inside column becomes the defer column. 
+<dd>The next inside column becomes the defer column.
 
 <dt>outside
 
-<dd>The next outside column becomes the defer column. 
+<dd>The next outside column becomes the defer column.
 
 </dl>
 
@@ -816,7 +815,7 @@ figure { float-defer-page: -1 }
       <td>positive integer
 </table>
 
-<p>This property specifies the number of lines a page float should be deferred. 
+<p>This property specifies the number of lines a page float should be deferred.
 
 <p>Values are:
 
@@ -827,7 +826,7 @@ figure { float-defer-page: -1 }
 
 <dt>&lt;integer&gt;
 
-<dd>A positive integer indicates that the page float is deferred by the specified number of lines counting from the start of the column, so that the specified number of lines can be displayed before the page float. A negative integer indicates that the page float is deferred by the specified number of lines counting from the bottom of the column, so that the specified number of lines can be displayed after the page float. 
+<dd>A positive integer indicates that the page float is deferred by the specified number of lines counting from the start of the column, so that the specified number of lines can be displayed before the page float. A negative integer indicates that the page float is deferred by the specified number of lines counting from the bottom of the column, so that the specified number of lines can be displayed after the page float.
 
 <dt>&lt;percentage&gt;
 
@@ -835,7 +834,7 @@ figure { float-defer-page: -1 }
 
 </dl>
 
-<p>Both integer and percentage values are computed to a positive integer value which represents the number of lines from the top of the column which is to be deferred. Line metrics are based on the first available font of the multicol element. Other page floats or spanners are not taken into account when computing lines. 
+<p>Both integer and percentage values are computed to a positive integer value which represents the number of lines from the top of the column which is to be deferred. Line metrics are based on the first available font of the multicol element. Other page floats or spanners are not taken into account when computing lines.
 
 
 <div class="example">
@@ -888,16 +887,16 @@ figure { float-defer-page: -1 }
 
 <dt>column
 
-<dd>The page float requests to be the first page float at its favored position in the column; rather than being stacked after other page floats, it should be moved to the next possible position. 
+<dd>The page float requests to be the first page float at its favored position in the column; rather than being stacked after other page floats, it should be moved to the next possible position.
 
 
 <!--<dt>top
 
-<dd>The page float requests to be the first page float at the top of the column. If there is already a page float at the requested position, the page float is moved to the next column. 
+<dd>The page float requests to be the first page float at the top of the column. If there is already a page float at the requested position, the page float is moved to the next column.
 
 <dt>bottom
 
-<dd>The page float requests to be the first page float at the bottom of the column. If there is already a page float at the requested position, the page float is moved to the next column. 
+<dd>The page float requests to be the first page float at the bottom of the column. If there is already a page float at the requested position, the page float is moved to the next column.
 -->
 
 <dt>page
@@ -934,7 +933,7 @@ figure { float-defer-page: -1 }
 </div>
 
 <div class="example">
-<p>In this example, the first figure will move to the top of its natural column, while the second will move to the bottom: 
+<p>In this example, the first figure will move to the top of its natural column, while the second will move to the bottom:
 
 <pre>figure { float: top-bottom; clear: column }
 
@@ -943,7 +942,7 @@ figure { float-defer-page: -1 }
 </pre>
 <p><img src="32.png">
 
-<p>The placement of the second float is due to the 'top-bottom' indicating that the bottom as an acceptable position, and due to it being the first page float in the bottom position. 
+<p>The placement of the second float is due to the 'top-bottom' indicating that the bottom as an acceptable position, and due to it being the first page float in the bottom position.
 </div>
 
 
@@ -1003,7 +1002,7 @@ figure { float: top }
 h1 { clear: column }
 </pre>
 
-<p class=issue>Is this enough? Do we need another value on 'clear' to express this? 
+<p class=issue>Is this enough? Do we need another value on 'clear' to express this?
 
 </div>
 
@@ -1015,7 +1014,7 @@ h1 { clear: column }
 setting margin values in the block direction to 'auto'.
 
 <div class="example">
-<pre>  img { 
+<pre>  img {
     float: top;
     margin-bottom: auto;
   }
@@ -1153,7 +1152,7 @@ setting margin values in the block direction to 'auto'.
 
 <p>Show one (and only one) pull-quote per page, in the second column. If there are more pull-quotes than pages, the remainders are not shown; we don't want a stack of pullquotes at the end of an article.
 
-<pre>.pullquote { 
+<pre>.pullquote {
    float: top;
    clear: page;
    float-defer-column: 2;
@@ -1177,7 +1176,7 @@ However, in many cases page floats must be moved to another column or
 page than specified. This may be due to implementation-specific limits
 for figure placement (such that figures cannot affect content that has
 already been laid out), or that there simply isn't room in the column
-specified. UAs are free to find the best resulting column and page. 
+specified. UAs are free to find the best resulting column and page.
 
 <p>When resolving over-constrained layouts, the order of importance for defined goals are:
 
@@ -1230,7 +1229,7 @@ specified. UAs are free to find the best resulting column and page.
 
 
 <!--
-<p>Page floats are processed in the order they appear in the source. However, the resulting visual order of page floats may be different from the source order. 
+<p>Page floats are processed in the order they appear in the source. However, the resulting visual order of page floats may be different from the source order.
 
 <div class=example>Consider this code:
 
@@ -1242,7 +1241,7 @@ specified. UAs are free to find the best resulting column and page.
 &lt;div class=two>&lt;/div>
 </pre>
 
-<p>In this example, the first element requests to appear on the last page, while the second element requests to appear in the natural column. If the natural column of the second element appears on a page before the last page, the second element will appear visually before the first. 
+<p>In this example, the first element requests to appear on the last page, while the second element requests to appear in the natural column. If the natural column of the second element appears on a page before the last page, the second element will appear visually before the first.
 
 </div>
 -->
@@ -1285,7 +1284,7 @@ number, length, and the 'auto' value.
       <td>Same as specified value
 </table>
 
-<p>This property describes how the element spans across columns of the nearest multicol ancestor. 
+<p>This property describes how the element spans across columns of the nearest multicol ancestor.
 
 <dl>
 
@@ -1293,7 +1292,7 @@ number, length, and the 'auto' value.
 <dd>the element does not span multiple columns
 
 <dt>all
-<dd>The element spans across all columns, as per <a href="#refsCSSMULTICOL">[CSSMULTICOL]</a>. This value results in previous content being balanced across all columns before the spanning element; no other value has the this effect. 
+<dd>The element spans across all columns, as per <a href="#refsCSSMULTICOL">[CSSMULTICOL]</a>. This value results in previous content being balanced across all columns before the spanning element; no other value has the this effect.
 
 <!--
 <dt>&lt;number>
@@ -1311,14 +1310,14 @@ number, length, and the 'auto' value.
 
 </dl>
 
-<p>If the resulting number of columns is larger than the number of columns in the multicol element (not counting overflow columns), the number of columns spanned will be the same as the number of columns in the multicol element. 
+<p>If the resulting number of columns is larger than the number of columns in the multicol element (not counting overflow columns), the number of columns spanned will be the same as the number of columns in the multicol element.
 
 <p>In the line direction, the rectangle described by this property is, by default, placed at the start of the resulting column, extending in the line direction. However, the rectangle will not normally extend outside the content box of the multicol element. Instead, the rectangle is extended in the opposite direction of the line direction. (Negative margins and/or 'float-offet' may possibly move the page float outside the content box.)
 
 <div class="example">
 <p>In this example, the defer column is the last column on the page. Due to the setting on 'column-span' the page float also covers another column. As it cannot extend outside the content box of the multicol element, it must extend to the left into column 2.
 
-<pre>img { 
+<pre>img {
   float: top;
   column-span: 2;
   width: 100%
@@ -1348,7 +1347,7 @@ number, length, and the 'auto' value.
 <p>This example is a variation of the previous example, showing how the page float grows in the oppsite of the line direction.
 
 <pre>
-img { 
+img {
   float: top;
   column-span: 1.75;
   float-defer-column: last;
@@ -1374,14 +1373,14 @@ p.one { float: top; column-span: 2 }              /* lead paragraph spans two co
 <pre class=lineart>
 ┌──────────────────────┐┌──────────┐
 │                      ││          │
-│         img          ││    4     │	          
-│                      ││          │   
+│         img          ││    4     │
+│                      ││          │
 └──────────────────────┘│          │
 ┌──────────────────────┐│          │
-│        p.one         ││          │   
+│        p.one         ││          │
 └──────────────────────┘│          │
 ┌──────────┐┌──────────┐│          │
-│     2    ││    3     ││          │   
+│     2    ││    3     ││          │
 └──────────┘└──────────┘└──────────┘
 </pre>
 </div>
@@ -1400,7 +1399,7 @@ p.one { float: top; column-span: 2 }              /* lead paragraph spans two co
 
 <!--==
 <div class=example-->
-<pre>figure { 
+<pre>figure {
   float: top;
   float-defer-column: last;
   column-span: 1.25;
@@ -1411,7 +1410,7 @@ p.one { float: top; column-span: 2 }              /* lead paragraph spans two co
 
 
 <div class="example">
-<pre>figure { 
+<pre>figure {
   float: top;
   float-defer-column: last;
   column-span: 1.5;
@@ -1449,7 +1448,7 @@ called two-dimensional floats, or <dfn id="x2d-floats">2D floats</dfn>.
 
 <div class="example">
 
-<p>In this example, the image is set to span two columns, but it does not use all available space. 
+<p>In this example, the image is set to span two columns, but it does not use all available space.
 therefore intrude into the neighboring column. At the bottom of the
 middle column is a long word that is clipped in the middle of the
 column gap.
@@ -1554,7 +1553,7 @@ column gap.
 
 
 <div class="example">
-<p>Position pullquotes so that that they appear in the outside column, extending into the outside margin. 
+<p>Position pullquotes so that that they appear in the outside column, extending into the outside margin.
 
 <pre>.pullquote {
   width: 120%; /* relative to column width */
@@ -1575,9 +1574,9 @@ column gap.
 @page :left  { margin-left: 6cm }
 @page :right  { margin-right: 6cm }
 
-aside { 
-  float: outside; 
-  float-offset: -4cm; 
+aside {
+  float: outside;
+  float-offset: -4cm;
   width: 3cm;
 }
 
@@ -1613,8 +1612,8 @@ aside {
 
 <div class="example">
 <pre>aside {
-  float: outside; 
-  float-offset: -4cm; 
+  float: outside;
+  float-offset: -4cm;
   width: 3cm;
   text-align: inside;
 }
@@ -1636,8 +1635,8 @@ aside {
 
 <div class="example">
 <pre>aside {
-  float: outside; 
-  float-offset: -4cm; 
+  float: outside;
+  float-offset: -4cm;
   width: 3cm;
   text-align: outside;
 }
@@ -1690,7 +1689,7 @@ aside {
       <td>specified value
 </table>
 
-<p class="issue">Do we need this, or just a flag to allow intrusions? 
+<p class="issue">Do we need this, or just a flag to allow intrusions?
 
 <p>This property indicates whether other content may wrap around a page float:
 
@@ -1702,9 +1701,9 @@ aside {
 
 <dd>other content may wrap around on all sides of the float
 
-<dt>left | right | top | bottom | line-start | line-end | block-start | block-end 
+<dt>left | right | top | bottom | line-start | line-end | block-start | block-end
 <dd>specifies which side wrapping is allowed
-  
+
 <dt>line
 <dd>wrapping is allowed on both sides in the line direction.
 
@@ -1782,7 +1781,7 @@ aside {
 <pre>article {
   columns: 15em;
 }
-figure { 
+figure {
   float: bottom;
   wrap-side: all;
   wrap-contrast: 0.5 1em;
@@ -1795,7 +1794,7 @@ figure {
 <!--
 <h2>Pullquotes</h2>
 
-<p>This section sketches various techniques for achieving pull quotes and other content that 
+<p>This section sketches various techniques for achieving pull quotes and other content that
 
 <div class=example>
 <p>Moving an element down.
@@ -2419,7 +2418,7 @@ in the same direction as it has been floated with 'float'
 naturally appear.
 
 <div class="example">
-<p>In this example, the first declaration float the image to the top, while the second pushes it down. 
+<p>In this example, the first declaration float the image to the top, while the second pushes it down.
 
 <pre>img {
   float: top;
@@ -2495,7 +2494,7 @@ Pull quotes are often centered in a column. In this example, the pull quote is f
 ┌──────────────────────────────────────┐
 │ ┌──────────┐┌──────────┐┌──────────┐ │
 │ │          ││          ││          │ │
-│ │     1    ││    2     ││    3     │ │   
+│ │     1    ││    2     ││    3     │ │
 │ │          ││          ││          │ │
 │ └──────────┘└──────────┘└──────────┘ │
 │                                      │
@@ -2509,7 +2508,7 @@ Pull quotes are often centered in a column. In this example, the pull quote is f
 ┌──────────────────────────────────────┐
 │ ┌──────────┐┌──────────┐┌──────────┐ │
 │ │          ││          ││          │ │
-│ │     1    ││    2     ││    3     │ │   
+│ │     1    ││    2     ││    3     │ │
 │ │          ││          ││          │ │
 │ └──────────┘└──────────┘└──────────┘ │
 │ ┌──────────────────────────────────┐ │
