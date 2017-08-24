@@ -13,6 +13,8 @@ else
     eval `ssh-agent -s`
     ssh-add deploy_key
     echo "$SERVER $SERVER_PUBLIC_KEY" > known_hosts
-    scp -o UserKnownHostsFile=known_hosts Overview.html $DEPLOY_USER@$SERVER:$WEB_ROOT/index.html
-    scp -o UserKnownHostsFile=known_hosts *.jpg *.png $DEPLOY_USER@$SERVER:$WEB_ROOT/
+    mkdir $WEB_ROOT
+    mv Overview.html $WEB_ROOT/index.html
+    mv *.jpg *.png  $WEB_ROOT/
+    rsync --archive --chmod=D755,F644 --verbose --compress --delete --rsh="ssh -o UserKnownHostsFile=known_hosts" $WEB_ROOT deploy@$SERVER:/var/www/
 fi
