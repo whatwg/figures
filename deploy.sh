@@ -14,7 +14,7 @@ else
     ssh-add deploy_key
     echo "$SERVER $SERVER_PUBLIC_KEY" > known_hosts
     mkdir $WEB_ROOT
-    cp Overview.html $WEB_ROOT/index.html
-    cp *.jpg *.png  $WEB_ROOT/
+    mv Overview.html $WEB_ROOT/index.html
+    mv *.jpg *.png  $WEB_ROOT/
     rsync --archive --chmod=D755,F644 --verbose --compress --delete --rsh="ssh -o UserKnownHostsFile=known_hosts" $WEB_ROOT deploy@$SERVER:/var/www/
 fi
